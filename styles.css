@@ -4,26 +4,29 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', sans-serif;
-  background: #050816;
+  background: #000;
   color: white;
   overflow-x: hidden;
 }
 
-body::before {
-  content: "";
+.gradient-bg {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle at top left, rgba(90,120,255,0.25), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(0,255,180,0.12), transparent 30%);
+    radial-gradient(circle at top left, rgba(0, 140, 255, 0.25), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(120, 0, 255, 0.2), transparent 30%);
   z-index: -1;
 }
 
 .navbar {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1350px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -34,15 +37,16 @@ body::before {
 .logo {
   font-size: 28px;
   font-weight: 800;
+  letter-spacing: -1px;
 }
 
 nav {
   display: flex;
-  gap: 30px;
+  gap: 34px;
 }
 
 nav a {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.7);
   text-decoration: none;
   transition: 0.3s;
 }
@@ -51,65 +55,60 @@ nav a:hover {
   color: white;
 }
 
-.nav-btn {
-  padding: 12px 20px;
-  border-radius: 14px;
+.nav-button {
+  padding: 14px 22px;
+  border-radius: 999px;
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.08);
   text-decoration: none;
   color: white;
 }
 
 .hero {
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 40px 24px;
+  padding: 80px 24px;
 }
 
-.hero-content {
-  max-width: 950px;
-}
-
-.badge {
-  display: inline-block;
-  padding: 10px 18px;
+.hero-badge {
+  padding: 10px 20px;
   border-radius: 999px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.1);
-  color: #c7d2fe;
-  margin-bottom: 28px;
+  margin-bottom: 30px;
+  color: #d1d5db;
 }
 
 .hero h1 {
-  font-size: 84px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -3px;
+  font-size: 110px;
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -6px;
 }
 
 .hero p {
-  max-width: 700px;
-  margin: 30px auto;
-  color: rgba(255,255,255,0.7);
-  font-size: 22px;
+  max-width: 760px;
+  margin-top: 34px;
+  font-size: 24px;
   line-height: 1.7;
+  color: rgba(255,255,255,0.7);
 }
 
 .hero-buttons {
+  margin-top: 46px;
   display: flex;
-  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 40px;
 }
 
 .primary-btn,
 .secondary-btn {
   padding: 18px 34px;
-  border-radius: 18px;
+  border-radius: 999px;
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s;
@@ -130,94 +129,134 @@ nav a:hover {
   color: white;
 }
 
-.section {
-  max-width: 1300px;
-  margin: auto;
-  padding: 120px 24px;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 70px;
-}
-
-.section-header span,
-.small-title {
-  color: #7dd3fc;
-  font-size: 14px;
-  letter-spacing: 2px;
-}
-
-.section-header h2,
-.install-card h2 {
-  margin-top: 14px;
-  font-size: 54px;
-  line-height: 1.1;
-}
-
-.feature-grid,
-.steps-grid {
+.hero-preview {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 90px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  gap: 24px;
 }
 
-.feature-card,
-.step-card,
-.install-card {
-  background: rgba(255,255,255,0.05);
+.glass {
+  background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 28px;
+  backdrop-filter: blur(14px);
+}
+
+.preview-card {
   padding: 40px;
+  border-radius: 30px;
+  text-align: left;
 }
 
-.feature-card h3,
-.step-card h3 {
-  margin-top: 18px;
-  margin-bottom: 14px;
-  font-size: 28px;
-}
-
-.feature-card p,
-.step-card p,
-.install-steps p {
-  color: rgba(255,255,255,0.72);
-  line-height: 1.8;
-}
-
-.icon {
+.preview-card span {
   font-size: 42px;
 }
 
-.step-number {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  color: black;
-  font-weight: 700;
-  font-size: 24px;
+.preview-card h3 {
+  margin-top: 24px;
+  font-size: 30px;
 }
 
-.install-card {
+.preview-card p {
+  margin-top: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+}
+
+.showcase-section {
+  padding: 180px 24px;
+  text-align: center;
+}
+
+.showcase-content {
   max-width: 900px;
   margin: auto;
 }
 
-.install-steps {
-  margin-top: 30px;
+.showcase-content span,
+.install-left span {
+  color: #93c5fd;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.showcase-content h2,
+.install-left h2 {
+  margin-top: 18px;
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.showcase-content p,
+.install-left p {
+  margin-top: 24px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  font-size: 22px;
+}
+
+.stats-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 24px 160px;
   display: grid;
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.stat-card {
+  padding: 50px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 64px;
+}
+
+.stat-card p {
+  margin-top: 14px;
+  color: rgba(255,255,255,0.65);
+}
+
+.install-section {
+  padding: 0 24px 160px;
+}
+
+.install-container {
+  max-width: 1300px;
+  margin: auto;
+  border-radius: 40px;
+  padding: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 60px;
+}
+
+.install-right {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.install-step {
+  background: rgba(255,255,255,0.04);
+  padding: 22px;
+  border-radius: 20px;
+  color: rgba(255,255,255,0.85);
+}
+
+.install-step strong {
+  margin-right: 14px;
 }
 
 footer {
   border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 50px 24px;
   text-align: center;
+  padding: 50px 24px;
 }
 
 .footer-logo {
@@ -230,34 +269,42 @@ footer p {
   color: rgba(255,255,255,0.5);
 }
 
-@media(max-width: 900px) {
+@media(max-width: 1000px) {
 
   .hero h1 {
-    font-size: 54px;
+    font-size: 72px;
   }
 
-  .section-header h2,
-  .install-card h2 {
-    font-size: 40px;
+  .showcase-content h2,
+  .install-left h2 {
+    font-size: 52px;
   }
+}
+
+@media(max-width: 768px) {
 
   nav {
     display: none;
   }
 
-  .navbar {
-    gap: 20px;
-  }
-}
-
-@media(max-width: 600px) {
-
   .hero h1 {
+    font-size: 52px;
+    letter-spacing: -3px;
+  }
+
+  .hero p,
+  .showcase-content p,
+  .install-left p {
+    font-size: 18px;
+  }
+
+  .showcase-content h2,
+  .install-left h2 {
     font-size: 42px;
   }
 
-  .hero p {
-    font-size: 18px;
+  .install-container {
+    padding: 40px 28px;
   }
 
   .primary-btn,
