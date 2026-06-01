@@ -3,84 +3,593 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CarpoolKaro | Smart Carpooling for IT Professionals</title>
-<meta name="description" content="Share rides with trusted professionals. Save money, reduce traffic, and commute smarter with CarpoolKaro.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<title>CarpoolKaro — India's IT Carpool Community</title>
+<meta name="description" content="Share rides with verified IT professionals. Save money, reduce traffic. Available in Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR & Chennai.">
+<link rel="icon" href="https://app.carpoolkaro.com/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d1b3e; --navy2: #142248;
+  --yellow: #facc15; --yellow2: #f59e0b;
+  --white: #ffffff; --gray: #64748b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: #fff; overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 68px; padding: 0 6%;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(13,27,62,0.88); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo img { height: 34px; width: auto; }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.2s; }
+.nav-links a:hover { color: var(--yellow); }
+.nav-cta { background: var(--yellow) !important; color: #111 !important; padding: 10px 22px; border-radius: 100px; font-weight: 700 !important; }
+.nav-cta:hover { background: var(--yellow2) !important; }
+.hamburger { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--navy); padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); z-index: 99; flex-direction: column; gap: 20px; }
+.mobile-menu a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 16px; font-weight: 500; }
+.mobile-menu.open { display: flex; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; padding: 110px 6% 80px;
+  display: flex; align-items: center; position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 60% 20%, rgba(250,204,21,0.06) 0%, transparent 65%),
+              radial-gradient(ellipse 50% 50% at 10% 70%, rgba(99,102,241,0.06) 0%, transparent 55%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 20%, transparent 80%);
+}
+.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
+.hero-left {}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(250,204,21,0.1); border: 1px solid rgba(250,204,21,0.25);
+  color: var(--yellow); padding: 5px 14px; border-radius: 100px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.5s ease both;
+}
+.hero-logo { margin-bottom: 24px; animation: fadeUp 0.5s 0.1s ease both; }
+.hero-logo img { width: min(280px, 70%); height: auto; }
+.hero-h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(32px, 4vw, 56px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;
+  margin-bottom: 18px;
+  animation: fadeUp 0.5s 0.15s ease both;
+}
+.hero-h1 .y { color: var(--yellow); }
+.hero-sub {
+  font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.7;
+  margin-bottom: 36px; max-width: 460px;
+  animation: fadeUp 0.5s 0.2s ease both;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; animation: fadeUp 0.5s 0.25s ease both; }
+.btn-y {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--yellow); color: #111; padding: 14px 28px;
+  border-radius: 100px; font-weight: 700; font-size: 15px;
+  text-decoration: none; transition: 0.2s;
+  box-shadow: 0 6px 28px rgba(250,204,21,0.28);
+}
+.btn-y:hover { background: var(--yellow2); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(250,204,21,0.4); }
+.btn-o {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.05); color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 14px 28px; border-radius: 100px;
+  font-weight: 600; font-size: 15px; text-decoration: none; transition: 0.2s;
+}
+.btn-o:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.hero-pills { display: flex; gap: 10px; flex-wrap: wrap; animation: fadeUp 0.5s 0.3s ease both; }
+.pill {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.6);
+}
+.pill.y { background: rgba(250,204,21,0.08); border-color: rgba(250,204,21,0.2); color: var(--yellow); }
+
+/* HERO RIGHT — illustration card */
+.hero-right { animation: fadeUp 0.5s 0.35s ease both; }
+.hero-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px; overflow: hidden; position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+}
+.hero-card img { width: 100%; display: block; }
+.hero-card-pill {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  background: rgba(13,27,62,0.92); backdrop-filter: blur(16px);
+  border: 1px solid rgba(250,204,21,0.3); color: var(--yellow);
+  padding: 7px 18px; border-radius: 100px; font-size: 12px; font-weight: 700; white-space: nowrap;
+}
+.hero-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 12px; }
+.hero-stat {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; padding: 16px 20px; text-align: center;
+}
+.hero-stat .n { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--yellow); }
+.hero-stat .l { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; letter-spacing: 0.5px; }
+
+/* SECTIONS */
+section { padding: 80px 6%; max-width: 1200px; margin: 0 auto; }
+.full-w { max-width: none; padding: 80px 6%; }
+.s-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(250,204,21,0.08); border: 1px solid rgba(250,204,21,0.18);
+  color: var(--yellow); padding: 4px 14px; border-radius: 100px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.s-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; margin-bottom: 12px; }
+.s-sub { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+/* HOW IT WORKS */
+.how-section { background: rgba(255,255,255,0.02); }
+.how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 52px; }
+.how-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px; padding: 32px 26px; position: relative; transition: 0.3s;
+}
+.how-card:hover { border-color: rgba(250,204,21,0.3); transform: translateY(-4px); }
+.how-num { font-family:'Syne',sans-serif; font-size: 60px; font-weight: 800; color: rgba(250,204,21,0.08); position: absolute; top: 16px; right: 20px; line-height: 1; }
+.how-icon { font-size: 38px; margin-bottom: 16px; }
+.how-card h3 { font-family:'Syne',sans-serif; font-size: 19px; font-weight: 700; margin-bottom: 10px; }
+.how-card p { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7; }
+
+/* FEATURES */
+.feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 52px; }
+.feat-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px; padding: 26px; transition: 0.3s;
+}
+.feat-card:hover { border-color: rgba(250,204,21,0.2); background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+.feat-icon { font-size: 32px; margin-bottom: 14px; }
+.feat-card h3 { font-family:'Syne',sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feat-card p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+
+/* CITIES */
+.cities-wrap { background: rgba(0,0,0,0.2); }
+.cities-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 48px; }
+.city-card {
+  border-radius: 18px; padding: 24px 20px; border: 1px solid rgba(255,255,255,0.07);
+  position: relative; overflow: hidden; transition: 0.3s; cursor: default;
+}
+.city-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: var(--yellow); }
+.city-card:hover { transform: translateY(-4px); border-color: rgba(250,204,21,0.3); }
+.city-emoji { font-size: 30px; margin-bottom: 12px; }
+.city-card h3 { font-family:'Syne',sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+.city-card p { font-size: 12px; color: rgba(255,255,255,0.38); line-height: 1.5; }
+.live-dot {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 10px;
+  background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2);
+  color: #4ade80; font-size: 10px; font-weight: 700;
+  padding: 2px 10px; border-radius: 100px;
+}
+.live-dot::before { content:''; width:5px; height:5px; border-radius:50%; background:#4ade80; animation: blink 1.5s infinite; }
+
+/* PRICING */
+.price-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 52px; }
+.p-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 28px 20px; position: relative; transition: 0.3s;
+}
+.p-card:hover { border-color: rgba(250,204,21,0.2); }
+.p-card.pop { background: var(--yellow); border-color: var(--yellow); transform: scale(1.05); }
+.p-card.pop * { color: #111 !important; }
+.pop-badge {
+  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+  background: #111; color: var(--yellow);
+  font-size: 9px; font-weight: 800; letter-spacing: 1px;
+  padding: 3px 12px; border-radius: 100px; white-space: nowrap;
+}
+.p-name { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+.p-amount { font-family:'Syne',sans-serif; font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 3px; }
+.p-period { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+.p-feats { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.p-feats li { font-size: 13px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 6px; }
+.p-feats li::before { content:'✓'; color: var(--yellow); font-weight: 800; }
+.pop .p-feats li::before { color: #111; }
+.p-btn {
+  display: block; text-align: center; margin-top: 22px;
+  padding: 10px; border-radius: 100px; text-decoration: none;
+  font-size: 13px; font-weight: 700;
+  background: rgba(255,255,255,0.08); color: #fff; transition: 0.2s;
+}
+.pop .p-btn { background: #111; color: var(--yellow); }
+.p-btn:hover { background: rgba(255,255,255,0.15); }
+
+/* CTA */
+.cta-wrap {
+  text-align: center; padding: 100px 6%;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(250,204,21,0.06), transparent);
+}
+.dl-badges { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+.dl-badge {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  padding: 13px 24px; border-radius: 14px; text-decoration: none;
+  color: #fff; transition: 0.2s;
+}
+.dl-badge:hover { background: rgba(255,255,255,0.09); border-color: rgba(250,204,21,0.3); transform: translateY(-2px); }
+.dl-badge .icon { font-size: 30px; }
+.dl-badge .sub { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.5px; }
+.dl-badge .name { font-family:'Syne',sans-serif; font-size: 16px; font-weight: 700; }
+
+/* FOOTER */
+footer {
+  background: rgba(0,0,0,0.35); border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 56px 6% 28px;
+}
+.ft-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; max-width: 1200px; margin: 0 auto 44px; }
+.ft-brand img { height: 38px; margin-bottom: 14px; }
+.ft-brand p { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 240px; }
+.ft-col h4 { font-family:'Syne',sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 16px; }
+.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.ft-col a { font-size: 13px; color: rgba(255,255,255,0.38); text-decoration: none; transition: 0.2s; }
+.ft-col a:hover { color: var(--yellow); }
+.ft-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 22px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+  max-width: 1200px; margin: 0 auto;
+}
+.ft-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .how-grid { grid-template-columns: 1fr; }
+  .feat-grid { grid-template-columns: repeat(2,1fr); }
+  .price-grid { grid-template-columns: repeat(2,1fr); }
+  .p-card.pop { transform: none; }
+  .ft-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+}
+@media (max-width: 600px) {
+  .feat-grid { grid-template-columns: 1fr; }
+  .cities-grid { grid-template-columns: 1fr 1fr; }
+  .price-grid { grid-template-columns: 1fr 1fr; }
+  .ft-top { grid-template-columns: 1fr; }
+  .hero-pills { display: none; }
+  .hero-btns { flex-direction: column; }
+  .btn-y, .btn-o { justify-content: center; }
+}
+</style>
 </head>
 <body>
-<header class="navbar">
-<div class="logo">🚗 CarpoolKaro</div>
+
+<!-- NAV -->
 <nav>
-<a href="#features">Features</a>
-<a href="#safety">Safety</a>
-<a href="#how">How It Works</a>
-<a href="#download">Download</a>
+  <a href="#" class="nav-logo"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"></a>
+  <ul class="nav-links">
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#cities">Cities</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://app.carpoolkaro.com" class="nav-cta">Open App →</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">☰</button>
 </nav>
-<a class="btn btn-primary" href="https://app.carpoolkaro.com">Open App</a>
-</header>
+<div class="mobile-menu">
+  <a href="#how" onclick="this.parentElement.classList.remove('open')">How it works</a>
+  <a href="#features" onclick="this.parentElement.classList.remove('open')">Features</a>
+  <a href="#cities" onclick="this.parentElement.classList.remove('open')">Cities</a>
+  <a href="#pricing" onclick="this.parentElement.classList.remove('open')">Pricing</a>
+  <a href="https://app.carpoolkaro.com" style="color:var(--yellow);font-weight:700;">Open App →</a>
+</div>
 
-<section class="hero">
-<div class="hero-content">
-<span class="badge">Trusted IT Carpool Community</span>
-<h1>Commute Smarter.<br>Save More Every Day.</h1>
-<p>Connect with verified professionals, share rides, split costs, and make daily travel affordable.</p>
-<div class="hero-actions">
-<a class="btn btn-primary" href="https://app.carpoolkaro.com">Find a Ride</a>
-<a class="btn btn-secondary" href="https://app.carpoolkaro.com">Offer a Ride</a>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">🚀 Now live in 6 Indian IT cities</div>
+      <div class="hero-logo"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"></div>
+      <h1 class="hero-h1">Your IT Commute,<br><span class="y">Shared & Smarter</span></h1>
+      <p class="hero-sub">Connect with verified colleagues heading the same way. Cut fuel costs, beat traffic, and make your daily commute something to look forward to.</p>
+      <div class="hero-btns">
+        <a href="https://app.carpoolkaro.com" class="btn-y">🚗 Start Carpooling Free</a>
+        <a href="#how" class="btn-o">▶ How it works</a>
+      </div>
+      <div class="hero-pills">
+        <span class="pill y">₹2 platform fee only</span>
+        <span class="pill">₹10 signup bonus</span>
+        <span class="pill">Google login</span>
+        <span class="pill">6 cities</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <img src="https://app.carpoolkaro.com/login-illustration.png" alt="Carpooling illustration">
+        <div class="hero-card-pill">📍 Find rides near you, right now</div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="n">₹2</div><div class="l">PLATFORM FEE</div></div>
+        <div class="hero-stat"><div class="n">6</div><div class="l">IT CITIES</div></div>
+        <div class="hero-stat"><div class="n">Free</div><div class="l">TO JOIN</div></div>
+        <div class="hero-stat"><div class="n">₹10</div><div class="l">SIGNUP BONUS</div></div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section full-w" id="how">
+  <section>
+    <div style="text-align:center">
+      <span class="s-badge">⚡ Simple process</span>
+      <h2 class="s-title">Ready in under 2 minutes</h2>
+      <p class="s-sub" style="max-width:480px;margin:0 auto">From signup to your first shared ride — no complexity, no hassle.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-icon">📲</div>
+        <h3>Sign in with Google</h3>
+        <p>One tap with your Gmail — no forms, no passwords. Your profile is ready instantly with ₹10 bonus in your wallet.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-icon">🔍</div>
+        <h3>Find or Post a Ride</h3>
+        <p>Browse rides on your corridor or post your own in 30 seconds. Smart via-stop matching finds rides even if you're not at the exact start point.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-icon">🤝</div>
+        <h3>Commute Together</h3>
+        <p>Chat safely inside the app, coordinate pickup, and ride with a verified colleague. Just ₹2 platform fee per booking from your wallet.</p>
+      </div>
+    </div>
+  </section>
 </div>
-<div class="phone-card">
-<div class="phone-screen">
-<h3>Today's Ride</h3>
-<p>Miyapur → HITEC City</p>
-<p>3 Seats Available</p>
-</div>
-</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <span class="s-badge">✨ Built different</span>
+  <h2 class="s-title">Everything your commute needs</h2>
+  <p class="s-sub">Built from scratch for IT professionals — not a generic carpooling app.</p>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🏢</div>
+      <h3>Verified IT Community</h3>
+      <p>Company badges (Capgemini, TCS, Infosys...) shown on every profile. Ride only with people from verified IT companies.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💰</div>
+      <h3>Wallet & Rewards</h3>
+      <p>₹10 free on signup. Earn ₹10 for every friend referred. Only ₹2 platform fee per ride. Pro users pay zero fees.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💬</div>
+      <h3>In-App Chat Only</h3>
+      <p>Coordinate pickup safely inside the app. Your phone number is never shared. Privacy protected at every step.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔁</div>
+      <h3>Repeat Rides</h3>
+      <p>Post once for Mon–Fri or every day. Build a reliable commute routine without posting manually each morning.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🌅</div>
+      <h3>Smart Morning Digest</h3>
+      <p>Get notified at 8 AM weekdays when rides are available on your usual corridor. Never miss a carpool opportunity.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🛣️</div>
+      <h3>Via Stop Matching</h3>
+      <p>Driver going Uppal → GAR via Nagole? Riders searching "Nagole" will find it. Smarter matching using intermediate stops.</p>
+    </div>
+  </div>
 </section>
 
-<section class="stats">
-<div><h2>15K+</h2><p>Rides Shared</p></div>
-<div><h2>500+</h2><p>Companies</p></div>
-<div><h2>₹30L+</h2><p>Saved</p></div>
-<div><h2>10+</h2><p>Cities</p></div>
-</section>
-
-<section id="how" class="section">
-<h2>How It Works</h2>
-<div class="grid">
-<div class="card"><h3>1. Offer Ride</h3><p>Post your daily commute and available seats.</p></div>
-<div class="card"><h3>2. Match Riders</h3><p>Connect with people travelling the same route.</p></div>
-<div class="card"><h3>3. Travel Together</h3><p>Split costs and enjoy a smarter commute.</p></div>
+<!-- CITIES -->
+<div class="cities-wrap full-w" id="cities">
+  <section>
+    <div style="text-align:center">
+      <span class="s-badge">🗺️ Coverage</span>
+      <h2 class="s-title">Live across India's top IT hubs</h2>
+      <p class="s-sub" style="max-width:480px;margin:0 auto">From HITEC City to Whitefield — if you work in IT, we have your city covered.</p>
+    </div>
+    <div class="cities-grid">
+      <div class="city-card" style="background:linear-gradient(135deg,rgba(59,130,246,0.07),rgba(13,27,62,0.5))">
+        <div class="city-emoji">🏙️</div>
+        <h3>Hyderabad</h3>
+        <p>HITEC City · Gachibowli · Financial District · Kondapur · Madhapur</p>
+        <div class="live-dot">LIVE</div>
+      </div>
+      <div class="city-card" style="background:linear-gradient(135deg,rgba(34,197,94,0.07),rgba(13,27,62,0.5))">
+        <div class="city-emoji">🌿</div>
+        <h3>Bangalore</h3>
+        <p>Whitefield · Outer Ring Road · Electronic City · Manyata Tech Park</p>
+        <div class="live-dot">LIVE</div>
+      </div>
+      <div class="city-card" style="background:linear-gradient(135deg,rgba(249,115,22,0.07),rgba(13,27,62,0.5))">
+        <div class="city-emoji">🏔️</div>
+        <h3>Pune</h3>
+        <p>Hinjewadi · Kharadi · Magarpatta · Wakad · Baner</p>
+        <div class="live-dot">LIVE</div>
+      </div>
+      <div class="city-card" style="background:linear-gradient(135deg,rgba(168,85,247,0.07),rgba(13,27,62,0.5))">
+        <div class="city-emoji">🌊</div>
+        <h3>Mumbai</h3>
+        <p>BKC · Powai · Lower Parel · Andheri MIDC · Malad</p>
+        <div class="live-dot">LIVE</div>
+      </div>
+      <div class="city-card" style="background:linear-gradient(135deg,rgba(239,68,68,0.07),rgba(13,27,62,0.5))">
+        <div class="city-emoji">🏛️</div>
+        <h3>Delhi NCR</h3>
+        <p>Cyber City · DLF Phases · Noida Expressway · Indirapuram</p>
+        <div class="live-dot">LIVE</div>
+      </div>
+      <div class="city-card" style="background:linear-gradient(135deg,rgba(6,182,212,0.07),rgba(13,27,62,0.5))">
+        <div class="city-emoji">🌴</div>
+        <h3>Chennai</h3>
+        <p>OMR · Sholinganallur · Tidel Park · Perungudi · Taramani</p>
+        <div class="live-dot">LIVE</div>
+      </div>
+    </div>
+  </section>
 </div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <span class="s-badge">💳 Simple pricing</span>
+  <h2 class="s-title">India's lowest carpool fees</h2>
+  <p class="s-sub">Start free forever. Upgrade for zero platform fees.</p>
+  <div class="price-grid">
+    <div class="p-card">
+      <div class="p-name">Free</div>
+      <div class="p-amount">₹0</div>
+      <div class="p-period">forever</div>
+      <ul class="p-feats">
+        <li>Post & book rides</li>
+        <li>₹2 platform fee</li>
+        <li>In-app chat</li>
+        <li>₹10 signup bonus</li>
+        <li>Referral earnings</li>
+      </ul>
+      <a href="https://app.carpoolkaro.com" class="p-btn">Get started free</a>
+    </div>
+    <div class="p-card">
+      <div class="p-name">Starter Pro</div>
+      <div class="p-amount">₹79</div>
+      <div class="p-period">per month</div>
+      <ul class="p-feats">
+        <li>Zero platform fees</li>
+        <li>⭐ Pro badge</li>
+        <li>Priority listing</li>
+        <li>All free features</li>
+      </ul>
+      <a href="https://app.carpoolkaro.com" class="p-btn">Get Pro</a>
+    </div>
+    <div class="p-card pop">
+      <div class="pop-badge">BEST VALUE</div>
+      <div class="p-name">Quarterly Pro</div>
+      <div class="p-amount">₹199</div>
+      <div class="p-period">for 3 months</div>
+      <ul class="p-feats">
+        <li>Zero platform fees</li>
+        <li>⭐ Pro badge</li>
+        <li>Priority listing</li>
+        <li>Save ₹38 vs monthly</li>
+      </ul>
+      <a href="https://app.carpoolkaro.com" class="p-btn">Get Pro</a>
+    </div>
+    <div class="p-card">
+      <div class="p-name">Annual Pro</div>
+      <div class="p-amount">₹599</div>
+      <div class="p-period">per year</div>
+      <ul class="p-feats">
+        <li>Zero platform fees</li>
+        <li>⭐ Pro badge</li>
+        <li>Priority listing</li>
+        <li>Save ₹349 vs monthly</li>
+      </ul>
+      <a href="https://app.carpoolkaro.com" class="p-btn">Get Pro</a>
+    </div>
+  </div>
 </section>
 
-<section id="features" class="section">
-<h2>Why CarpoolKaro?</h2>
-<div class="grid">
-<div class="card">🏢 Verified Professionals</div>
-<div class="card">📍 Live Location Sharing</div>
-<div class="card">🆘 SOS Safety</div>
-<div class="card">🔔 Instant Notifications</div>
-<div class="card">🔁 Recurring Rides</div>
-<div class="card">💰 Save Fuel Costs</div>
+<!-- CTA -->
+<div class="cta-wrap">
+  <span class="s-badge">🚀 Join today</span>
+  <h2 class="s-title" style="margin-top:6px">Start saving on your<br>commute today</h2>
+  <p class="s-sub" style="max-width:420px;margin:0 auto">Free to join. ₹10 bonus on signup. Works on any device.</p>
+  <div class="dl-badges">
+    <a href="https://app.carpoolkaro.com" class="dl-badge">
+      <span class="icon">🌐</span>
+      <div><div class="sub">OPEN IN BROWSER</div><div class="name">Web App</div></div>
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.carpoolkaro.app" class="dl-badge">
+      <span class="icon">🤖</span>
+      <div><div class="sub">GET IT ON</div><div class="name">Google Play</div></div>
+    </a>
+    <a href="https://app.carpoolkaro.com" class="dl-badge">
+      <span class="icon">🍎</span>
+      <div><div class="sub">ADD TO HOME ON</div><div class="name">iPhone</div></div>
+    </a>
+  </div>
 </div>
-</section>
 
-<section id="safety" class="section">
-<h2>Built for Trust & Safety</h2>
-<p class="center">Company verification, live tracking, emergency alerts, and transparent profiles.</p>
-</section>
-
-<section id="download" class="cta">
-<h2>Start Carpooling Today</h2>
-<p>Join the growing community of professionals commuting smarter.</p>
-<a class="btn btn-primary" href="https://app.carpoolkaro.com">Launch CarpoolKaro</a>
-</section>
-
+<!-- FOOTER -->
 <footer>
-<p>© 2026 CarpoolKaro • Made in India 🇮🇳</p>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro">
+      <p>India's IT Carpool Community. Connecting professionals across 6 major cities. Ride together, save together.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="https://app.carpoolkaro.com">Open App</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Cities</h4>
+      <ul>
+        <li><a href="https://app.carpoolkaro.com">Hyderabad</a></li>
+        <li><a href="https://app.carpoolkaro.com">Bangalore</a></li>
+        <li><a href="https://app.carpoolkaro.com">Pune</a></li>
+        <li><a href="https://app.carpoolkaro.com">Mumbai</a></li>
+        <li><a href="https://app.carpoolkaro.com">Delhi NCR</a></li>
+        <li><a href="https://app.carpoolkaro.com">Chennai</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="https://app.carpoolkaro.com/terms">Terms of Service</a></li>
+        <li><a href="https://app.carpoolkaro.com/terms">Privacy Policy</a></li>
+        <li><a href="mailto:support@carpoolkaro.com">Support</a></li>
+        <li><a href="mailto:support@carpoolkaro.com">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2026 CarpoolKaro. Made with ❤️ in India.</p>
+    <p>Ride Together, Save Together</p>
+  </div>
 </footer>
+
+<script>
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.how-card, .feat-card, .city-card, .p-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, background 0.3s, box-shadow 0.3s';
+  io.observe(el);
+});
+</script>
 </body>
 </html>
