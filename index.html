@@ -3,135 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CarpoolKaro | Hyderabad IT Carpool</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  /* Reset and basic */
-  * {margin:0; padding:0; box-sizing:border-box;}
-  body {font-family:'Inter', sans-serif; background:#111111; color:#fff; overflow-x:hidden;}
-  a {text-decoration:none; color:inherit;}
-  section {padding:80px 20px; max-width:1200px; margin:0 auto;}
-  .btn {display:inline-block; padding:14px 30px; background:#facc15; color:#111; font-weight:600; border-radius:8px; transition:0.3s;}
-  .btn:hover {background:#e6b800;}
-  h1,h2,h3 {font-weight:700;}
-  p {line-height:1.6; margin:12px 0;}
-  .text-yellow {color:#facc15;}
-
-  /* Hero */
-  #hero {display:flex; flex-direction:column; align-items:center; text-align:center; min-height:90vh; justify-content:center; background: url('background-logo.png') center/contain no-repeat;}
-  #hero h1 {font-size:3rem; margin-bottom:20px;}
-  #hero p {font-size:1.2rem; margin-bottom:30px; max-width:700px;}
-
-  /* Phone screenshot */
-  .phone-mockup {margin:40px 0;}
-  .phone-mockup img {width:280px; border-radius:30px; box-shadow:0 20px 50px rgba(0,0,0,0.5);}
-
-  /* Trust logos */
-  .trust-logos {display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin:50px 0;}
-  .trust-logos img {height:40px; filter:brightness(0) invert(1); opacity:0.8; transition:0.3s;}
-  .trust-logos img:hover {opacity:1;}
-
-  /* How it works */
-  .steps {display:flex; flex-wrap:wrap; gap:30px; justify-content:center; margin-top:50px;}
-  .step {background:#1a1a1a; padding:20px; border-radius:15px; flex:1 1 250px; text-align:center;}
-  .step h3 {margin-bottom:12px;}
-  .step p {color:#ccc;}
-
-  /* Testimonials */
-  .testimonials {display:flex; flex-direction:column; gap:20px; margin-top:50px;}
-  .testimonial {background:#1a1a1a; padding:20px; border-radius:15px; text-align:center;}
-  .testimonial p {font-style:italic; color:#ccc;}
-  .testimonial strong {display:block; margin-top:10px; color:#facc15;}
-
-  /* Features */
-  .features {display:flex; flex-wrap:wrap; gap:20px; margin-top:50px; justify-content:center;}
-  .feature {flex:1 1 220px; background:#1a1a1a; border-radius:15px; padding:20px; text-align:center;}
-  .feature h3 {margin-bottom:10px;}
-
-  /* Invite & download */
-  .cta {text-align:center; margin-top:60px;}
-  .cta img {width:200px; margin-top:20px;}
-
-  @media(max-width:768px){#hero h1{font-size:2.2rem;} .phone-mockup img{width:200px;}}
-</style>
+<title>CarpoolKaro - Ride Together, Save Together</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<header class="navbar">
+  <div class="logo">🚗 CarpoolKaro</div>
+  <a href="https://app.carpoolkaro.com" class="btn">Open App</a>
+</header>
 
-<!-- Hero -->
-<section id="hero">
-  <h1>Daily Office Commute, Simplified</h1>
-  <p>Share rides with verified professionals. Save money, reduce traffic, and enjoy a stress-free commute.</p>
-  <div>
-    <a href="#download" class="btn">Start Carpooling 🚀</a>
-    <a href="#download" class="btn">Get the App 📱</a>
-  </div>
-  <div class="phone-mockup">
-    <img src="phone-mockup.png" alt="CarpoolKaro App Screenshot">
-  </div>
-</section>
-
-<!-- Trust Logos -->
-<section>
-  <div class="trust-logos">
-    <img src="tcs.png" alt="TCS">
-    <img src="infosys.png" alt="Infosys">
-    <img src="wipro.png" alt="Wipro">
-    <img src="capgemini.png" alt="Capgemini">
-    <img src="amazon.png" alt="Amazon">
+<section class="hero">
+  <h1>Ride Together.<br>Save Together.</h1>
+  <p>India's trusted IT carpool community. Share rides, save money and reduce traffic.</p>
+  <div class="actions">
+    <a href="https://app.carpoolkaro.com" class="btn">Start Carpooling</a>
+    <a href="#features" class="btn secondary">Learn More</a>
   </div>
 </section>
 
-<!-- How it works -->
-<section>
-  <h2 class="text-yellow">How it Works</h2>
-  <div class="steps">
-    <div class="step">
-      <h3>1. Post a Ride</h3>
-      <p>Offer your car to colleagues on the same route.</p>
-    </div>
-    <div class="step">
-      <h3>2. Find a Ride</h3>
-      <p>Search for daily rides that match your commute.</p>
-    </div>
-    <div class="step">
-      <h3>3. Book & Travel</h3>
-      <p>Confirm your seat and enjoy a hassle-free commute.</p>
-    </div>
+<section class="stats">
+  <div><h2>₹3,000+</h2><p>Monthly Savings</p></div>
+  <div><h2>100%</h2><p>Verified Profiles</p></div>
+  <div><h2>24/7</h2><p>Ride Matching</p></div>
+</section>
+
+<section id="features" class="features">
+  <h2>Why CarpoolKaro?</h2>
+  <div class="grid">
+    <div class="card">🔁 Recurring Rides</div>
+    <div class="card">🛡️ Verified Professionals</div>
+    <div class="card">📍 Live Location</div>
+    <div class="card">🆘 SOS Safety</div>
   </div>
 </section>
 
-<!-- Testimonials -->
-<section>
-  <h2 class="text-yellow">What Our Commuters Say</h2>
-  <div class="testimonials">
-    <div class="testimonial">
-      <p>"Saved ₹2,500 every month on fuel costs!"</p>
-      <strong>— Software Engineer, HITEC City</strong>
-    </div>
-    <div class="testimonial">
-      <p>"Found daily rides from Uppal to Gachibowli effortlessly."</p>
-      <strong>— Capgemini Employee</strong>
-    </div>
-  </div>
+<section class="cta">
+  <h2>Start Saving on Your Daily Commute</h2>
+  <a href="https://app.carpoolkaro.com" class="btn">Join Now</a>
 </section>
 
-<!-- Features -->
-<section>
-  <h2 class="text-yellow">Features</h2>
-  <div class="features">
-    <div class="feature"><h3>Verified Riders</h3><p>Only verified professionals can join rides.</p></div>
-    <div class="feature"><h3>Wallet Tracking</h3><p>Keep track of all your savings and rides.</p></div>
-    <div class="feature"><h3>Notifications</h3><p>Instant alerts for ride matches and bookings.</p></div>
-    <div class="feature"><h3>Route Suggestions</h3><p>Optimized routes for daily IT commuters.</p></div>
-  </div>
-</section>
-
-<!-- CTA / Download -->
-<section id="download" class="cta">
-  <h2 class="text-yellow">Start Your Carpool Today</h2>
-  <a href="#"><img src="playstore-badge.png" alt="Download on Google Play"></a>
-  <a href="#"><img src="appstore-badge.png" alt="Download on App Store"></a>
-</section>
-
+<footer>
+  <p>© 2026 CarpoolKaro • Ride Together, Save Together</p>
+</footer>
 </body>
 </html>
