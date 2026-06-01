@@ -182,17 +182,38 @@ section { padding: 80px 6%; max-width: 1200px; margin: 0 auto; }
 /* PRICING */
 .price-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 52px; }
 .p-card {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px; padding: 28px 20px; position: relative; transition: 0.3s;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 28px 20px;
+  position: relative;
+  transition: 0.3s;
+  overflow: visible; /* ADD THIS */
 }
 .p-card:hover { border-color: rgba(250,204,21,0.2); }
-.p-card.pop { background: var(--yellow); border-color: var(--yellow); border-width: 3px; box-shadow: 0 20px 60px rgba(250,204,21,0.3); }
+.p-card.pop {
+  background: var(--yellow);
+  border: 3px solid #2563eb;
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(250,204,21,0.5);
+}
 .p-card.pop * { color: #111 !important; }
 .pop-badge {
-  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
-  background: #111; color: var(--yellow);
-  font-size: 9px; font-weight: 800; letter-spacing: 1px;
-  padding: 3px 12px; border-radius: 100px; white-space: nowrap;
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+  border: 2px solid #2563eb;
+  box-shadow: 0 0 20px rgba(37,99,235,0.5);
+  z-index: 20;
 }
 .p-name { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
 .p-amount { font-family:'Plus Jakarta Sans',sans-serif; font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 3px; }
@@ -593,3 +614,14 @@ document.querySelectorAll('.how-card, .feat-card, .city-card, .p-card').forEach(
 </script>
 </body>
 </html>
+@media (max-width: 600px) {
+  .pop-badge {
+    top: -14px;
+    font-size: 10px;
+    padding: 5px 14px;
+  }
+
+  .p-card.pop {
+    margin-top: 20px;
+  }
+}
