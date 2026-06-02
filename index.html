@@ -1,1140 +1,247 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CarpoolKaro — India's IT Carpool Community</title>
-<meta name="description" content="Share rides with verified IT professionals. Save money, reduce traffic. Available in Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR & Chennai.">
-<meta property="og:title" content="CarpoolKaro — India's IT Carpool Community">
-<meta property="og:description" content="Share rides with verified IT professionals. Save money, reduce traffic.">
-<link rel="icon" href="https://app.carpoolkaro.com/favicon.ico">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --primary: #1e40af;
-  --primary-light: #3b82f6;
-  --primary-lighter: #60a5fa;
-  --primary-dark: #1e3a8a;
-  --secondary: #0f172a;
-  --white: #ffffff;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--text-primary);
-  line-height: 1.6;
-}
-
-/* Navigation */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: var(--white);
-  border-bottom: 1px solid var(--gray-200);
-  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.08);
-}
-
-.nav-wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 72px;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.nav-logo img {
-  height: 48px;
-  width: auto;
-}
-
-.nav-logo:hover {
-  opacity: 0.8;
-}
-
-.nav-links {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-  align-items: center;
-}
-
-.nav-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: 0.3s;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transition: width 0.3s;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-cta {
-  padding: 10px 24px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-}
-
-.nav-cta:hover {
-  background: var(--primary-dark);
-  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.25);
-  transform: translateY(-2px);
-}
-
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--text-primary);
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: 72px;
-  left: 0;
-  right: 0;
-  background: var(--white);
-  border-bottom: 1px solid var(--gray-200);
-  padding: 20px;
-  z-index: 99;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.mobile-menu a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 14px;
-  padding: 10px 0;
-  transition: 0.3s;
-}
-
-.mobile-menu a:hover {
-  color: var(--primary);
-}
-
-.mobile-menu.open {
-  display: flex;
-}
-
-/* Hero Section */
-.hero {
-  padding-top: 72px;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-shape {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  top: -200px;
-  right: -150px;
-  z-index: 0;
-}
-
-.hero-shape-2 {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(30, 64, 175, 0.05) 0%, transparent 70%);
-  border-radius: 50%;
-  bottom: -100px;
-  left: -100px;
-  z-index: 0;
-}
-
-.hero-wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 80px 6%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-content h1 {
-  font-size: clamp(44px, 5.5vw, 60px);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 28px;
-  color: var(--text-primary);
-  letter-spacing: -1px;
-}
-
-.hero-content h1 .highlight {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-content p {
-  font-size: 18px;
-  color: var(--text-secondary);
-  line-height: 1.8;
-  margin-bottom: 40px;
-  max-width: 550px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 50px;
-}
-
-.btn {
-  padding: 14px 32px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  transition: 0.3s;
-  text-align: center;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  color: white;
-  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.25);
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(30, 64, 175, 0.35);
-}
-
-.btn-secondary {
-  background: var(--white);
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.1);
-}
-
-.btn-secondary:hover {
-  background: #f0f4ff;
-  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.15);
-  transform: translateY(-3px);
-}
-
-.hero-image {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(30, 64, 175, 0.04) 100%);
-  border-radius: 20px;
-  padding: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 450px;
-  border: 1px solid rgba(59, 130, 246, 0.15);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-image::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent);
-  border-radius: 50%;
-}
-
-.hero-image img {
-  max-width: 100%;
-  height: auto;
-  max-height: 350px;
-  position: relative;
-  z-index: 1;
-}
-
-/* Sections */
-section {
-  padding: 120px 6%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 80px;
-}
-
-.section-label {
-  display: inline-block;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--primary);
-  font-weight: 700;
-  margin-bottom: 16px;
-  padding: 8px 16px;
-  background: rgba(59, 130, 246, 0.1);
-  border-radius: 8px;
-}
-
-.section-title {
-  font-size: clamp(36px, 4.5vw, 52px);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.2;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
-}
-
-.section-subtitle {
-  font-size: 16px;
-  color: var(--text-secondary);
-  max-width: 650px;
-  margin: 0 auto;
-  line-height: 1.8;
-}
-
-/* Features Section */
-.features {
-  background: var(--white);
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 40px;
-}
-
-.feature-card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: 16px;
-  padding: 48px;
-  transition: 0.4s;
-  position: relative;
-  overflow: hidden;
-}
-
-.feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s;
-}
-
-.feature-card:hover {
-  border-color: var(--primary-lighter);
-  box-shadow: 0 20px 40px rgba(30, 64, 175, 0.12);
-  transform: translateY(-12px);
-}
-
-.feature-card:hover::before {
-  transform: scaleX(1);
-}
-
-.feature-icon {
-  font-size: 44px;
-  margin-bottom: 20px;
-  display: inline-block;
-}
-
-.feature-card h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-}
-
-.feature-card p {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-/* Pricing Section */
-.pricing {
-  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-}
-
-.price-card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: 16px;
-  padding: 48px;
-  transition: 0.4s;
-  position: relative;
-  text-align: center;
-}
-
-.price-card.featured {
-  border: 2px solid var(--primary);
-  box-shadow: 0 20px 48px rgba(30, 64, 175, 0.15);
-  transform: scale(1.06);
-}
-
-.price-badge {
-  display: inline-block;
-  padding: 8px 18px;
-  background: rgba(59, 130, 246, 0.1);
-  color: var(--primary);
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 20px;
-}
-
-.price-card.featured .price-badge {
-  background: var(--primary);
-  color: white;
-}
-
-.price-card h3 {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-}
-
-.price-amount {
-  font-size: 48px;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 24px 0 12px;
-}
-
-.price-period {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 32px;
-}
-
-.price-features {
-  list-style: none;
-  text-align: left;
-  margin-bottom: 40px;
-}
-
-.price-features li {
-  padding: 14px 0;
-  font-size: 14px;
-  color: var(--text-secondary);
-  border-bottom: 1px solid var(--gray-100);
-  display: flex;
-  align-items: center;
-}
-
-.price-features li:last-child {
-  border-bottom: none;
-}
-
-.price-features li::before {
-  content: '✓';
-  width: 24px;
-  height: 24px;
-  background: rgba(59, 130, 246, 0.1);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 14px;
-  color: var(--primary);
-  font-weight: 700;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-
-.price-card:hover {
-  box-shadow: 0 24px 48px rgba(30, 64, 175, 0.15);
-  transform: translateY(-12px);
-}
-
-.price-card.featured:hover {
-  transform: scale(1.06) translateY(-12px);
-}
-
-/* Cities Section */
-.cities {
-  background: var(--white);
-}
-
-.cities-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-}
-
-.city-card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: 16px;
-  padding: 40px;
-  transition: 0.4s;
-  position: relative;
-  overflow: hidden;
-}
-
-.city-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-}
-
-.city-emoji {
-  font-size: 40px;
-  margin-bottom: 16px;
-  display: inline-block;
-}
-
-.city-card h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 12px;
-}
-
-.city-card p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-
-.city-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  background: rgba(59, 130, 246, 0.1);
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.city-status::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--primary);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.city-card:hover {
-  border-color: var(--primary-lighter);
-  box-shadow: 0 16px 40px rgba(30, 64, 175, 0.12);
-  transform: translateY(-8px);
-}
-
-/* CTA Section */
-.cta {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  color: white;
-  text-align: center;
-  padding: 100px 6%;
-  border-radius: 20px;
-  margin: 80px 6%;
-}
-
-.cta h2 {
-  font-size: clamp(36px, 4.5vw, 52px);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 24px;
-  letter-spacing: -1px;
-}
-
-.cta p {
-  font-size: 16px;
-  opacity: 0.95;
-  max-width: 650px;
-  margin: 0 auto 40px;
-  line-height: 1.8;
-}
-
-.cta .btn {
-  background: white;
-  color: var(--primary);
-  padding: 14px 36px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.cta .btn:hover {
-  background: #f9fafb;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-  transform: translateY(-3px);
-}
-
-/* Footer */
-footer {
-  background: var(--secondary);
-  color: var(--white);
-  padding: 80px 6%;
-  position: relative;
-  z-index: 2;
-}
-
-.footer-wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.footer-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 80px;
-  margin-bottom: 60px;
-}
-
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-brand img {
-  height: 48px;
-  width: auto;
-  margin-bottom: 16px;
-}
-
-.footer-brand p {
-  font-size: 14px;
-  opacity: 0.8;
-  line-height: 1.7;
-}
-
-.footer-col h4 {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  font-weight: 700;
-  margin-bottom: 24px;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.footer-col ul {
-  list-style: none;
-}
-
-.footer-col li {
-  margin-bottom: 14px;
-}
-
-.footer-col a {
-  font-size: 14px;
-  opacity: 0.8;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.footer-col a:hover {
-  opacity: 1;
-  color: #60a5fa;
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-size: 13px;
-  opacity: 0.7;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .hero-wrapper {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .footer-top {
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-  }
-}
-
-@media (max-width: 768px) {
-  nav .nav-wrapper {
-    padding: 0 4%;
-    height: 60px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .mobile-menu {
-    top: 60px;
-  }
-
-  .hero {
-    padding-top: 60px;
-  }
-
-  .hero-wrapper {
-    padding: 60px 4%;
-  }
-
-  .hero-content h1 {
-    font-size: 36px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  section {
-    padding: 80px 4%;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .price-card.featured {
-    transform: scale(1);
-  }
-
-  .price-card.featured:hover {
-    transform: translateY(-12px);
-  }
-
-  .cities-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .cta {
-    margin: 60px 4%;
-    padding: 60px 4%;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 28px;
-  }
-
-  .section-title {
-    font-size: 28px;
-  }
-
-  .cta h2 {
-    font-size: 28px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .features-grid {
-    gap: 20px;
-  }
-
-  .feature-card {
-    padding: 32px;
-  }
-}
-</style>
-</head>
-<body>
-
-<!-- Navigation -->
-<nav>
-  <div class="nav-wrapper">
-    <a href="#" class="nav-logo">
-      <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro">
-    </a>
-    <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#cities">Cities</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="https://app.carpoolkaro.com" class="nav-cta">Open App</a></li>
-    </ul>
-    <button class="hamburger" aria-label="Toggle menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">☰</button>
-  </div>
-  <div class="mobile-menu">
-    <a href="#features">Features</a>
-    <a href="#cities">Cities</a>
-    <a href="#pricing">Pricing</a>
-    <a href="https://app.carpoolkaro.com">Open App</a>
-  </div>
-</nav>
-
-<!-- Hero Section -->
-<div class="hero">
-  <div class="hero-shape"></div>
-  <div class="hero-shape-2"></div>
-  <div class="hero-wrapper">
-    <div class="hero-content">
-      <h1>Smart Carpooling for <span class="highlight">IT Professionals</span></h1>
-      <p>Connect with verified colleagues heading your way. Save money, reduce your carbon footprint, and build meaningful professional networks every day.</p>
-      <div class="hero-buttons">
-        <a href="https://app.carpoolkaro.com" class="btn btn-primary">Get Started Free</a>
-        <a href="#features" class="btn btn-secondary">Explore Features</a>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="https://app.carpoolkaro.com/login-illustration.png" alt="CarpoolKaro App" onerror="this.style.display='none'">
-    </div>
-  </div>
-</div>
-
-<!-- Features Section -->
-<section id="features" class="features">
-  <div class="section-header">
-    <span class="section-label">✨ Why CarpoolKaro</span>
-    <h2 class="section-title">Everything Built for IT Professionals</h2>
-    <p class="section-subtitle">Designed specifically for tech workers. Security, simplicity, and efficiency in every feature.</p>
-  </div>
-  
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🔐</div>
-      <h3>Verified Community</h3>
-      <p>Ride exclusively with verified IT professionals. Company badges displayed on every profile for maximum trust and safety.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💳</div>
-      <h3>Smart Wallet System</h3>
-      <p>Get ₹10 signup bonus instantly. Earn rewards for successful referrals. Pro members enjoy zero platform fees on all rides.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🗺️</div>
-      <h3>Intelligent Matching</h3>
-      <p>AI-powered algorithm finds perfect matches based on your route, timing, and preferences. Ride with confidence every day.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💬</div>
-      <h3>Secure Communication</h3>
-      <p>In-app messaging keeps your privacy protected. Phone numbers are never shared. Chat safely before and during rides.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔄</div>
-      <h3>Repeat Ride Scheduler</h3>
-      <p>Set your weekly commute once. Automatic matching handles your daily routine rides. Build lasting carpool partnerships.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⭐</div>
-      <h3>Ratings & Reviews</h3>
-      <p>Community-driven ratings ensure quality. Build your professional reputation. Transparent system rewards reliable riders.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Cities Section -->
-<section id="cities" class="cities">
-  <div class="section-header">
-    <span class="section-label">🗺️ Coverage</span>
-    <h2 class="section-title">Available Across Major IT Hubs</h2>
-    <p class="section-subtitle">Connecting professionals in 6 major cities where the tech industry thrives</p>
-  </div>
-
-  <div class="cities-grid">
-    <div class="city-card">
-      <div class="city-emoji">🏙️</div>
-      <h3>Hyderabad</h3>
-      <p>HITEC City, Gachibowli, Financial District, Kondapur, Madhapur</p>
-      <div class="city-status">● LIVE</div>
-    </div>
-    <div class="city-card">
-      <div class="city-emoji">🌿</div>
-      <h3>Bangalore</h3>
-      <p>Whitefield, Outer Ring Road, Electronic City, Manyata Tech Park</p>
-      <div class="city-status">● LIVE</div>
-    </div>
-    <div class="city-card">
-      <div class="city-emoji">🏔️</div>
-      <h3>Pune</h3>
-      <p>Hinjewadi, Kharadi, Magarpatta, Wakad, Baner</p>
-      <div class="city-status">● LIVE</div>
-    </div>
-    <div class="city-card">
-      <div class="city-emoji">🌊</div>
-      <h3>Mumbai</h3>
-      <p>BKC, Powai, Lower Parel, Andheri MIDC, Malad</p>
-      <div class="city-status">● LIVE</div>
-    </div>
-    <div class="city-card">
-      <div class="city-emoji">🏛️</div>
-      <h3>Delhi NCR</h3>
-      <p>Cyber City, DLF Phases, Noida Expressway, Indirapuram</p>
-      <div class="city-status">● LIVE</div>
-    </div>
-    <div class="city-card">
-      <div class="city-emoji">🌴</div>
-      <h3>Chennai</h3>
-      <p>OMR, Sholinganallur, Tidel Park, Perungudi, Taramani</p>
-      <div class="city-status">● LIVE</div>
-    </div>
-  </div>
-</section>
-
-<!-- Pricing Section -->
-<section id="pricing" class="pricing">
-  <div class="section-header">
-    <span class="section-label">💳 Pricing</span>
-    <h2 class="section-title">Simple, Transparent Pricing</h2>
-    <p class="section-subtitle">Start free and upgrade whenever you're ready. No hidden charges, cancel anytime.</p>
-  </div>
-
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="price-badge">Standard</div>
-      <h3>Free Plan</h3>
-      <div class="price-amount">₹0</div>
-      <div class="price-period">Forever</div>
-      <ul class="price-features">
-        <li>Post & book rides</li>
-        <li>Platform fee per ride</li>
-        <li>In-app chat</li>
-        <li>Signup bonus</li>
-        <li>Referral earnings</li>
-      </ul>
-      <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Get Started</a>
-    </div>
-
-    <div class="price-card">
-      <div class="price-badge">Popular</div>
-      <h3>Monthly Pro</h3>
-      <div class="price-amount">₹79</div>
-      <div class="price-period">Per Month</div>
-      <ul class="price-features">
-        <li>Zero platform fees</li>
-        <li>Pro badge status</li>
-        <li>Priority in searches</li>
-        <li>All free features</li>
-        <li>Priority support</li>
-      </ul>
-      <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Choose Plan</a>
-    </div>
-
-    <div class="price-card featured">
-      <div class="price-badge">Best Value</div>
-      <h3>Quarterly Pro</h3>
-      <div class="price-amount">₹199</div>
-      <div class="price-period">3 Months</div>
-      <ul class="price-features">
-        <li>Zero platform fees</li>
-        <li>Pro badge status</li>
-        <li>Priority in searches</li>
-        <li>Save 17% vs monthly</li>
-        <li>All free features</li>
-      </ul>
-      <a href="https://app.carpoolkaro.com" class="btn btn-primary" style="width: 100%;">Get Pro</a>
-    </div>
-
-    <div class="price-card">
-      <div class="price-badge">Premium</div>
-      <h3>Annual Pro</h3>
-      <div class="price-amount">₹599</div>
-      <div class="price-period">Per Year</div>
-      <ul class="price-features">
-        <li>Zero platform fees</li>
-        <li>Pro badge status</li>
-        <li>Priority in searches</li>
-        <li>Save 37% vs monthly</li>
-        <li>All free features</li>
-      </ul>
-      <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Subscribe</a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA Section -->
-<div class="cta">
-  <h2>Ready to Transform Your Commute?</h2>
-  <p>Join thousands of IT professionals already saving money and building meaningful connections through smarter carpooling.</p>
-  <a href="https://app.carpoolkaro.com" class="btn">Download the App Today</a>
-</div>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-wrapper">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro">
-        <p>India's trusted IT carpool community. Connecting professionals across 6 major cities for smarter, sustainable, and affordable commutes.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#cities">Cities</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="https://app.carpoolkaro.com">Open App</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="https://app.carpoolkaro.com/terms">Terms of Service</a></li>
-          <li><a href="https://app.carpoolkaro.com/privacy">Privacy Policy</a></li>
-          <li><a href="mailto:support@carpoolkaro.com">Support</a></li>
-          <li><a href="mailto:contact@carpoolkaro.com">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Cities</h4>
-        <ul>
-          <li><a href="https://app.carpoolkaro.com">Hyderabad</a></li>
-          <li><a href="https://app.carpoolkaro.com">Bangalore</a></li>
-          <li><a href="https://app.carpoolkaro.com">Pune</a></li>
-          <li><a href="https://app.carpoolkaro.com">Mumbai</a></li>
-          <li><a href="https://app.carpoolkaro.com">Delhi NCR</a></li>
-          <li><a href="https://app.carpoolkaro.com">Chennai</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 CarpoolKaro. All rights reserved.</p>
-      <p>Ride Together, Save Together 🚗</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (href !== '#') {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-        document.querySelector('.mobile-menu')?.classList.remove('open');
-      }
-    }
-  });
+import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  Play,
+  Menu,
+  X,
+  Sparkles,
+  Globe,
+  Apple,
+  ShieldCheck,
+  Wallet,
+  MessagesSquare,
+  Repeat,
+  Bell,
+  Route as RouteIcon,
+  Check,
+  MapPin,
+} from "lucide-react";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "CarpoolKaro — India's IT Carpool Community" },
+      {
+        name: "description",
+        content:
+          "Share rides with verified IT professionals. Save money and beat traffic.",
+      },
+      {
+        property: "og:title",
+        content: "CarpoolKaro — India's IT Carpool Community",
+      },
+      {
+        property: "og:description",
+        content:
+          "Verified IT carpools. ₹2 platform fee. Free to join.",
+      },
+      { property: "og:type", content: "website" },
+    ],
+  }),
+  component: Landing,
 });
-</script>
-</body>
-</html>
+
+function Landing() {
+  const [open, setOpen] = useState(false);
+
+  const NAV = [
+    { href: "#how", label: "How it works" },
+    { href: "#features", label: "Features" },
+    { href: "#cities", label: "Cities" },
+    { href: "#pricing", label: "Pricing" },
+  ];
+
+  const APP_URL = "https://app.carpoolkaro.com";
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+
+      {/* NAVBAR */}
+      <header className="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
+          <img
+            src="https://app.carpoolkaro.com/logo.png"
+            className="h-6"
+          />
+
+          <nav className="hidden md:flex gap-6">
+            {NAV.map(n => (
+              <a key={n.href} href={n.href}>{n.label}</a>
+            ))}
+          </nav>
+
+          <button onClick={() => setOpen(!open)} className="md:hidden">
+            {open ? <X /> : <Menu />}
+          </button>
+        </div>
+
+        {open && (
+          <div className="md:hidden px-5 py-4">
+            {NAV.map(n => (
+              <a key={n.href} href={n.href} className="block py-2">
+                {n.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* HERO */}
+      <section className="pt-28 pb-20 text-center">
+        <span className="text-yellow text-sm flex justify-center items-center gap-1">
+          <Sparkles size={14} /> Live in 6 cities
+        </span>
+
+        <h1 className="text-5xl font-bold mt-6">
+          Your commute <br />
+          <span className="text-yellow">shared & smarter</span>
+        </h1>
+
+        <p className="mt-4 text-muted-foreground">
+          Save money. Reduce traffic. Ride with IT colleagues.
+        </p>
+
+        <div className="mt-6 flex justify-center gap-4">
+          <a href={APP_URL} className="bg-yellow px-6 py-3 rounded-full">
+            Start Free <ArrowRight size={16} />
+          </a>
+
+          <a href="#how" className="border px-6 py-3 rounded-full">
+            <Play size={16} /> How it works
+          </a>
+        </div>
+      </section>
+
+      {/* HOW */}
+      <section id="how" className="py-20 text-center">
+        <SectionHeader
+          title="Ready in 2 minutes"
+          subtitle="Simple steps to start carpooling"
+        />
+
+        <div className="grid md:grid-cols-3 gap-6 mt-10">
+          {[
+            "Sign in with Google",
+            "Find or post ride",
+            "Commute together",
+          ].map(step => (
+            <div key={step} className="border p-6 rounded-xl">
+              <Sparkles className="text-yellow" />
+              <h3 className="mt-3 font-bold">{step}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section id="features" className="py-20 text-center">
+        <SectionHeader
+          title="Features"
+          subtitle="Built for IT professionals"
+        />
+
+        <div className="grid md:grid-cols-3 gap-6 mt-10">
+          <Feature icon={ShieldCheck} title="Verified users" />
+          <Feature icon={Wallet} title="Wallet system" />
+          <Feature icon={MessagesSquare} title="In-app chat" />
+          <Feature icon={Repeat} title="Repeat rides" />
+          <Feature icon={Bell} title="Notifications" />
+          <Feature icon={RouteIcon} title="Smart matching" />
+        </div>
+      </section>
+
+      {/* CITIES */}
+      <section id="cities" className="py-20 text-center">
+        <SectionHeader
+          title="Cities"
+          subtitle="Available across India"
+        />
+
+        <div className="grid md:grid-cols-3 gap-6 mt-10">
+          {["Hyderabad","Bangalore","Pune","Mumbai","Delhi NCR","Chennai"]
+          .map(city => (
+            <div key={city} className="border p-5 rounded-xl">
+              <MapPin className="text-yellow" />
+              <h3>{city}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section id="pricing" className="py-20 text-center">
+        <SectionHeader
+          title="Pricing"
+          subtitle="Simple & affordable"
+        />
+
+        <div className="grid md:grid-cols-4 gap-6 mt-10">
+          <Price name="Free" price="₹0" />
+          <Price name="Starter" price="₹79" />
+          <Price name="Quarterly" price="₹199" />
+          <Price name="Annual" price="₹599" />
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 text-center">
+        <h2 className="text-3xl font-bold">
+          Start commuting smarter
+        </h2>
+
+        <div className="flex justify-center gap-4 mt-6">
+          <DownloadBadge href={APP_URL} name="Web App" icon={Globe} />
+          <DownloadBadge href="#" name="Play Store" icon={Play} />
+          <DownloadBadge href={APP_URL} name="iPhone" icon={Apple} />
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="py-10 text-center text-sm text-muted-foreground">
+        © 2026 CarpoolKaro
+      </footer>
+    </div>
+  );
+}
+
+/* ---------- COMPONENTS ---------- */
+
+function SectionHeader({ title, subtitle }) {
+  return (
+    <>
+      <h2 className="text-3xl font-bold">{title}</h2>
+      <p className="text-muted-foreground mt-2">{subtitle}</p>
+    </>
+  );
+}
+
+function Feature({ icon: Icon, title }) {
+  return (
+    <div className="border p-6 rounded-xl">
+      <Icon className="text-yellow" />
+      <h3 className="mt-3 font-semibold">{title}</h3>
+    </div>
+  );
+}
+
+function Price({ name, price }) {
+  return (
+    <div className="border p-6 rounded-xl">
+      <h3>{name}</h3>
+      <p className="text-xl font-bold">{price}</p>
+      <button className="mt-4 bg-yellow px-4 py-2 rounded">
+        Select
+      </button>
+    </div>
+  );
+}
+
+function DownloadBadge({ href, name, icon: Icon }) {
+  return (
+    <a href={href} className="border px-5 py-3 rounded-xl flex gap-2">
+      <Icon />
+      <span>{name}</span>
+    </a>
+  );
+}
