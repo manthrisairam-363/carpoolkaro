@@ -7,574 +7,973 @@
 <meta name="description" content="Share rides with verified IT professionals. Save money, reduce traffic. Available in Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR & Chennai.">
 <meta property="og:title" content="CarpoolKaro — India's IT Carpool Community">
 <meta property="og:description" content="Share rides with verified IT professionals. Save money, reduce traffic.">
-<meta property="og:type" content="website">
 <link rel="icon" href="https://app.carpoolkaro.com/favicon.ico">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  --navy: #0d1b3e; --navy2: #142248;
-  --yellow: #facc15; --yellow2: #f59e0b;
-  --white: #ffffff; --gray: #64748b;
+  --primary: #00d4ff;
+  --secondary: #ff006e;
+  --tertiary: #8000ff;
+  --accent: #00ff88;
+  --dark: #0a0e27;
+  --darker: #050810;
+  --light-text: #e0e6ff;
+  --grid-color: rgba(0, 212, 255, 0.1);
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: #fff; overflow-x: hidden; }
 
-/* NAV */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(135deg, var(--darker) 0%, #1a1f3a 50%, var(--darker) 100%);
+  color: var(--light-text);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Animated Background Grid */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(0deg, transparent 24%, var(--grid-color) 25%, var(--grid-color) 26%, transparent 27%, transparent 74%, var(--grid-color) 75%, var(--grid-color) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, var(--grid-color) 25%, var(--grid-color) 26%, transparent 27%, transparent 74%, var(--grid-color) 75%, var(--grid-color) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Floating Particles */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+  animation: float 15s infinite;
+  opacity: 0.6;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(100px, -100px); }
+  50% { transform: translate(-50px, 50px); }
+  75% { transform: translate(80px, 80px); }
+}
+
+/* Navigation */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  height: 68px; padding: 0 6%;
-  display: flex; justify-content: space-between; align-items: center;
-  background: rgba(13,27,62,0.88); backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(5, 8, 16, 0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
 }
-.nav-logo img { height: 34px; width: auto; }
-.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-.nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.2s; }
-.nav-links a:hover { color: var(--yellow); }
-.nav-cta { background: var(--yellow) !important; color: #111 !important; padding: 10px 22px; border-radius: 100px; font-weight: 700 !important; text-decoration: none; transition: 0.2s; }
-.nav-cta:hover { background: var(--yellow2) !important; }
-.hamburger { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
-.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--navy); padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); z-index: 99; flex-direction: column; gap: 16px; }
-.mobile-menu a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 16px; font-weight: 500; }
-.mobile-menu.open { display: flex; }
 
-/* HERO */
-.hero {
-  min-height: 100vh; padding: 110px 6% 80px;
-  display: flex; align-items: center; position: relative; overflow: hidden;
+.nav-logo {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.hero-bg {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 70% at 60% 20%, rgba(250,204,21,0.06) 0%, transparent 65%),
-              radial-gradient(ellipse 50% 50% at 10% 70%, rgba(99,102,241,0.06) 0%, transparent 55%);
-}
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 20%, transparent 80%);
-}
-.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
-.hero-left {}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(250,204,21,0.1); border: 1px solid rgba(250,204,21,0.25);
-  color: var(--yellow); padding: 5px 14px; border-radius: 100px;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
-  margin-bottom: 24px;
-  animation: fadeUp 0.5s ease both;
-}
-.hero-logo { margin-bottom: 24px; animation: fadeUp 0.5s 0.1s ease both; }
-.hero-logo img { width: min(280px, 70%); height: auto; }
-.hero-h1 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(30px, 3.8vw, 52px); font-weight: 700; letter-spacing: -1px; line-height: 1.15;
-  margin-bottom: 18px;
-  animation: fadeUp 0.5s 0.15s ease both;
-}
-.hero-h1 .y { color: var(--yellow); }
-.hero-sub {
-  font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.7;
-  margin-bottom: 36px; max-width: 460px;
-  animation: fadeUp 0.5s 0.2s ease both;
-}
-.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; animation: fadeUp 0.5s 0.25s ease both; }
-.btn-y {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--yellow); color: #111; padding: 14px 28px;
-  border-radius: 100px; font-weight: 700; font-size: 15px;
-  text-decoration: none; transition: 0.2s;
-  box-shadow: 0 6px 28px rgba(250,204,21,0.28);
-}
-.btn-y:hover { background: var(--yellow2); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(250,204,21,0.4); }
-.btn-o {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.05); color: #fff;
-  border: 1px solid rgba(255,255,255,0.15);
-  padding: 14px 28px; border-radius: 100px;
-  font-weight: 600; font-size: 15px; text-decoration: none; transition: 0.2s;
-}
-.btn-o:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-.hero-pills { display: flex; gap: 10px; flex-wrap: wrap; animation: fadeUp 0.5s 0.3s ease both; }
-.pill {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-  padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.6);
-  transition: 0.2s;
-}
-.pill:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
-.pill.y { background: rgba(250,204,21,0.08); border-color: rgba(250,204,21,0.2); color: var(--yellow); }
 
-/* HERO RIGHT — illustration card */
-.hero-right { animation: fadeUp 0.5s 0.35s ease both; }
-.hero-card {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 24px; overflow: hidden; position: relative;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+.nav-logo:hover {
+  filter: drop-shadow(0 0 10px var(--primary));
 }
-.hero-card img { width: 100%; display: block; }
-.hero-card-pill {
-  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
-  background: rgba(13,27,62,0.92); backdrop-filter: blur(16px);
-  border: 1px solid rgba(250,204,21,0.3); color: var(--yellow);
-  padding: 7px 18px; border-radius: 100px; font-size: 12px; font-weight: 700; white-space: nowrap;
-}
-.hero-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 12px; }
-.hero-stat {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 14px; padding: 16px 20px; text-align: center;
-}
-.hero-stat .n { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; font-weight: 800; color: var(--yellow); }
-.hero-stat .l { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; letter-spacing: 0.5px; }
 
-/* SECTIONS */
-section { padding: 80px 6%; max-width: 1200px; margin: 0 auto; }
-.full-w { max-width: none; padding: 80px 6%; }
-.s-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(250,204,21,0.08); border: 1px solid rgba(250,204,21,0.18);
-  color: var(--yellow); padding: 4px 14px; border-radius: 100px;
-  font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-  margin-bottom: 14px;
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  align-items: center;
 }
-.s-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; margin-bottom: 12px; }
-.s-sub { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.7; }
 
-/* HOW IT WORKS */
-.how-section { background: rgba(255,255,255,0.02); }
-.how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 52px; }
-.how-card {
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 20px; padding: 32px 26px; position: relative; transition: 0.3s;
-}
-.how-card:hover { border-color: rgba(250,204,21,0.3); transform: translateY(-4px); }
-.how-num { font-family:'Plus Jakarta Sans',sans-serif; font-size: 60px; font-weight: 800; color: rgba(250,204,21,0.08); position: absolute; top: 16px; right: 20px; line-height: 1; }
-.how-icon { font-size: 38px; margin-bottom: 16px; }
-.how-card h3 { font-family:'Plus Jakarta Sans',sans-serif; font-size: 19px; font-weight: 700; margin-bottom: 10px; }
-.how-card p { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7; }
-
-/* FEATURES */
-.feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 52px; }
-.feat-card {
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 18px; padding: 26px; transition: 0.3s;
-}
-.feat-card:hover { border-color: rgba(250,204,21,0.2); background: rgba(255,255,255,0.05); transform: translateY(-3px); }
-.feat-icon { font-size: 32px; margin-bottom: 14px; }
-.feat-card h3 { font-family:'Plus Jakarta Sans',sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-.feat-card p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
-
-/* CITIES */
-.cities-wrap { background: rgba(0,0,0,0.2); }
-.cities-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 48px; }
-.city-card {
-  border-radius: 18px; padding: 24px 20px; border: 1px solid rgba(255,255,255,0.07);
-  position: relative; overflow: hidden; transition: 0.3s; cursor: default;
-}
-.city-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: var(--yellow); }
-.city-card:hover { transform: translateY(-4px); border-color: rgba(250,204,21,0.3); }
-.city-emoji { font-size: 30px; margin-bottom: 12px; }
-.city-card h3 { font-family:'Plus Jakarta Sans',sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 6px; }
-.city-card p { font-size: 12px; color: rgba(255,255,255,0.38); line-height: 1.5; }
-.live-dot {
-  display: inline-flex; align-items: center; gap: 5px; margin-top: 10px;
-  background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2);
-  color: #4ade80; font-size: 10px; font-weight: 700;
-  padding: 2px 10px; border-radius: 100px;
-}
-.live-dot::before { content:''; width:5px; height:5px; border-radius:50%; background:#4ade80; animation: blink 1.5s infinite; }
-
-/* PRICING */
-.price-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 70px; }
-.p-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 28px 20px;
+.nav-links a {
+  color: var(--light-text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   position: relative;
   transition: 0.3s;
-  overflow: visible;
 }
-.p-card:hover { border-color: rgba(250,204,21,0.2); }
-.p-card.pop {
-  background: var(--yellow);
-  border: 3px solid #2563eb;
-  transform: scale(1.08);
-  box-shadow: 0 0 40px rgba(250,204,21,0.5);
-}
-.p-card.pop * { color: #111 !important; }
-.pop-badge {
+
+.nav-links a::after {
+  content: '';
   position: absolute;
-  top: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111;
-  color: #facc15;
-  font-size: 11px;
-  font-weight: 800;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--primary);
+}
+
+.nav-cta {
+  padding: 12px 28px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--darker);
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 6px 18px;
-  border-radius: 999px;
-  white-space: nowrap;
-  border: 2px solid #2563eb;
-  box-shadow: 0 0 25px rgba(250,204,21,0.7);
-  z-index: 20;
+  text-decoration: none;
+  display: inline-block;
 }
-.p-name { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
-.p-amount { font-family:'Plus Jakarta Sans',sans-serif; font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 3px; }
-.p-period { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
-.p-feats { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.p-feats li { font-size: 13px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 6px; }
-.p-feats li::before { content:'✓'; color: var(--yellow); font-weight: 800; }
-.pop .p-feats li::before { color: #111; }
-.p-btn {
-  display: block; text-align: center; margin-top: 22px;
-  padding: 10px; border-radius: 100px; text-decoration: none;
-  font-size: 13px; font-weight: 700;
-  background: rgba(255,255,255,0.08); color: #fff; transition: 0.2s;
-}
-.pop .p-btn { background: #111; color: var(--yellow); }
-.p-btn:hover { background: rgba(255,255,255,0.15); }
 
-/* CTA */
-.cta-wrap {
-  text-align: center; padding: 100px 6%;
-  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(250,204,21,0.06), transparent);
+.nav-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), inset 0 0 10px rgba(0, 212, 255, 0.3);
 }
-.dl-badges { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-.dl-badge {
-  display: flex; align-items: center; gap: 12px;
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-  padding: 13px 24px; border-radius: 14px; text-decoration: none;
-  color: #fff; transition: 0.2s;
-}
-.dl-badge:hover { background: rgba(255,255,255,0.09); border-color: rgba(250,204,21,0.3); transform: translateY(-2px); }
-.dl-badge .icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
-.dl-badge .sub { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.5px; }
-.dl-badge .name { font-family:'Plus Jakarta Sans',sans-serif; font-size: 16px; font-weight: 700; }
 
-/* FOOTER */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(5, 8, 16, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  z-index: 99;
+  flex-direction: column;
+  gap: 15px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.mobile-menu a {
+  color: var(--light-text);
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  padding: 120px 6% 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.hero-text h1 {
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 1.2;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  animation: slideInUp 0.8s ease-out;
+}
+
+.hero-text h1 .gradient {
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.hero-text p {
+  font-size: 18px;
+  color: rgba(224, 230, 255, 0.7);
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 500px;
+  animation: slideInUp 0.8s ease-out 0.1s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  animation: slideInUp 0.8s ease-out 0.2s both;
+}
+
+.btn {
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--darker);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.8), inset 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+  transform: translateY(-4px);
+}
+
+.hero-3d {
+  perspective: 1200px;
+  animation: slideInUp 0.8s ease-out 0.3s both;
+}
+
+.card-3d {
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(128, 0, 255, 0.1));
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  transform: rotateX(5deg) rotateY(-10deg);
+  transition: transform 0.5s ease;
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-3d::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(0, 212, 255, 0.1) 50%, transparent 70%);
+  animation: shine 3s infinite;
+}
+
+.card-3d:hover {
+  transform: rotateX(10deg) rotateY(-15deg) scale(1.02);
+  box-shadow: 0 30px 80px rgba(0, 212, 255, 0.4);
+}
+
+@keyframes shine {
+  0% { transform: translate(-100%, -100%) rotate(45deg); }
+  100% { transform: translate(100%, 100%) rotate(45deg); }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Features Section */
+.features {
+  padding: 120px 6%;
+  position: relative;
+  z-index: 2;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary);
+  margin-bottom: 16px;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 50px;
+}
+
+.section-title {
+  font-size: clamp(36px, 4vw, 56px);
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: rgba(224, 230, 255, 0.6);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(128, 0, 255, 0.05));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.feature-card:hover {
+  transform: translateY(-15px) rotateX(5deg);
+  border-color: rgba(0, 212, 255, 0.5);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(128, 0, 255, 0.1));
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.2) rotateZ(10deg);
+  filter: drop-shadow(0 0 10px var(--primary));
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: rgba(224, 230, 255, 0.6);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Pricing Section */
+.pricing {
+  padding: 120px 6%;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.05));
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.price-card {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(128, 0, 255, 0.05));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  transition: 0.4s;
+  position: relative;
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.price-card:hover {
+  transform: perspective(1000px) rotateY(-10deg) translateY(-10px);
+  border-color: var(--primary);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(128, 0, 255, 0.1));
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+}
+
+.price-card.featured {
+  transform: scale(1.05) perspective(1000px) rotateY(0deg);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(128, 0, 255, 0.2));
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+}
+
+.price-card.featured:hover {
+  transform: scale(1.05) perspective(1000px) rotateY(-10deg) translateY(-10px);
+  box-shadow: 0 30px 80px rgba(0, 212, 255, 0.6);
+}
+
+.price-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(255, 0, 110, 0.2);
+  border: 1px solid var(--secondary);
+  border-radius: 50px;
+  color: var(--secondary);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.price-card.featured .price-badge {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.price-amount {
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 16px 0;
+}
+
+.price-period {
+  font-size: 13px;
+  color: rgba(224, 230, 255, 0.5);
+  margin-bottom: 24px;
+}
+
+.price-features {
+  list-style: none;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.price-features li {
+  padding: 10px 0;
+  font-size: 13px;
+  color: rgba(224, 230, 255, 0.7);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.price-features li::before {
+  content: '✓ ';
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* Stats Section */
+.stats {
+  padding: 100px 6%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.stat-item {
+  transform: perspective(1000px) rotateX(10deg);
+  transition: 0.4s;
+}
+
+.stat-item:hover {
+  transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(224, 230, 255, 0.5);
+  margin-top: 12px;
+}
+
+/* Footer */
 footer {
-  background: rgba(0,0,0,0.35); border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 56px 6% 28px;
+  padding: 60px 6%;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  background: rgba(5, 8, 16, 0.5);
+  backdrop-filter: blur(10px);
 }
-.ft-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; max-width: 1200px; margin: 0 auto 44px; }
-.ft-brand img { height: 36px; }
-.ft-brand p { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 240px; }
-.ft-col h4 { font-family:'Plus Jakarta Sans',sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 16px; }
-.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.ft-col a { font-size: 13px; color: rgba(255,255,255,0.38); text-decoration: none; transition: 0.2s; }
-.ft-col a:hover { color: var(--yellow); }
-.ft-bottom {
-  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 22px;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
-  max-width: 1200px; margin: 0 auto;
-}
-.ft-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
 
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
-
-/* RESPONSIVE */
-@media (max-width: 1000px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-right { display: none; }
-  .how-grid { grid-template-columns: 1fr; }
-  .feat-grid { grid-template-columns: repeat(2,1fr); }
-  .price-grid { grid-template-columns: repeat(2,1fr); }
-  .p-card.pop { transform: none; }
-  .ft-top { grid-template-columns: 1fr 1fr; gap: 28px; }
-  .nav-links { display: none; }
-  .hamburger { display: block; }
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 40px;
 }
-@media (max-width: 600px) {
-  .pop-badge { top: -14px; font-size: 10px; padding: 5px 14px; }
-  .p-card.pop { margin-top: 20px; }
-  .feat-grid { grid-template-columns: 1fr; }
-  .cities-grid { grid-template-columns: 1fr 1fr; }
-  .price-grid { grid-template-columns: 1fr 1fr; }
-  .ft-top { grid-template-columns: 1fr; }
-  .hero-pills { display: none; }
-  .hero-btns { flex-direction: column; }
-  .btn-y, .btn-o { justify-content: center; }
+
+.footer-brand h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-brand p {
+  font-size: 13px;
+  color: rgba(224, 230, 255, 0.5);
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 12px;
+}
+
+.footer-col a {
+  font-size: 13px;
+  color: rgba(224, 230, 255, 0.6);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-col a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--primary);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 12px;
+  color: rgba(224, 230, 255, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .card-3d {
+    height: 350px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 4%;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hero {
+    padding: 100px 4% 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+  }
+
+  .features {
+    padding: 60px 4%;
+  }
+
+  .pricing {
+    padding: 60px 4%;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .price-card.featured {
+    transform: scale(1);
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 60px 4%;
+  }
+
+  .stat-number {
+    font-size: 36px;
+  }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- Particles Background -->
+<div class="particles" id="particles"></div>
+
+<!-- Navigation -->
 <nav>
-  <a href="#" class="nav-logo" style="background:#fff;padding:5px 12px;border-radius:10px;display:flex;align-items:center;"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro Logo" style="height:34px;width:auto;"></a>
+  <div class="nav-logo">🚗 CarpoolKaro</div>
   <ul class="nav-links">
-    <li><a href="#how">How it works</a></li>
     <li><a href="#features">Features</a></li>
-    <li><a href="#cities">Cities</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="https://app.carpoolkaro.com" class="nav-cta">Open App →</a></li>
+    <li><a href="#stats">Stats</a></li>
+    <li><a href="https://app.carpoolkaro.com" class="nav-cta">Launch App</a></li>
   </ul>
-  <button class="hamburger" aria-label="Toggle navigation menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">☰</button>
+  <button class="hamburger" aria-label="Toggle menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">☰</button>
 </nav>
+
 <div class="mobile-menu">
-  <a href="#how" onclick="this.parentElement.classList.remove('open')">How it works</a>
-  <a href="#features" onclick="this.parentElement.classList.remove('open')">Features</a>
-  <a href="#cities" onclick="this.parentElement.classList.remove('open')">Cities</a>
-  <a href="#pricing" onclick="this.parentElement.classList.remove('open')">Pricing</a>
-  <a href="https://app.carpoolkaro.com" style="color:var(--yellow);font-weight:700;">Open App →</a>
+  <a href="#features">Features</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#stats">Stats</a>
+  <a href="https://app.carpoolkaro.com">Launch App</a>
 </div>
 
-<!-- HERO -->
+<!-- Hero Section -->
 <div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-badge">🚀 Now live in 6 Indian IT cities</div>
-      <div class="hero-logo"><div style="background:#fff;border-radius:20px;padding:20px 28px;display:inline-block;box-shadow:0 8px 32px rgba(0,0,0,0.2);"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro" style="height:56px;width:auto;"></div></div>
-      <h1 class="hero-h1">Your IT Commute,<br><span class="y">Shared & Smarter</span></h1>
-      <p class="hero-sub">Connect with verified colleagues heading the same way. Cut fuel costs, beat traffic, and make your daily commute something to look forward to.</p>
-      <div class="hero-btns">
-        <a href="https://app.carpoolkaro.com" class="btn-y">🚗 Start Carpooling Free</a>
-        <a href="#how" class="btn-o">▶ How it works</a>
-      </div>
-      <div class="hero-pills">
-        <span class="pill y">₹2 platform fee only</span>
-        <span class="pill">₹10 signup bonus</span>
-        <span class="pill">Google login</span>
-        <span class="pill">6 cities</span>
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>Your IT Commute,<br><span class="gradient">Reimagined</span></h1>
+      <p>Next-generation carpooling for IT professionals. Connect with verified colleagues, save money, and reduce traffic together.</p>
+      <div class="hero-buttons">
+        <a href="https://app.carpoolkaro.com" class="btn btn-primary">Get Started Free</a>
+        <a href="#features" class="btn btn-secondary">Explore Features</a>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-card">
-        <img src="https://app.carpoolkaro.com/login-illustration.png" alt="Carpooling app illustration">
-        <div class="hero-card-pill">📍 Find rides near you, right now</div>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="n">₹2</div><div class="l">PLATFORM FEE</div></div>
-        <div class="hero-stat"><div class="n">6</div><div class="l">IT CITIES</div></div>
-        <div class="hero-stat"><div class="n">Free</div><div class="l">TO JOIN</div></div>
-        <div class="hero-stat"><div class="n">₹10</div><div class="l">SIGNUP BONUS</div></div>
-      </div>
+    <div class="hero-3d">
+      <div class="card-3d">🚗</div>
     </div>
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
-<div class="how-section full-w" id="how">
-  <section>
-    <div style="text-align:center">
-      <span class="s-badge">⚡ Simple process</span>
-      <h2 class="s-title">Ready in under 2 minutes</h2>
-      <p class="s-sub" style="max-width:480px;margin:0 auto">From signup to your first shared ride — no complexity, no hassle.</p>
+<!-- Features Section -->
+<section class="features" id="features">
+  <div class="section-header">
+    <span class="section-label">✨ Core Features</span>
+    <h2 class="section-title">Built for the Future</h2>
+    <p class="section-subtitle">Advanced technology meets simplicity. Experience the next generation of shared mobility.</p>
+  </div>
+  
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🔐</div>
+      <h3>Verified Community</h3>
+      <p>Ride with verified IT professionals only. Company badges on every profile for maximum trust.</p>
     </div>
-    <div class="how-grid">
-      <div class="how-card">
-        <div class="how-num">01</div>
-        <div class="how-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3" stroke="#facc15" stroke-width="1.5"/><circle cx="12" cy="6" r="1" fill="#facc15"/><path d="M9 13h6v2H9z" fill="#facc15"/></svg></div>
-        <h3>Sign in with Google</h3>
-        <p>One tap with your Gmail — no forms, no passwords. Your profile is ready instantly with ₹10 bonus in your wallet.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">02</div>
-        <div class="how-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#facc15" stroke-width="1.5"/><path d="M20 20l-3-3" stroke="#facc15" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Find or Post a Ride</h3>
-        <p>Browse rides on your corridor or post your own in 30 seconds. Smart via-stop matching finds rides even if you're not at the exact start point.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">03</div>
-        <div class="how-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 11l3 3L22 4" stroke="#facc15" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Commute Together</h3>
-        <p>Chat safely inside the app, coordinate pickup, and ride with a verified colleague. Just ₹2 platform fee per booking from your wallet.</p>
-      </div>
+    <div class="feature-card">
+      <div class="feature-icon">💳</div>
+      <h3>Smart Wallet</h3>
+      <p>Get ₹10 on signup. Earn rewards for every ride. Zero platform fees for Pro members.</p>
     </div>
-  </section>
-</div>
-
-<!-- FEATURES -->
-<section id="features">
-  <span class="s-badge">✨ Built different</span>
-  <h2 class="s-title">Everything your commute needs</h2>
-  <p class="s-sub">Built from scratch for IT professionals — not a generic carpooling app.</p>
-  <div class="feat-grid">
-    <div class="feat-card">
-      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#facc15" stroke-width="1.5"/><path d="M3 9h18M9 21v-6h6v6"/></svg></div>
-      <h3>Verified IT Community</h3>
-      <p>Company badges (Capgemini, TCS, Infosys...) shown on every profile. Ride only with people from verified IT companies.</p>
+    <div class="feature-card">
+      <div class="feature-icon">🗺️</div>
+      <h3>Intelligent Matching</h3>
+      <p>AI-powered algorithm finds perfect ride matches based on your route and preferences.</p>
     </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#facc15" stroke-width="1.5"/><path d="M12 6v2m0 8v2M9.5 9.5A2.5 2.5 0 1112 12a2.5 2.5 0 01-2.5-2.5z" stroke="#facc15" stroke-width="1.5"/></svg></div>
-      <h3>Wallet & Rewards</h3>
-      <p>₹10 free on signup. Earn ₹10 for every friend referred. Only ₹2 platform fee per ride. Pro users pay zero fees.</p>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h3>Secure Chat</h3>
+      <p>In-app messaging keeps your privacy safe. Phone numbers never shared.</p>
     </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#facc15" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-      <h3>In-App Chat Only</h3>
-      <p>Coordinate pickup safely inside the app. Your phone number is never shared. Privacy protected at every step.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 1l4 4-4 4M7 23l-4-4 4-4" stroke="#facc15" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="feature-card">
+      <div class="feature-icon">🔄</div>
       <h3>Repeat Rides</h3>
-      <p>Post once for Mon–Fri or every day. Build a reliable commute routine without posting manually each morning.</p>
+      <p>Set weekly schedules once. Automatic matchmaking for your daily commute.</p>
     </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v2M4.22 4.22l1.42 1.42M2 12h2m16 0h2M18.36 5.64l1.42-1.42" stroke="#facc15" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <h3>Smart Morning Digest</h3>
-      <p>Get notified at 8 AM weekdays when rides are available on your usual corridor. Never miss a carpool opportunity.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20l4-16h10l4 16H3z" stroke="#facc15" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 12h4" stroke="#facc15" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <h3>Via Stop Matching</h3>
-      <p>Driver going Uppal → GAR via Nagole? Riders searching "Nagole" will find it. Smarter matching using intermediate stops.</p>
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3>Multi-City Coverage</h3>
+      <p>Available in 6 major IT hubs: Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR, Chennai.</p>
     </div>
   </div>
 </section>
 
-<!-- CITIES -->
-<div class="cities-wrap full-w" id="cities">
-  <section>
-    <div style="text-align:center">
-      <span class="s-badge">🗺️ Coverage</span>
-      <h2 class="s-title">Live across India's top IT hubs</h2>
-      <p class="s-sub" style="max-width:480px;margin:0 auto">From HITEC City to Whitefield — if you work in IT, we have your city covered.</p>
-    </div>
-    <div class="cities-grid">
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(59,130,246,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🏙️</div>
-        <h3>Hyderabad</h3>
-        <p>HITEC City · Gachibowli · Financial District · Kondapur · Madhapur</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(34,197,94,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🌿</div>
-        <h3>Bangalore</h3>
-        <p>Whitefield · Outer Ring Road · Electronic City · Manyata Tech Park</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(249,115,22,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🏔️</div>
-        <h3>Pune</h3>
-        <p>Hinjewadi · Kharadi · Magarpatta · Wakad · Baner</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(168,85,247,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🌊</div>
-        <h3>Mumbai</h3>
-        <p>BKC · Powai · Lower Parel · Andheri MIDC · Malad</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(239,68,68,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🏛️</div>
-        <h3>Delhi NCR</h3>
-        <p>Cyber City · DLF Phases · Noida Expressway · Indirapuram</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(6,182,212,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🌴</div>
-        <h3>Chennai</h3>
-        <p>OMR · Sholinganallur · Tidel Park · Perungudi · Taramani</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-    </div>
-  </section>
-</div>
+<!-- Stats Section -->
+<section class="stats" id="stats">
+  <div class="stat-item">
+    <div class="stat-number">₹2</div>
+    <div class="stat-label">Platform Fee</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">6</div>
+    <div class="stat-label">IT Cities</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">FREE</div>
+    <div class="stat-label">To Join</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">₹10</div>
+    <div class="stat-label">Signup Bonus</div>
+  </div>
+</section>
 
-<!-- PRICING -->
-<section id="pricing">
-  <span class="s-badge">💳 Simple pricing</span>
-  <h2 class="s-title">India's lowest carpool fees</h2>
-  <p class="s-sub">Start free forever. Upgrade for zero platform fees.</p>
-  <div class="price-grid">
-    <div class="p-card">
-      <div class="p-name">Free</div>
-      <div class="p-amount">₹0</div>
-      <div class="p-period">forever</div>
-      <ul class="p-feats">
+<!-- Pricing Section -->
+<section class="pricing" id="pricing">
+  <div class="section-header">
+    <span class="section-label">💳 Pricing Plans</span>
+    <h2 class="section-title">Choose Your Plan</h2>
+    <p class="section-subtitle">Flexible pricing that works for everyone. Start free, upgrade anytime.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-badge">Standard</div>
+      <h3>Free Plan</h3>
+      <div class="price-amount">₹0</div>
+      <div class="price-period">Forever</div>
+      <ul class="price-features">
         <li>Post & book rides</li>
         <li>₹2 platform fee</li>
         <li>In-app chat</li>
         <li>₹10 signup bonus</li>
         <li>Referral earnings</li>
       </ul>
-      <a href="https://app.carpoolkaro.com" class="p-btn">Get started free</a>
+      <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Get Started</a>
     </div>
-    <div class="p-card">
-      <div class="p-name">Starter Pro</div>
-      <div class="p-amount">₹79</div>
-      <div class="p-period">per month</div>
-      <ul class="p-feats">
+
+    <div class="price-card">
+      <div class="price-badge">Popular</div>
+      <h3>Monthly Pro</h3>
+      <div class="price-amount">₹79</div>
+      <div class="price-period">Per Month</div>
+      <ul class="price-features">
         <li>Zero platform fees</li>
         <li>⭐ Pro badge</li>
         <li>Priority listing</li>
         <li>All free features</li>
+        <li>Fast support</li>
       </ul>
-      <a href="https://app.carpoolkaro.com" class="p-btn">Get Pro</a>
+      <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Upgrade Now</a>
     </div>
-    <div class="p-card pop">
-      <div class="pop-badge">BEST VALUE</div>
-      <div class="p-name">Quarterly Pro</div>
-      <div class="p-amount">₹199</div>
-      <div class="p-period">for 3 months</div>
-      <ul class="p-feats">
+
+    <div class="price-card featured">
+      <div class="price-badge">Best Value</div>
+      <h3>Quarterly Pro</h3>
+      <div class="price-amount">₹199</div>
+      <div class="price-period">3 Months</div>
+      <ul class="price-features">
         <li>Zero platform fees</li>
         <li>⭐ Pro badge</li>
         <li>Priority listing</li>
         <li>Save ₹38 vs monthly</li>
+        <li>All free features</li>
       </ul>
-      <a href="https://app.carpoolkaro.com" class="p-btn">Get Pro</a>
+      <a href="https://app.carpoolkaro.com" class="btn btn-primary" style="width: 100%;">Get Pro</a>
     </div>
-    <div class="p-card">
-      <div class="p-name">Annual Pro</div>
-      <div class="p-amount">₹599</div>
-      <div class="p-period">per year</div>
-      <ul class="p-feats">
+
+    <div class="price-card">
+      <div class="price-badge">Premium</div>
+      <h3>Annual Pro</h3>
+      <div class="price-amount">₹599</div>
+      <div class="price-period">Per Year</div>
+      <ul class="price-features">
         <li>Zero platform fees</li>
         <li>⭐ Pro badge</li>
         <li>Priority listing</li>
         <li>Save ₹349 vs monthly</li>
+        <li>All free features</li>
       </ul>
-      <a href="https://app.carpoolkaro.com" class="p-btn">Get Pro</a>
+      <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Subscribe</a>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-wrap">
-  <span class="s-badge">🚀 Join today</span>
-  <h2 class="s-title" style="margin-top:6px">Start saving on your<br>commute today</h2>
-  <p class="s-sub" style="max-width:420px;margin:0 auto">Free to join. ₹10 bonus on signup. Works on any device.</p>
-  <div class="dl-badges">
-    <a href="https://app.carpoolkaro.com" class="dl-badge" aria-label="Open app in web browser">
-      <span class="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 3c-3 4-3 14 0 18M12 3c3 4 3 14 0 18M3 12h18M3 12c0-3 4-3 9-3s9 0 9 3-4 3-9 3-9 0-9-3z" stroke="currentColor" stroke-width="1.5"/></svg></span>
-      <div><div class="sub">OPEN IN BROWSER</div><div class="name">Web App</div></div>
-    </a>
-    <a href="https://play.google.com/store/apps/details?id=com.carpoolkaro.app" class="dl-badge" aria-label="Download on Google Play Store">
-      <span class="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 23.76c.3.17.64.21.97.13l12.4-7.16-2.61-2.61-10.76 9.64zM.8 1.42C.31 1.85 0 2.54 0 3.44v17.12c0 .9.31 1.59.8 2.02l11.23-11.58L.8 1.42zM15.53 11.9L3.3.54C3.05.41 2.77.38 2.51.44c.14.07 12.39 7.03 13.02 7.46zm2.52-1.66l4.16-2.41c1.05-.6 1.72-1.63 1.72-2.83v8.1c0-1.2-.67-2.23-1.72-2.83l-4.16-2.41z"/></svg></span>
-      <div><div class="sub">GET IT ON</div><div class="name">Google Play</div></div>
-    </a>
-    <a href="https://app.carpoolkaro.com" class="dl-badge" aria-label="Add to home screen on iPhone">
-      <span class="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 3.75 13.75 5.33 11.25c.85-1.36 2.27-2.17 3.77-2.24 1.15-.05 2.24.73 3.22.73.89 0 2.14-1.01 3.5-.89 1.34.12 2.65.75 3.44 1.89.76 1.3.95 3.07.48 4.65-.6 1.75-1.93 3.07-3.51 3.63z"/></svg></span>
-      <div><div class="sub">ADD TO HOME ON</div><div class="name">iPhone</div></div>
-    </a>
-  </div>
-</div>
-
-<!-- FOOTER -->
+<!-- Footer -->
 <footer>
-  <div class="ft-top">
-    <div class="ft-brand">
-      <div style="background:#fff;border-radius:12px;padding:10px 16px;display:inline-block;margin-bottom:14px;"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro" style="height:36px;width:auto;"></div>
-      <p>India's IT Carpool Community. Connecting professionals across 6 major cities. Ride together, save together.</p>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>🚗 CarpoolKaro</h3>
+      <p>India's next-generation IT carpool community. Connecting professionals across 6 major cities for smarter commutes.</p>
     </div>
-    <div class="ft-col">
+    <div class="footer-col">
       <h4>Product</h4>
       <ul>
-        <li><a href="#how">How it works</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="https://app.carpoolkaro.com">Open App</a></li>
+        <li><a href="https://app.carpoolkaro.com">Download</a></li>
       </ul>
     </div>
-    <div class="ft-col">
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="https://app.carpoolkaro.com/terms">Terms</a></li>
+        <li><a href="https://app.carpoolkaro.com/privacy">Privacy</a></li>
+        <li><a href="mailto:support@carpoolkaro.com">Support</a></li>
+        <li><a href="mailto:contact@carpoolkaro.com">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
       <h4>Cities</h4>
       <ul>
         <li><a href="https://app.carpoolkaro.com">Hyderabad</a></li>
@@ -585,38 +984,42 @@ footer {
         <li><a href="https://app.carpoolkaro.com">Chennai</a></li>
       </ul>
     </div>
-    <div class="ft-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="https://app.carpoolkaro.com/terms">Terms of Service</a></li>
-        <li><a href="https://app.carpoolkaro.com/terms">Privacy Policy</a></li>
-        <li><a href="mailto:support@carpoolkaro.com">Support</a></li>
-        <li><a href="mailto:support@carpoolkaro.com">Contact Us</a></li>
-      </ul>
-    </div>
   </div>
-  <div class="ft-bottom">
-    <p>© 2026 CarpoolKaro. Made with ❤️ in India.</p>
-    <p>Ride Together, Save Together</p>
+  <div class="footer-bottom">
+    <p>© 2026 CarpoolKaro. All rights reserved.</p>
+    <p>Ride Together, Save Together, Code Better 🚀</p>
   </div>
 </footer>
 
 <script>
-// Scroll reveal
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
+// Generate floating particles
+function createParticles() {
+  const container = document.getElementById('particles');
+  const particleCount = window.innerWidth < 768 ? 10 : 20;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 15 + 's';
+    particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+    container.appendChild(particle);
+  }
+}
+
+createParticles();
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.mobile-menu')?.classList.remove('open');
     }
   });
-}, { threshold: 0.08 });
-
-document.querySelectorAll('.how-card, .feat-card, .city-card, .p-card').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, background 0.3s, box-shadow 0.3s';
-  io.observe(el);
 });
 </script>
 </body>
