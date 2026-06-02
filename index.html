@@ -8,7 +8,7 @@
 <meta property="og:title" content="CarpoolKaro — India's IT Carpool Community">
 <meta property="og:description" content="Share rides with verified IT professionals. Save money, reduce traffic.">
 <link rel="icon" href="https://app.carpoolkaro.com/favicon.ico">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 * {
   margin: 0;
@@ -17,14 +17,17 @@
 }
 
 :root {
-  --primary: #00d4ff;
-  --secondary: #ff006e;
-  --tertiary: #8000ff;
-  --accent: #00ff88;
-  --dark: #0a0e27;
-  --darker: #050810;
-  --light-text: #e0e6ff;
-  --grid-color: rgba(0, 212, 255, 0.1);
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --primary-dark: #1e40af;
+  --secondary: #059669;
+  --accent: #dc2626;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-light: #f3f4f6;
+  --border: #e5e7eb;
+  --bg-light: #f9fafb;
+  --bg-white: #ffffff;
 }
 
 html {
@@ -32,63 +35,10 @@ html {
 }
 
 body {
-  font-family: 'Space Grotesk', sans-serif;
-  background: linear-gradient(135deg, var(--darker) 0%, #1a1f3a 50%, var(--darker) 100%);
-  color: var(--light-text);
-  overflow-x: hidden;
-  min-height: 100vh;
-  position: relative;
-}
-
-/* Animated Background Grid */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    linear-gradient(0deg, transparent 24%, var(--grid-color) 25%, var(--grid-color) 26%, transparent 27%, transparent 74%, var(--grid-color) 75%, var(--grid-color) 76%, transparent 77%, transparent),
-    linear-gradient(90deg, transparent 24%, var(--grid-color) 25%, var(--grid-color) 26%, transparent 27%, transparent 74%, var(--grid-color) 75%, var(--grid-color) 76%, transparent 77%, transparent);
-  background-size: 50px 50px;
-  animation: gridMove 20s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.3;
-}
-
-@keyframes gridMove {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
-}
-
-/* Floating Particles */
-.particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--primary);
-  border-radius: 50%;
-  animation: float 15s infinite;
-  opacity: 0.6;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(100px, -100px); }
-  50% { transform: translate(-50px, 50px); }
-  75% { transform: translate(80px, 80px); }
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
 /* Navigation */
@@ -98,31 +48,44 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 20px 6%;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(5, 8, 16, 0.7);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+  height: 70px;
 }
 
 .nav-logo {
-  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  cursor: pointer;
+  color: var(--text-primary);
   transition: 0.3s;
 }
 
+.nav-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.nav-logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
 .nav-logo:hover {
-  filter: drop-shadow(0 0 10px var(--primary));
+  opacity: 0.8;
 }
 
 .nav-links {
@@ -133,62 +96,58 @@ nav {
 }
 
 .nav-links a {
-  color: var(--light-text);
+  color: var(--text-secondary);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  position: relative;
   transition: 0.3s;
+  position: relative;
 }
 
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -8px;
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: var(--primary);
   transition: width 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
 }
 
 .nav-links a:hover::after {
   width: 100%;
 }
 
-.nav-links a:hover {
-  color: var(--primary);
-  text-shadow: 0 0 10px var(--primary);
-}
-
 .nav-cta {
-  padding: 12px 28px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: var(--darker);
+  padding: 10px 24px;
+  background: var(--primary);
+  color: white;
   border: none;
-  border-radius: 50px;
-  font-weight: 700;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 1px;
   text-decoration: none;
   display: inline-block;
+  font-size: 14px;
 }
 
 .nav-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), inset 0 0 10px rgba(0, 212, 255, 0.3);
+  background: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px);
 }
 
 .hamburger {
   display: none;
   background: none;
   border: none;
-  color: var(--primary);
+  color: var(--text-primary);
   font-size: 24px;
   cursor: pointer;
 }
@@ -196,23 +155,27 @@ nav {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 60px;
+  top: 70px;
   left: 0;
   right: 0;
-  background: rgba(5, 8, 16, 0.95);
-  backdrop-filter: blur(20px);
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
   padding: 20px;
   z-index: 99;
   flex-direction: column;
-  gap: 15px;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  gap: 12px;
 }
 
 .mobile-menu a {
-  color: var(--light-text);
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 14px;
+  padding: 10px 0;
   transition: 0.3s;
+}
+
+.mobile-menu a:hover {
+  color: var(--primary);
 }
 
 .mobile-menu.open {
@@ -221,206 +184,198 @@ nav {
 
 /* Hero Section */
 .hero {
+  padding-top: 70px;
   min-height: 100vh;
-  padding: 120px 6% 60px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-light) 0%, #f0f9ff 100%);
   position: relative;
-  z-index: 2;
+  overflow: hidden;
 }
 
-.hero-content {
+.hero-shape {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+  z-index: 0;
+}
+
+.hero-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 6%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
   width: 100%;
-  max-width: 1400px;
+  position: relative;
+  z-index: 1;
 }
 
-.hero-text h1 {
-  font-size: clamp(48px, 5vw, 72px);
+.hero-content h1 {
+  font-size: clamp(40px, 5vw, 56px);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
   line-height: 1.2;
   margin-bottom: 24px;
-  letter-spacing: -1px;
-  animation: slideInUp 0.8s ease-out;
+  color: var(--text-primary);
 }
 
-.hero-text h1 .gradient {
-  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+.hero-content h1 .highlight {
+  color: var(--primary);
 }
 
-.hero-text p {
+.hero-content p {
   font-size: 18px;
-  color: rgba(224, 230, 255, 0.7);
+  color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 32px;
   max-width: 500px;
-  animation: slideInUp 0.8s ease-out 0.1s both;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 40px;
-  animation: slideInUp 0.8s ease-out 0.2s both;
 }
 
 .btn {
-  padding: 16px 32px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   border: none;
   transition: 0.3s;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
+  text-align: center;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: var(--darker);
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .btn-primary:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 40px rgba(0, 212, 255, 0.8), inset 0 0 10px rgba(0, 212, 255, 0.3);
+  background: var(--primary-dark);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background: rgba(0, 212, 255, 0.1);
+  background: var(--bg-white);
   color: var(--primary);
   border: 2px solid var(--primary);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 212, 255, 0.2);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
-  transform: translateY(-4px);
+  background: #f0f9ff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
-.hero-3d {
-  perspective: 1200px;
-  animation: slideInUp 0.8s ease-out 0.3s both;
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
-.card-3d {
-  width: 100%;
-  height: 500px;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(128, 0, 255, 0.1));
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 20px;
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.hero-image {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+  border-radius: 16px;
+  padding: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
-  transform: rotateX(5deg) rotateY(-10deg);
-  transition: transform 0.5s ease;
-  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
-  position: relative;
-  overflow: hidden;
+  min-height: 400px;
+  border: 1px solid var(--border);
 }
 
-.card-3d::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent 30%, rgba(0, 212, 255, 0.1) 50%, transparent 70%);
-  animation: shine 3s infinite;
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
 }
 
-.card-3d:hover {
-  transform: rotateX(10deg) rotateY(-15deg) scale(1.02);
-  box-shadow: 0 30px 80px rgba(0, 212, 255, 0.4);
-}
-
-@keyframes shine {
-  0% { transform: translate(-100%, -100%) rotate(45deg); }
-  100% { transform: translate(100%, 100%) rotate(45deg); }
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Features Section */
-.features {
-  padding: 120px 6%;
-  position: relative;
-  z-index: 2;
+/* Sections */
+section {
+  padding: 100px 6%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .section-label {
+  display: inline-block;
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: var(--primary);
-  margin-bottom: 16px;
-  display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 50px;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
 .section-title {
-  font-size: clamp(36px, 4vw, 56px);
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: clamp(32px, 4vw, 48px);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  color: var(--text-primary);
   line-height: 1.2;
+  margin-bottom: 16px;
 }
 
 .section-subtitle {
-  font-size: 18px;
-  color: rgba(224, 230, 255, 0.6);
-  max-width: 500px;
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 600px;
   margin: 0 auto;
+  line-height: 1.8;
 }
 
+/* Features Section */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
 }
 
 .feature-card {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(128, 0, 255, 0.05));
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 16px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
   padding: 40px;
-  transition: 0.4s;
+  transition: 0.3s;
   position: relative;
   overflow: hidden;
-  transform: translateZ(0);
 }
 
 .feature-card::before {
@@ -428,18 +383,17 @@ nav {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.1));
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.3s;
 }
 
 .feature-card:hover {
-  transform: translateY(-15px) rotateX(5deg);
-  border-color: rgba(0, 212, 255, 0.5);
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(128, 0, 255, 0.1));
-  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+  border-color: var(--primary);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.1);
+  transform: translateY(-8px);
 }
 
 .feature-card:hover::before {
@@ -447,182 +401,257 @@ nav {
 }
 
 .feature-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 16px;
   display: inline-block;
-  transition: 0.3s;
-}
-
-.feature-card:hover .feature-icon {
-  transform: scale(1.2) rotateZ(10deg);
-  filter: drop-shadow(0 0 10px var(--primary));
 }
 
 .feature-card h3 {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 12px;
-  color: var(--primary);
 }
 
 .feature-card p {
   font-size: 14px;
-  color: rgba(224, 230, 255, 0.6);
-  line-height: 1.6;
-  position: relative;
-  z-index: 1;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
 
 /* Pricing Section */
 .pricing {
-  padding: 120px 6%;
-  position: relative;
-  z-index: 2;
-  background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.05));
+  background: linear-gradient(135deg, var(--bg-light) 0%, #f0f9ff 100%);
 }
 
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 60px;
+  gap: 32px;
 }
 
 .price-card {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(128, 0, 255, 0.05));
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 16px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
   padding: 40px;
-  text-align: center;
-  transition: 0.4s;
+  transition: 0.3s;
   position: relative;
-  transform: perspective(1000px) rotateY(0deg);
-}
-
-.price-card:hover {
-  transform: perspective(1000px) rotateY(-10deg) translateY(-10px);
-  border-color: var(--primary);
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(128, 0, 255, 0.1));
-  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+  text-align: center;
 }
 
 .price-card.featured {
-  transform: scale(1.05) perspective(1000px) rotateY(0deg);
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(128, 0, 255, 0.2));
   border: 2px solid var(--primary);
-  box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
-}
-
-.price-card.featured:hover {
-  transform: scale(1.05) perspective(1000px) rotateY(-10deg) translateY(-10px);
-  box-shadow: 0 30px 80px rgba(0, 212, 255, 0.6);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.15);
+  transform: scale(1.05);
 }
 
 .price-badge {
   display: inline-block;
-  padding: 6px 16px;
-  background: rgba(255, 0, 110, 0.2);
-  border: 1px solid var(--secondary);
-  border-radius: 50px;
-  color: var(--secondary);
+  padding: 6px 14px;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+  border-radius: 20px;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin-bottom: 16px;
 }
 
 .price-card.featured .price-badge {
-  background: rgba(0, 212, 255, 0.2);
-  border-color: var(--primary);
-  color: var(--primary);
+  background: var(--primary);
+  color: white;
+}
+
+.price-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
 }
 
 .price-amount {
-  font-size: 48px;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 16px 0;
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 20px 0 8px;
 }
 
 .price-period {
   font-size: 13px;
-  color: rgba(224, 230, 255, 0.5);
+  color: var(--text-secondary);
   margin-bottom: 24px;
 }
 
 .price-features {
   list-style: none;
-  margin-bottom: 32px;
   text-align: left;
+  margin-bottom: 32px;
 }
 
 .price-features li {
-  padding: 10px 0;
+  padding: 12px 0;
   font-size: 13px;
-  color: rgba(224, 230, 255, 0.7);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
 }
 
 .price-features li::before {
-  content: '✓ ';
-  color: var(--accent);
+  content: '✓';
+  width: 20px;
+  height: 20px;
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: var(--primary);
   font-weight: 700;
-  margin-right: 8px;
+  font-size: 12px;
 }
 
-/* Stats Section */
-.stats {
-  padding: 100px 6%;
+.price-card:hover {
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.12);
+  transform: translateY(-8px);
+}
+
+.price-card.featured:hover {
+  transform: scale(1.05) translateY(-8px);
+}
+
+/* Cities Section */
+.cities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.city-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  transition: 0.3s;
   position: relative;
-  z-index: 2;
-  text-align: center;
+  overflow: hidden;
 }
 
-.stat-item {
-  transform: perspective(1000px) rotateX(10deg);
-  transition: 0.4s;
+.city-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary);
 }
 
-.stat-item:hover {
-  transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+.city-emoji {
+  font-size: 36px;
+  margin-bottom: 12px;
 }
 
-.stat-number {
-  font-size: 48px;
+.city-card h3 {
+  font-size: 18px;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
+  margin-bottom: 8px;
 }
 
-.stat-label {
+.city-card p {
   font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(224, 230, 255, 0.5);
-  margin-top: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.city-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(5, 150, 105, 0.1);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.city-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--secondary);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.city-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.1);
+  transform: translateY(-8px);
+}
+
+/* CTA Section */
+.cta {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 6%;
+  border-radius: 16px;
+  margin: 60px 6%;
+}
+
+.cta h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 16px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+.cta .btn {
+  background: white;
+  color: var(--primary);
+  padding: 14px 32px;
+}
+
+.cta .btn:hover {
+  background: #f0f9ff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Footer */
 footer {
+  background: var(--text-primary);
+  color: var(--text-light);
   padding: 60px 6%;
   position: relative;
   z-index: 2;
-  border-top: 1px solid rgba(0, 212, 255, 0.1);
-  background: rgba(5, 8, 16, 0.5);
-  backdrop-filter: blur(10px);
 }
 
-.footer-content {
+.footer-wrapper {
   max-width: 1400px;
   margin: 0 auto;
+}
+
+.footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 60px;
@@ -630,17 +659,22 @@ footer {
 }
 
 .footer-brand h3 {
-  font-size: 20px;
-  margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-brand img {
+  height: 28px;
+  width: auto;
 }
 
 .footer-brand p {
   font-size: 13px;
-  color: rgba(224, 230, 255, 0.5);
+  opacity: 0.7;
   line-height: 1.6;
 }
 
@@ -648,8 +682,9 @@ footer {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-weight: 700;
   margin-bottom: 20px;
-  color: var(--primary);
+  color: #fff;
 }
 
 .footer-col ul {
@@ -662,48 +697,45 @@ footer {
 
 .footer-col a {
   font-size: 13px;
-  color: rgba(224, 230, 255, 0.6);
+  opacity: 0.7;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .footer-col a:hover {
-  color: var(--primary);
-  text-shadow: 0 0 10px var(--primary);
+  opacity: 1;
+  color: var(--primary-light);
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(0, 212, 255, 0.1);
-  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
   font-size: 12px;
-  color: rgba(224, 230, 255, 0.4);
+  opacity: 0.7;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .hero-content {
+  .hero-wrapper {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .card-3d {
-    height: 350px;
-  }
-
-  .footer-content {
+  .footer-top {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
   }
 }
 
 @media (max-width: 768px) {
-  nav {
-    padding: 15px 4%;
+  nav .nav-wrapper {
+    padding: 0 4%;
+    height: 60px;
   }
 
   .nav-links {
@@ -714,19 +746,31 @@ footer {
     display: block;
   }
 
+  .mobile-menu {
+    top: 60px;
+  }
+
   .hero {
-    padding: 100px 4% 40px;
+    padding-top: 60px;
   }
 
-  .hero-text h1 {
-    font-size: 36px;
+  .hero-wrapper {
+    padding: 40px 4%;
   }
 
-  .features {
-    padding: 60px 4%;
+  .hero-content h1 {
+    font-size: 32px;
   }
 
-  .pricing {
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  section {
     padding: 60px 4%;
   }
 
@@ -742,147 +786,203 @@ footer {
     transform: scale(1);
   }
 
-  .footer-content {
+  .price-card.featured:hover {
+    transform: translateY(-8px);
+  }
+
+  .cities-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .footer-bottom {
     flex-direction: column;
     text-align: center;
   }
+
+  .cta {
+    margin: 40px 4%;
+    padding: 40px 4%;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero-buttons {
+  .hero-stats {
     flex-direction: column;
-  }
-
-  .btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .stats {
-    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    padding: 60px 4%;
   }
 
-  .stat-number {
-    font-size: 36px;
+  .hero-content h1 {
+    font-size: 24px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .cta h2 {
+    font-size: 24px;
   }
 }
 </style>
 </head>
 <body>
 
-<!-- Particles Background -->
-<div class="particles" id="particles"></div>
-
 <!-- Navigation -->
 <nav>
-  <div class="nav-logo">🚗 CarpoolKaro</div>
-  <ul class="nav-links">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#stats">Stats</a></li>
-    <li><a href="https://app.carpoolkaro.com" class="nav-cta">Launch App</a></li>
-  </ul>
-  <button class="hamburger" aria-label="Toggle menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">☰</button>
+  <div class="nav-wrapper">
+    <a href="#" class="nav-logo">
+      <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro">
+      <span class="nav-logo-text">CarpoolKaro</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#cities">Cities</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://app.carpoolkaro.com" class="nav-cta">Open App</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">☰</button>
+  </div>
+  <div class="mobile-menu">
+    <a href="#features">Features</a>
+    <a href="#cities">Cities</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://app.carpoolkaro.com">Open App</a>
+  </div>
 </nav>
-
-<div class="mobile-menu">
-  <a href="#features">Features</a>
-  <a href="#pricing">Pricing</a>
-  <a href="#stats">Stats</a>
-  <a href="https://app.carpoolkaro.com">Launch App</a>
-</div>
 
 <!-- Hero Section -->
 <div class="hero">
-  <div class="hero-content">
-    <div class="hero-text">
-      <h1>Your IT Commute,<br><span class="gradient">Reimagined</span></h1>
-      <p>Next-generation carpooling for IT professionals. Connect with verified colleagues, save money, and reduce traffic together.</p>
+  <div class="hero-shape"></div>
+  <div class="hero-wrapper">
+    <div class="hero-content">
+      <h1>Your IT Commute,<br><span class="highlight">Simplified & Smarter</span></h1>
+      <p>Connect with verified IT professionals on your route. Save money on fuel, reduce traffic congestion, and build meaningful professional relationships.</p>
       <div class="hero-buttons">
-        <a href="https://app.carpoolkaro.com" class="btn btn-primary">Get Started Free</a>
-        <a href="#features" class="btn btn-secondary">Explore Features</a>
+        <a href="https://app.carpoolkaro.com" class="btn btn-primary">Start Free Today</a>
+        <a href="#features" class="btn btn-secondary">Learn More</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">₹2</div>
+          <div class="stat-label">Platform Fee</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">6</div>
+          <div class="stat-label">IT Cities</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">₹10</div>
+          <div class="stat-label">Signup Bonus</div>
+        </div>
       </div>
     </div>
-    <div class="hero-3d">
-      <div class="card-3d">🚗</div>
+    <div class="hero-image">
+      <img src="https://app.carpoolkaro.com/login-illustration.png" alt="CarpoolKaro App" onerror="this.style.display='none'">
     </div>
   </div>
 </div>
 
 <!-- Features Section -->
-<section class="features" id="features">
+<section id="features">
   <div class="section-header">
-    <span class="section-label">✨ Core Features</span>
-    <h2 class="section-title">Built for the Future</h2>
-    <p class="section-subtitle">Advanced technology meets simplicity. Experience the next generation of shared mobility.</p>
+    <span class="section-label">✨ Key Features</span>
+    <h2 class="section-title">Everything Built for IT Professionals</h2>
+    <p class="section-subtitle">Designed specifically for the tech community. Security, simplicity, and reliability at every step.</p>
   </div>
   
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">🔐</div>
       <h3>Verified Community</h3>
-      <p>Ride with verified IT professionals only. Company badges on every profile for maximum trust.</p>
+      <p>Ride with verified IT professionals only. Company badges displayed on every profile for maximum trust and safety.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">💳</div>
-      <h3>Smart Wallet</h3>
-      <p>Get ₹10 on signup. Earn rewards for every ride. Zero platform fees for Pro members.</p>
+      <h3>Smart Wallet System</h3>
+      <p>Get ₹10 signup bonus. Earn rewards for referrals. Only ₹2 platform fee per ride. Pro members get zero fees.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🗺️</div>
       <h3>Intelligent Matching</h3>
-      <p>AI-powered algorithm finds perfect ride matches based on your route and preferences.</p>
+      <p>AI-powered algorithm finds perfect ride matches based on your route, schedule, and preferences automatically.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">💬</div>
-      <h3>Secure Chat</h3>
-      <p>In-app messaging keeps your privacy safe. Phone numbers never shared.</p>
+      <h3>In-App Chat Only</h3>
+      <p>Secure in-app messaging keeps your privacy protected. Phone numbers are never shared with other users.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔄</div>
-      <h3>Repeat Rides</h3>
-      <p>Set weekly schedules once. Automatic matchmaking for your daily commute.</p>
+      <h3>Repeat Ride Scheduler</h3>
+      <p>Set your weekly commute schedule once. Automatic matching handles daily routine rides seamlessly.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🌍</div>
-      <h3>Multi-City Coverage</h3>
-      <p>Available in 6 major IT hubs: Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR, Chennai.</p>
+      <div class="feature-icon">⭐</div>
+      <h3>Ratings & Reviews</h3>
+      <p>Community-driven rating system ensures quality and accountability. Build your professional reputation.</p>
     </div>
   </div>
 </section>
 
-<!-- Stats Section -->
-<section class="stats" id="stats">
-  <div class="stat-item">
-    <div class="stat-number">₹2</div>
-    <div class="stat-label">Platform Fee</div>
+<!-- Cities Section -->
+<section id="cities">
+  <div class="section-header">
+    <span class="section-label">🗺️ Coverage</span>
+    <h2 class="section-title">Live Across India's Top IT Hubs</h2>
+    <p class="section-subtitle">Connecting professionals in 6 major IT cities across India</p>
   </div>
-  <div class="stat-item">
-    <div class="stat-number">6</div>
-    <div class="stat-label">IT Cities</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">FREE</div>
-    <div class="stat-label">To Join</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">₹10</div>
-    <div class="stat-label">Signup Bonus</div>
+
+  <div class="cities-grid">
+    <div class="city-card">
+      <div class="city-emoji">🏙️</div>
+      <h3>Hyderabad</h3>
+      <p>HITEC City, Gachibowli, Financial District, Kondapur, Madhapur</p>
+      <div class="city-status">● LIVE</div>
+    </div>
+    <div class="city-card">
+      <div class="city-emoji">🌿</div>
+      <h3>Bangalore</h3>
+      <p>Whitefield, Outer Ring Road, Electronic City, Manyata Tech Park</p>
+      <div class="city-status">● LIVE</div>
+    </div>
+    <div class="city-card">
+      <div class="city-emoji">🏔️</div>
+      <h3>Pune</h3>
+      <p>Hinjewadi, Kharadi, Magarpatta, Wakad, Baner</p>
+      <div class="city-status">● LIVE</div>
+    </div>
+    <div class="city-card">
+      <div class="city-emoji">🌊</div>
+      <h3>Mumbai</h3>
+      <p>BKC, Powai, Lower Parel, Andheri MIDC, Malad</p>
+      <div class="city-status">● LIVE</div>
+    </div>
+    <div class="city-card">
+      <div class="city-emoji">🏛️</div>
+      <h3>Delhi NCR</h3>
+      <p>Cyber City, DLF Phases, Noida Expressway, Indirapuram</p>
+      <div class="city-status">● LIVE</div>
+    </div>
+    <div class="city-card">
+      <div class="city-emoji">🌴</div>
+      <h3>Chennai</h3>
+      <p>OMR, Sholinganallur, Tidel Park, Perungudi, Taramani</p>
+      <div class="city-status">● LIVE</div>
+    </div>
   </div>
 </section>
 
 <!-- Pricing Section -->
-<section class="pricing" id="pricing">
+<section id="pricing" class="pricing">
   <div class="section-header">
-    <span class="section-label">💳 Pricing Plans</span>
-    <h2 class="section-title">Choose Your Plan</h2>
-    <p class="section-subtitle">Flexible pricing that works for everyone. Start free, upgrade anytime.</p>
+    <span class="section-label">💳 Pricing</span>
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <p class="section-subtitle">Start free forever. Upgrade anytime for zero platform fees.</p>
   </div>
 
   <div class="pricing-grid">
@@ -911,7 +1011,7 @@ footer {
         <li>⭐ Pro badge</li>
         <li>Priority listing</li>
         <li>All free features</li>
-        <li>Fast support</li>
+        <li>Priority support</li>
       </ul>
       <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Upgrade Now</a>
     </div>
@@ -948,76 +1048,73 @@ footer {
   </div>
 </section>
 
+<!-- CTA Section -->
+<div class="cta">
+  <h2>Ready to Transform Your Commute?</h2>
+  <p>Join thousands of IT professionals already saving money and reducing their carbon footprint with CarpoolKaro.</p>
+  <a href="https://app.carpoolkaro.com" class="btn">Download the App</a>
+</div>
+
 <!-- Footer -->
 <footer>
-  <div class="footer-content">
-    <div class="footer-brand">
-      <h3>🚗 CarpoolKaro</h3>
-      <p>India's next-generation IT carpool community. Connecting professionals across 6 major cities for smarter commutes.</p>
+  <div class="footer-wrapper">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>
+          <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro">
+          CarpoolKaro
+        </h3>
+        <p>India's IT Carpool Community. Connecting professionals across 6 major cities for smarter, sustainable commutes.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#cities">Cities</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="https://app.carpoolkaro.com">Open App</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.carpoolkaro.com/terms">Terms of Service</a></li>
+          <li><a href="https://app.carpoolkaro.com/privacy">Privacy Policy</a></li>
+          <li><a href="mailto:support@carpoolkaro.com">Support</a></li>
+          <li><a href="mailto:contact@carpoolkaro.com">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cities</h4>
+        <ul>
+          <li><a href="https://app.carpoolkaro.com">Hyderabad</a></li>
+          <li><a href="https://app.carpoolkaro.com">Bangalore</a></li>
+          <li><a href="https://app.carpoolkaro.com">Pune</a></li>
+          <li><a href="https://app.carpoolkaro.com">Mumbai</a></li>
+          <li><a href="https://app.carpoolkaro.com">Delhi NCR</a></li>
+          <li><a href="https://app.carpoolkaro.com">Chennai</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Product</h4>
-      <ul>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="https://app.carpoolkaro.com">Open App</a></li>
-        <li><a href="https://app.carpoolkaro.com">Download</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>© 2026 CarpoolKaro. All rights reserved.</p>
+      <p>Ride Together, Save Together 🚗</p>
     </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="https://app.carpoolkaro.com/terms">Terms</a></li>
-        <li><a href="https://app.carpoolkaro.com/privacy">Privacy</a></li>
-        <li><a href="mailto:support@carpoolkaro.com">Support</a></li>
-        <li><a href="mailto:contact@carpoolkaro.com">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Cities</h4>
-      <ul>
-        <li><a href="https://app.carpoolkaro.com">Hyderabad</a></li>
-        <li><a href="https://app.carpoolkaro.com">Bangalore</a></li>
-        <li><a href="https://app.carpoolkaro.com">Pune</a></li>
-        <li><a href="https://app.carpoolkaro.com">Mumbai</a></li>
-        <li><a href="https://app.carpoolkaro.com">Delhi NCR</a></li>
-        <li><a href="https://app.carpoolkaro.com">Chennai</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 CarpoolKaro. All rights reserved.</p>
-    <p>Ride Together, Save Together, Code Better 🚀</p>
   </div>
 </footer>
 
 <script>
-// Generate floating particles
-function createParticles() {
-  const container = document.getElementById('particles');
-  const particleCount = window.innerWidth < 768 ? 10 : 20;
-  
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    particle.style.animationDelay = Math.random() * 15 + 's';
-    particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-    container.appendChild(particle);
-  }
-}
-
-createParticles();
-
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-      document.querySelector('.mobile-menu')?.classList.remove('open');
+    const href = this.getAttribute('href');
+    if (href !== '#') {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('.mobile-menu')?.classList.remove('open');
+      }
     }
   });
 });
