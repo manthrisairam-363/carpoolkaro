@@ -70,21 +70,13 @@ nav {
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .nav-logo img {
-  height: 40px;
+  height: 48px;
   width: auto;
-}
-
-.nav-logo-text {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--primary);
-  letter-spacing: -0.5px;
 }
 
 .nav-logo:hover {
@@ -693,18 +685,15 @@ footer {
   margin-bottom: 60px;
 }
 
-.footer-brand h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 16px;
+.footer-brand {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
 }
 
 .footer-brand img {
-  height: 32px;
+  height: 48px;
   width: auto;
+  margin-bottom: 16px;
 }
 
 .footer-brand p {
@@ -882,7 +871,6 @@ footer {
   <div class="nav-wrapper">
     <a href="#" class="nav-logo">
       <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro">
-      <span class="nav-logo-text">CarpoolKaro</span>
     </a>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
@@ -1092,10 +1080,7 @@ footer {
   <div class="footer-wrapper">
     <div class="footer-top">
       <div class="footer-brand">
-        <h3>
-          <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro">
-          CarpoolKaro
-        </h3>
+        <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro">
         <p>India's trusted IT carpool community. Connecting professionals across 6 major cities for smarter, sustainable, and affordable commutes.</p>
       </div>
       <div class="footer-col">
