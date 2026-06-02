@@ -17,17 +17,21 @@
 }
 
 :root {
-  --primary: #2563eb;
+  --primary: #1e40af;
   --primary-light: #3b82f6;
-  --primary-dark: #1e40af;
-  --secondary: #059669;
-  --accent: #dc2626;
-  --text-primary: #111827;
+  --primary-lighter: #60a5fa;
+  --primary-dark: #1e3a8a;
+  --secondary: #0f172a;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --text-primary: #1f2937;
   --text-secondary: #6b7280;
-  --text-light: #f3f4f6;
-  --border: #e5e7eb;
-  --bg-light: #f9fafb;
-  --bg-white: #ffffff;
 }
 
 html {
@@ -36,7 +40,7 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg-light);
+  background: var(--white);
   color: var(--text-primary);
   line-height: 1.6;
 }
@@ -48,9 +52,9 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--bg-white);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.08);
 }
 
 .nav-wrapper {
@@ -60,7 +64,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 72px;
 }
 
 .nav-logo {
@@ -68,20 +72,19 @@ nav {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  font-weight: 700;
-  color: var(--text-primary);
   transition: 0.3s;
 }
 
 .nav-logo img {
-  height: 36px;
+  height: 40px;
   width: auto;
 }
 
 .nav-logo-text {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--primary);
+  letter-spacing: -0.5px;
 }
 
 .nav-logo:hover {
@@ -139,7 +142,7 @@ nav {
 
 .nav-cta:hover {
   background: var(--primary-dark);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.25);
   transform: translateY(-2px);
 }
 
@@ -155,11 +158,11 @@ nav {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 70px;
+  top: 72px;
   left: 0;
   right: 0;
-  background: var(--bg-white);
-  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
   padding: 20px;
   z-index: 99;
   flex-direction: column;
@@ -184,33 +187,44 @@ nav {
 
 /* Hero Section */
 .hero {
-  padding-top: 70px;
+  padding-top: 72px;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--bg-light) 0%, #f0f9ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
   position: relative;
   overflow: hidden;
 }
 
 .hero-shape {
   position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -200px;
+  right: -150px;
+  z-index: 0;
+}
+
+.hero-shape-2 {
+  position: absolute;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.05) 0%, transparent 70%);
   border-radius: 50%;
-  top: -100px;
-  right: -100px;
+  bottom: -100px;
+  left: -100px;
   z-index: 0;
 }
 
 .hero-wrapper {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 60px 6%;
+  padding: 80px 6%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 100px;
   align-items: center;
   width: 100%;
   position: relative;
@@ -218,36 +232,40 @@ nav {
 }
 
 .hero-content h1 {
-  font-size: clamp(40px, 5vw, 56px);
+  font-size: clamp(44px, 5.5vw, 60px);
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   color: var(--text-primary);
+  letter-spacing: -1px;
 }
 
 .hero-content h1 .highlight {
-  color: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-content p {
   font-size: 18px;
   color: var(--text-secondary);
   line-height: 1.8;
-  margin-bottom: 32px;
-  max-width: 500px;
+  margin-bottom: 40px;
+  max-width: 550px;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .btn {
-  padding: 14px 28px;
-  border-radius: 8px;
+  padding: 14px 32px;
+  border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
@@ -258,122 +276,121 @@ nav {
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.25);
 }
 
 .btn-primary:hover {
-  background: var(--primary-dark);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(30, 64, 175, 0.35);
 }
 
 .btn-secondary {
-  background: var(--bg-white);
+  background: var(--white);
   color: var(--primary);
   border: 2px solid var(--primary);
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.1);
 }
 
 .btn-secondary:hover {
-  background: #f0f9ff;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-}
-
-.hero-stats {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-number {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.stat-label {
-  font-size: 13px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 4px;
+  background: #f0f4ff;
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.15);
+  transform: translateY(-3px);
 }
 
 .hero-image {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
-  border-radius: 16px;
-  padding: 40px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(30, 64, 175, 0.04) 100%);
+  border-radius: 20px;
+  padding: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
-  border: 1px solid var(--border);
+  min-height: 450px;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent);
+  border-radius: 50%;
 }
 
 .hero-image img {
   max-width: 100%;
   height: auto;
-  max-height: 300px;
+  max-height: 350px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Sections */
 section {
-  padding: 100px 6%;
+  padding: 120px 6%;
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
 .section-label {
   display: inline-block;
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: var(--primary);
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 8px;
 }
 
 .section-title {
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(36px, 4.5vw, 52px);
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.2;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
 }
 
 .section-subtitle {
   font-size: 16px;
   color: var(--text-secondary);
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
   line-height: 1.8;
 }
 
 /* Features Section */
+.features {
+  background: var(--white);
+}
+
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 40px;
 }
 
 .feature-card {
-  background: var(--bg-white);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 40px;
-  transition: 0.3s;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 48px;
+  transition: 0.4s;
   position: relative;
   overflow: hidden;
 }
@@ -385,78 +402,79 @@ section {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  opacity: 0;
-  transition: opacity 0.3s;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
 }
 
 .feature-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.1);
-  transform: translateY(-8px);
+  border-color: var(--primary-lighter);
+  box-shadow: 0 20px 40px rgba(30, 64, 175, 0.12);
+  transform: translateY(-12px);
 }
 
 .feature-card:hover::before {
-  opacity: 1;
+  transform: scaleX(1);
 }
 
 .feature-icon {
-  font-size: 40px;
-  margin-bottom: 16px;
+  font-size: 44px;
+  margin-bottom: 20px;
   display: inline-block;
 }
 
 .feature-card h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .feature-card p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-secondary);
   line-height: 1.7;
 }
 
 /* Pricing Section */
 .pricing {
-  background: linear-gradient(135deg, var(--bg-light) 0%, #f0f9ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
 }
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
 }
 
 .price-card {
-  background: var(--bg-white);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 40px;
-  transition: 0.3s;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 48px;
+  transition: 0.4s;
   position: relative;
   text-align: center;
 }
 
 .price-card.featured {
   border: 2px solid var(--primary);
-  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.15);
-  transform: scale(1.05);
+  box-shadow: 0 20px 48px rgba(30, 64, 175, 0.15);
+  transform: scale(1.06);
 }
 
 .price-badge {
   display: inline-block;
-  padding: 6px 14px;
-  background: rgba(37, 99, 235, 0.1);
+  padding: 8px 18px;
+  background: rgba(59, 130, 246, 0.1);
   color: var(--primary);
-  border-radius: 20px;
-  font-size: 11px;
+  border-radius: 10px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .price-card.featured .price-badge {
@@ -465,77 +483,89 @@ section {
 }
 
 .price-card h3 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .price-amount {
-  font-size: 42px;
+  font-size: 48px;
   font-weight: 800;
-  color: var(--primary);
-  margin: 20px 0 8px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 24px 0 12px;
 }
 
 .price-period {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .price-features {
   list-style: none;
   text-align: left;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .price-features li {
-  padding: 12px 0;
-  font-size: 13px;
+  padding: 14px 0;
+  font-size: 14px;
   color: var(--text-secondary);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--gray-100);
   display: flex;
   align-items: center;
+}
+
+.price-features li:last-child {
+  border-bottom: none;
 }
 
 .price-features li::before {
   content: '✓';
-  width: 20px;
-  height: 20px;
-  background: rgba(37, 99, 235, 0.1);
-  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 12px;
+  margin-right: 14px;
   color: var(--primary);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
+  flex-shrink: 0;
 }
 
 .price-card:hover {
-  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.12);
-  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(30, 64, 175, 0.15);
+  transform: translateY(-12px);
 }
 
 .price-card.featured:hover {
-  transform: scale(1.05) translateY(-8px);
+  transform: scale(1.06) translateY(-12px);
 }
 
 /* Cities Section */
+.cities {
+  background: var(--white);
+}
+
 .cities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
 }
 
 .city-card {
-  background: var(--bg-white);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px;
-  transition: 0.3s;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 40px;
+  transition: 0.4s;
   position: relative;
   overflow: hidden;
 }
@@ -546,46 +576,47 @@ section {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: var(--primary);
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
 }
 
 .city-emoji {
-  font-size: 36px;
-  margin-bottom: 12px;
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: inline-block;
 }
 
 .city-card h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .city-card p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 12px;
+  line-height: 1.7;
+  margin-bottom: 16px;
 }
 
 .city-status {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
-  background: rgba(5, 150, 105, 0.1);
-  border-radius: 20px;
-  font-size: 11px;
+  padding: 8px 14px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 8px;
+  font-size: 12px;
   font-weight: 700;
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 .city-status::before {
   content: '';
   width: 6px;
   height: 6px;
-  background: var(--secondary);
+  background: var(--primary);
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
@@ -596,52 +627,56 @@ section {
 }
 
 .city-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.1);
+  border-color: var(--primary-lighter);
+  box-shadow: 0 16px 40px rgba(30, 64, 175, 0.12);
   transform: translateY(-8px);
 }
 
 /* CTA Section */
 .cta {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   color: white;
   text-align: center;
-  padding: 80px 6%;
-  border-radius: 16px;
-  margin: 60px 6%;
+  padding: 100px 6%;
+  border-radius: 20px;
+  margin: 80px 6%;
 }
 
 .cta h2 {
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(36px, 4.5vw, 52px);
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
 }
 
 .cta p {
   font-size: 16px;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto 32px;
+  opacity: 0.95;
+  max-width: 650px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
 }
 
 .cta .btn {
   background: white;
   color: var(--primary);
-  padding: 14px 32px;
+  padding: 14px 36px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .cta .btn:hover {
-  background: #f0f9ff;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: #f9fafb;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
 }
 
 /* Footer */
 footer {
-  background: var(--text-primary);
-  color: var(--text-light);
-  padding: 60px 6%;
+  background: var(--secondary);
+  color: var(--white);
+  padding: 80px 6%;
   position: relative;
   z-index: 2;
 }
@@ -654,37 +689,37 @@ footer {
 .footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 60px;
-  margin-bottom: 40px;
+  gap: 80px;
+  margin-bottom: 60px;
 }
 
 .footer-brand h3 {
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .footer-brand img {
-  height: 28px;
+  height: 32px;
   width: auto;
 }
 
 .footer-brand p {
-  font-size: 13px;
-  opacity: 0.7;
-  line-height: 1.6;
+  font-size: 14px;
+  opacity: 0.8;
+  line-height: 1.7;
 }
 
 .footer-col h4 {
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   font-weight: 700;
-  margin-bottom: 20px;
-  color: #fff;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .footer-col ul {
@@ -692,30 +727,30 @@ footer {
 }
 
 .footer-col li {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .footer-col a {
-  font-size: 13px;
-  opacity: 0.7;
+  font-size: 14px;
+  opacity: 0.8;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .footer-col a:hover {
   opacity: 1;
-  color: var(--primary-light);
+  color: #60a5fa;
 }
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 24px;
+  padding-top: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
-  font-size: 12px;
+  gap: 20px;
+  font-size: 13px;
   opacity: 0.7;
 }
 
@@ -723,12 +758,12 @@ footer {
 @media (max-width: 1024px) {
   .hero-wrapper {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 60px;
   }
 
   .footer-top {
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 50px;
   }
 }
 
@@ -755,11 +790,11 @@ footer {
   }
 
   .hero-wrapper {
-    padding: 40px 4%;
+    padding: 60px 4%;
   }
 
   .hero-content h1 {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .hero-buttons {
@@ -771,15 +806,17 @@ footer {
   }
 
   section {
-    padding: 60px 4%;
+    padding: 80px 4%;
   }
 
   .features-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .pricing-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .price-card.featured {
@@ -787,16 +824,17 @@ footer {
   }
 
   .price-card.featured:hover {
-    transform: translateY(-8px);
+    transform: translateY(-12px);
   }
 
   .cities-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .footer-top {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 40px;
   }
 
   .footer-bottom {
@@ -805,19 +843,14 @@ footer {
   }
 
   .cta {
-    margin: 40px 4%;
-    padding: 40px 4%;
+    margin: 60px 4%;
+    padding: 60px 4%;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-stats {
-    flex-direction: column;
-    gap: 20px;
-  }
-
   .hero-content h1 {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .section-title {
@@ -825,7 +858,19 @@ footer {
   }
 
   .cta h2 {
-    font-size: 24px;
+    font-size: 28px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .features-grid {
+    gap: 20px;
+  }
+
+  .feature-card {
+    padding: 32px;
   }
 }
 </style>
@@ -858,27 +903,14 @@ footer {
 <!-- Hero Section -->
 <div class="hero">
   <div class="hero-shape"></div>
+  <div class="hero-shape-2"></div>
   <div class="hero-wrapper">
     <div class="hero-content">
-      <h1>Your IT Commute,<br><span class="highlight">Simplified & Smarter</span></h1>
-      <p>Connect with verified IT professionals on your route. Save money on fuel, reduce traffic congestion, and build meaningful professional relationships.</p>
+      <h1>Smart Carpooling for <span class="highlight">IT Professionals</span></h1>
+      <p>Connect with verified colleagues heading your way. Save money, reduce your carbon footprint, and build meaningful professional networks every day.</p>
       <div class="hero-buttons">
-        <a href="https://app.carpoolkaro.com" class="btn btn-primary">Start Free Today</a>
-        <a href="#features" class="btn btn-secondary">Learn More</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-number">₹2</div>
-          <div class="stat-label">Platform Fee</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">6</div>
-          <div class="stat-label">IT Cities</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">₹10</div>
-          <div class="stat-label">Signup Bonus</div>
-        </div>
+        <a href="https://app.carpoolkaro.com" class="btn btn-primary">Get Started Free</a>
+        <a href="#features" class="btn btn-secondary">Explore Features</a>
       </div>
     </div>
     <div class="hero-image">
@@ -888,53 +920,53 @@ footer {
 </div>
 
 <!-- Features Section -->
-<section id="features">
+<section id="features" class="features">
   <div class="section-header">
-    <span class="section-label">✨ Key Features</span>
+    <span class="section-label">✨ Why CarpoolKaro</span>
     <h2 class="section-title">Everything Built for IT Professionals</h2>
-    <p class="section-subtitle">Designed specifically for the tech community. Security, simplicity, and reliability at every step.</p>
+    <p class="section-subtitle">Designed specifically for tech workers. Security, simplicity, and efficiency in every feature.</p>
   </div>
   
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">🔐</div>
       <h3>Verified Community</h3>
-      <p>Ride with verified IT professionals only. Company badges displayed on every profile for maximum trust and safety.</p>
+      <p>Ride exclusively with verified IT professionals. Company badges displayed on every profile for maximum trust and safety.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">💳</div>
       <h3>Smart Wallet System</h3>
-      <p>Get ₹10 signup bonus. Earn rewards for referrals. Only ₹2 platform fee per ride. Pro members get zero fees.</p>
+      <p>Get ₹10 signup bonus instantly. Earn rewards for successful referrals. Pro members enjoy zero platform fees on all rides.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🗺️</div>
       <h3>Intelligent Matching</h3>
-      <p>AI-powered algorithm finds perfect ride matches based on your route, schedule, and preferences automatically.</p>
+      <p>AI-powered algorithm finds perfect matches based on your route, timing, and preferences. Ride with confidence every day.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">💬</div>
-      <h3>In-App Chat Only</h3>
-      <p>Secure in-app messaging keeps your privacy protected. Phone numbers are never shared with other users.</p>
+      <h3>Secure Communication</h3>
+      <p>In-app messaging keeps your privacy protected. Phone numbers are never shared. Chat safely before and during rides.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔄</div>
       <h3>Repeat Ride Scheduler</h3>
-      <p>Set your weekly commute schedule once. Automatic matching handles daily routine rides seamlessly.</p>
+      <p>Set your weekly commute once. Automatic matching handles your daily routine rides. Build lasting carpool partnerships.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">⭐</div>
       <h3>Ratings & Reviews</h3>
-      <p>Community-driven rating system ensures quality and accountability. Build your professional reputation.</p>
+      <p>Community-driven ratings ensure quality. Build your professional reputation. Transparent system rewards reliable riders.</p>
     </div>
   </div>
 </section>
 
 <!-- Cities Section -->
-<section id="cities">
+<section id="cities" class="cities">
   <div class="section-header">
     <span class="section-label">🗺️ Coverage</span>
-    <h2 class="section-title">Live Across India's Top IT Hubs</h2>
-    <p class="section-subtitle">Connecting professionals in 6 major IT cities across India</p>
+    <h2 class="section-title">Available Across Major IT Hubs</h2>
+    <p class="section-subtitle">Connecting professionals in 6 major cities where the tech industry thrives</p>
   </div>
 
   <div class="cities-grid">
@@ -982,7 +1014,7 @@ footer {
   <div class="section-header">
     <span class="section-label">💳 Pricing</span>
     <h2 class="section-title">Simple, Transparent Pricing</h2>
-    <p class="section-subtitle">Start free forever. Upgrade anytime for zero platform fees.</p>
+    <p class="section-subtitle">Start free and upgrade whenever you're ready. No hidden charges, cancel anytime.</p>
   </div>
 
   <div class="pricing-grid">
@@ -993,9 +1025,9 @@ footer {
       <div class="price-period">Forever</div>
       <ul class="price-features">
         <li>Post & book rides</li>
-        <li>₹2 platform fee</li>
+        <li>Platform fee per ride</li>
         <li>In-app chat</li>
-        <li>₹10 signup bonus</li>
+        <li>Signup bonus</li>
         <li>Referral earnings</li>
       </ul>
       <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Get Started</a>
@@ -1008,12 +1040,12 @@ footer {
       <div class="price-period">Per Month</div>
       <ul class="price-features">
         <li>Zero platform fees</li>
-        <li>⭐ Pro badge</li>
-        <li>Priority listing</li>
+        <li>Pro badge status</li>
+        <li>Priority in searches</li>
         <li>All free features</li>
         <li>Priority support</li>
       </ul>
-      <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Upgrade Now</a>
+      <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Choose Plan</a>
     </div>
 
     <div class="price-card featured">
@@ -1023,9 +1055,9 @@ footer {
       <div class="price-period">3 Months</div>
       <ul class="price-features">
         <li>Zero platform fees</li>
-        <li>⭐ Pro badge</li>
-        <li>Priority listing</li>
-        <li>Save ₹38 vs monthly</li>
+        <li>Pro badge status</li>
+        <li>Priority in searches</li>
+        <li>Save 17% vs monthly</li>
         <li>All free features</li>
       </ul>
       <a href="https://app.carpoolkaro.com" class="btn btn-primary" style="width: 100%;">Get Pro</a>
@@ -1038,9 +1070,9 @@ footer {
       <div class="price-period">Per Year</div>
       <ul class="price-features">
         <li>Zero platform fees</li>
-        <li>⭐ Pro badge</li>
-        <li>Priority listing</li>
-        <li>Save ₹349 vs monthly</li>
+        <li>Pro badge status</li>
+        <li>Priority in searches</li>
+        <li>Save 37% vs monthly</li>
         <li>All free features</li>
       </ul>
       <a href="https://app.carpoolkaro.com" class="btn btn-secondary" style="width: 100%;">Subscribe</a>
@@ -1051,8 +1083,8 @@ footer {
 <!-- CTA Section -->
 <div class="cta">
   <h2>Ready to Transform Your Commute?</h2>
-  <p>Join thousands of IT professionals already saving money and reducing their carbon footprint with CarpoolKaro.</p>
-  <a href="https://app.carpoolkaro.com" class="btn">Download the App</a>
+  <p>Join thousands of IT professionals already saving money and building meaningful connections through smarter carpooling.</p>
+  <a href="https://app.carpoolkaro.com" class="btn">Download the App Today</a>
 </div>
 
 <!-- Footer -->
@@ -1064,7 +1096,7 @@ footer {
           <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro">
           CarpoolKaro
         </h3>
-        <p>India's IT Carpool Community. Connecting professionals across 6 major cities for smarter, sustainable commutes.</p>
+        <p>India's trusted IT carpool community. Connecting professionals across 6 major cities for smarter, sustainable, and affordable commutes.</p>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
@@ -1081,7 +1113,7 @@ footer {
           <li><a href="https://app.carpoolkaro.com/terms">Terms of Service</a></li>
           <li><a href="https://app.carpoolkaro.com/privacy">Privacy Policy</a></li>
           <li><a href="mailto:support@carpoolkaro.com">Support</a></li>
-          <li><a href="mailto:contact@carpoolkaro.com">Contact Us</a></li>
+          <li><a href="mailto:contact@carpoolkaro.com">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
