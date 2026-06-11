@@ -3,868 +3,401 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CarpoolKaro — India's IT Carpool Community | Save ₹3,000+ Monthly</title>
-<meta name="description" content="Share rides with verified IT professionals. Save money, reduce traffic. Available in Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR & Chennai.">
-<meta name="keywords" content="carpool India, IT carpool, office carpool, Hyderabad carpool, Bangalore carpool, ride sharing IT professionals, HITEC City carpool, save commute cost">
-<meta name="author" content="CarpoolKaro">
+<title>CarpoolKaro — Stop Paying Full Fare. Share It.</title>
+<meta name="description" content="India's carpool platform for IT professionals. Save ₹3,000+ monthly. Verified colleagues. ₹2 flat fee. Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR, Chennai.">
+<meta name="keywords" content="carpool India, IT carpool, office carpool, Hyderabad carpool, Bangalore carpool, HITEC City carpool, ride sharing IT professionals">
+<meta name="theme-color" content="#0f172a">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0d1b3e">
 <link rel="canonical" href="https://carpoolkaro.com/">
 
-<!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://carpoolkaro.com/">
-<meta property="og:title" content="CarpoolKaro — India's IT Carpool Community">
-<meta property="og:description" content="Share your daily office commute with verified IT professionals. Save ₹3,000+ every month. Free to join.">
+<meta property="og:title" content="CarpoolKaro — Stop Paying Full Fare. Share It.">
+<meta property="og:description" content="India's carpool platform for IT professionals. Save ₹3,000+ monthly with verified colleagues.">
 <meta property="og:image" content="https://app.carpoolkaro.com/icon-512.png">
 <meta property="og:site_name" content="CarpoolKaro">
 <meta property="og:locale" content="en_IN">
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CarpoolKaro — India's IT Carpool Community">
-<meta name="twitter:description" content="Share rides with verified IT professionals. Save ₹3,000+ monthly on your commute.">
+<meta name="twitter:title" content="CarpoolKaro — Stop Paying Full Fare. Share It.">
+<meta name="twitter:description" content="India's carpool platform for IT professionals. Save ₹3,000+ monthly.">
 <meta name="twitter:image" content="https://app.carpoolkaro.com/icon-512.png">
 
-<!-- Structured Data for Google -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "CarpoolKaro",
-  "url": "https://app.carpoolkaro.com",
-  "description": "India's carpool platform for IT professionals. Share rides, save money, reduce traffic.",
-  "applicationCategory": "TravelApplication",
-  "operatingSystem": "Web, Android",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-  "areaServed": ["Hyderabad", "Bangalore", "Pune", "Mumbai", "Delhi NCR", "Chennai"]
-}
+{"@context":"https://schema.org","@type":"WebApplication","name":"CarpoolKaro","url":"https://app.carpoolkaro.com","description":"India's carpool platform for IT professionals.","applicationCategory":"TravelApplication","operatingSystem":"Web, Android","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"areaServed":["Hyderabad","Bangalore","Pune","Mumbai","Delhi NCR","Chennai"]}
 </script>
 
 <link rel="icon" href="https://app.carpoolkaro.com/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-:root{--navy:#0d1b3e;--yellow:#facc15;--yellow2:#f59e0b;}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;overflow-x:hidden;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fafaf5;color:#0f172a;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+:root{--ink:#0f172a;--cream:#fafaf5;--yellow:#facc15;--gray:#64748b;--light:#f1f5f9}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(13,27,62,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);}
-.nav-logo{background:#fff;padding:5px 12px;border-radius:10px;display:flex;align-items:center;}
-.nav-logo img{height:30px;width:auto;}
-.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
-.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:14px;font-weight:500;transition:0.2s;}
-.nav-links a:hover{color:var(--yellow);}
-.nav-cta{background:var(--yellow)!important;color:#111!important;padding:10px 22px;border-radius:100px;font-weight:700!important;}
-.hamburger{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;}
-.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:#0d1b3e;padding:24px;border-bottom:1px solid rgba(255,255,255,0.08);z-index:99;flex-direction:column;gap:20px;}
-.mobile-menu a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:16px;font-weight:500;}
-.mobile-menu.open{display:flex;}
+.nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;background:rgba(15,23,42,0.92);backdrop-filter:blur(20px);padding:10px 12px 10px 24px;border-radius:100px;display:flex;align-items:center;gap:20px;box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+.nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;color:#fff;font-size:15px}
+.nav-logo-dot{width:8px;height:8px;background:var(--yellow);border-radius:50%;box-shadow:0 0 12px var(--yellow);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.nav-links{display:flex;gap:6px}
+.nav-links a{color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px;transition:0.2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.08)}
+.nav-cta{background:var(--yellow);color:var(--ink);padding:9px 18px;border-radius:100px;font-weight:800;font-size:13px;transition:0.2s}
+.nav-cta:hover{transform:scale(1.05)}
+@media(max-width:700px){.nav-links{display:none}.nav{padding:10px 12px 10px 18px;gap:12px}}
 
 /* HERO */
-.hero{min-height:100vh;padding:120px 6% 80px;display:flex;align-items:center;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 65% 40%,rgba(250,204,21,0.07) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 5% 80%,rgba(99,102,241,0.06) 0%,transparent 55%);}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 90% 80% at 50% 40%,black 20%,transparent 80%);}
-.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
-
-/* HERO LEFT */
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.25);color:var(--yellow);padding:6px 16px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:0.5px;margin-bottom:24px;animation:fadeUp 0.5s ease both;}
-.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--yellow);animation:blink 1.5s infinite;}
-.hero-logo-wrap{margin-bottom:24px;animation:fadeUp 0.5s 0.1s ease both;}
-.hero-logo-wrap div{background:#fff;border-radius:18px;padding:18px 28px;display:inline-block;box-shadow:0 8px 32px rgba(0,0,0,0.2);}
-.hero-logo-wrap img{width:min(260px,65vw);height:auto;display:block;}
-.hero-h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(28px,3.5vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:18px;animation:fadeUp 0.5s 0.15s ease both;}
-.hero-h1 .y{color:var(--yellow);}
-.hero-sub{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:36px;max-width:460px;animation:fadeUp 0.5s 0.2s ease both;}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;animation:fadeUp 0.5s 0.25s ease both;}
-.btn-y{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:#111;padding:15px 30px;border-radius:100px;font-weight:700;font-size:15px;text-decoration:none;transition:0.2s;box-shadow:0 6px 28px rgba(250,204,21,0.3);font-family:'DM Sans',sans-serif;}
-.btn-y:hover{background:var(--yellow2);transform:translateY(-2px);box-shadow:0 10px 36px rgba(250,204,21,0.4);}
-.btn-o{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);color:#fff;border:1px solid rgba(255,255,255,0.15);padding:15px 30px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:0.2s;font-family:'DM Sans',sans-serif;}
-.btn-o:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px);}
-
-/* TRUST BADGES */
-.trust-row{display:flex;gap:20px;flex-wrap:wrap;animation:fadeUp 0.5s 0.3s ease both;}
-.trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.45);font-weight:500;}
-.trust-icon{width:18px;height:18px;background:rgba(250,204,21,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;}
-
-/* HERO RIGHT */
-.hero-right{animation:fadeUp 0.5s 0.35s ease both;}
-.hero-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:24px;overflow:hidden;position:relative;box-shadow:0 40px 80px rgba(0,0,0,0.4);}
-.hero-card img{width:100%;display:block;}
-.hero-pill{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(13,27,62,0.92);backdrop-filter:blur(16px);border:1px solid rgba(250,204,21,0.3);color:var(--yellow);padding:7px 18px;border-radius:100px;font-size:12px;font-weight:700;white-space:nowrap;}
-
-/* SOCIAL PROOF BAR */
-.proof-bar{background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:20px 6%;display:flex;gap:0;justify-content:center;flex-wrap:wrap;}
-.proof-item{padding:0 40px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);}
-.proof-item:last-child{border-right:none;}
-.proof-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;color:var(--yellow);line-height:1;}
-.proof-label{font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;letter-spacing:0.5px;}
+.hero{padding:140px 6% 100px;min-height:90vh;display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(circle at 70% 50%,rgba(250,204,21,0.08),transparent 70%);pointer-events:none}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--yellow);padding:8px 18px;border-radius:8px;font-size:11px;font-weight:800;letter-spacing:1.5px;margin-bottom:28px;text-transform:uppercase}
+.tag::before{content:'';width:6px;height:6px;background:var(--yellow);border-radius:50%}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,6vw,80px);font-weight:700;line-height:0.95;letter-spacing:-3px;margin-bottom:24px}
+.hl{position:relative;display:inline-block;color:var(--ink);white-space:nowrap}
+.hl::after{content:'';position:absolute;left:-6px;right:-6px;bottom:6px;height:40%;background:var(--yellow);z-index:-1;transform:rotate(-1.5deg)}
+.hero p.lead{color:var(--gray);font-size:18px;line-height:1.7;margin-bottom:36px;max-width:480px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:18px 32px;border-radius:14px;font-weight:700;font-size:15px;box-shadow:6px 6px 0 var(--yellow);transition:0.2s;border:none;cursor:pointer}
+.cta:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--yellow)}
+.cta-ghost{background:transparent;color:var(--ink);box-shadow:6px 6px 0 var(--ink);border:2px solid var(--ink)}
+.cta-ghost:hover{box-shadow:3px 3px 0 var(--ink)}
+.trust-row{display:flex;gap:32px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:10px;color:var(--gray);font-size:13px;font-weight:600}
+.trust-item b{color:var(--ink);font-size:22px;font-family:'Space Grotesk'}
+/* Card stack */
+.cards{position:relative;height:480px}
+.ride-card{position:absolute;background:#fff;border:2px solid var(--ink);border-radius:24px;padding:24px;width:340px;box-shadow:10px 10px 0 rgba(15,23,42,0.06);transition:0.3s}
+.ride-card:hover{transform:translateY(-8px)}
+.rc-a{top:0;left:20px;transform:rotate(-4deg);animation:float1 6s ease-in-out infinite}
+.rc-b{top:140px;left:80px;transform:rotate(2.5deg);background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:10px 10px 0 var(--yellow);z-index:2;animation:float2 6s ease-in-out infinite}
+.rc-c{top:280px;left:30px;transform:rotate(-3deg);animation:float3 6s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-4deg) translateY(-8px)}}
+@keyframes float2{0%,100%{transform:rotate(2.5deg) translateY(0)}50%{transform:rotate(2.5deg) translateY(-12px)}}
+@keyframes float3{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-6px)}}
+.rc-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.rc-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#6366f1);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0}
+.rc-b .rc-av{background:linear-gradient(135deg,#facc15,#f59e0b);color:#000}
+.rc-name{font-weight:700;font-size:14px;display:flex;align-items:center;gap:5px}
+.rc-name .ck{background:#3b82f6;color:#fff;font-size:9px;padding:1px 5px;border-radius:4px;font-weight:800}
+.rc-meta{font-size:11px;color:var(--gray)}
+.rc-b .rc-meta{color:rgba(255,255,255,0.5)}
+.rc-route{font-weight:800;font-size:16px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.rc-time{font-size:12px;color:var(--gray);margin-bottom:14px}
+.rc-b .rc-time{color:rgba(255,255,255,0.6)}
+.rc-bottom{display:flex;justify-content:space-between;align-items:center}
+.rc-price{background:var(--yellow);color:var(--ink);font-weight:800;padding:5px 14px;border-radius:100px;font-size:14px}
+.rc-seats{font-size:11px;color:var(--gray);font-weight:700}
+.rc-b .rc-seats{color:rgba(255,255,255,0.7)}
 
 /* SECTIONS */
-.sec{padding:80px 6%;max-width:1200px;margin:0 auto;}
-.sec-full{padding:80px 6%;}
-.s-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(250,204,21,0.08);border:1px solid rgba(250,204,21,0.18);color:var(--yellow);padding:4px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;}
-.s-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(26px,3.5vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:12px;}
-.s-sub{font-size:16px;color:rgba(255,255,255,0.45);line-height:1.7;}
+section{padding:90px 6%}
+.eyebrow{font-size:12px;font-weight:800;color:var(--gray);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;justify-content:center}
+.eyebrow::before,.eyebrow::after{content:'';flex:0 0 30px;height:1px;background:#cbd5e1}
+.section-head{text-align:center;margin-bottom:60px;max-width:700px;margin-left:auto;margin-right:auto}
+.section-head h2{font-family:'Space Grotesk';font-size:clamp(32px,4.5vw,52px);font-weight:700;letter-spacing:-1.5px;line-height:1.05;margin-bottom:16px}
+.section-head p{color:var(--gray);font-size:17px;line-height:1.7}
 
 /* HOW IT WORKS */
-.how-bg{background:rgba(255,255,255,0.02);}
-.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
-.how-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:32px 26px;position:relative;transition:0.3s;}
-.how-card:hover{border-color:rgba(250,204,21,0.3);transform:translateY(-4px);}
-.how-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:56px;font-weight:800;color:rgba(250,204,21,0.07);position:absolute;top:16px;right:20px;line-height:1;}
-.how-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
-.how-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px;}
-.how-card p{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;}
+.how{background:#fff;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.step{position:relative;background:var(--cream);border-radius:24px;padding:32px}
+.step-num{font-family:'Space Grotesk';font-size:64px;font-weight:700;color:var(--yellow);line-height:1;-webkit-text-stroke:2px var(--ink);margin-bottom:16px}
+.step h3{font-size:21px;font-weight:800;margin-bottom:10px;font-family:'Space Grotesk'}
+.step p{color:var(--gray);font-size:14px;line-height:1.7}
 
 /* FEATURES */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px;}
-.feat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:28px;transition:0.3s;}
-.feat-card:hover{border-color:rgba(250,204,21,0.2);background:rgba(255,255,255,0.05);transform:translateY(-3px);}
-.feat-icon-wrap{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-.feat-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px;}
-.feat-card p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1200px;margin:0 auto}
+.feat{background:#fff;border:2px solid #e2e8f0;border-radius:20px;padding:28px;transition:0.3s}
+.feat:hover{border-color:var(--ink);transform:translateY(-6px);box-shadow:6px 6px 0 var(--yellow)}
+.feat-icon{width:48px;height:48px;background:var(--ink);color:var(--yellow);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
+.feat h3{font-size:16px;font-weight:800;margin-bottom:8px;font-family:'Space Grotesk'}
+.feat p{color:var(--gray);font-size:13px;line-height:1.7}
 
 /* CITIES */
-.cities-bg{background:rgba(0,0,0,0.15);}
-.cities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
-.city-card{border-radius:18px;padding:24px 20px;border:1px solid rgba(255,255,255,0.07);position:relative;overflow:hidden;transition:0.3s;}
-.city-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--yellow);}
-.city-card:hover{transform:translateY(-4px);border-color:rgba(250,204,21,0.3);}
-.city-emoji{font-size:28px;margin-bottom:12px;}
-.city-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;margin-bottom:6px;}
-.city-card p{font-size:12px;color:rgba(255,255,255,0.38);line-height:1.5;}
-.live-dot{display:inline-flex;align-items:center;gap:5px;margin-top:10px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#4ade80;font-size:10px;font-weight:700;padding:2px 10px;border-radius:100px;}
-.live-dot::before{content:'';width:5px;height:5px;border-radius:50%;background:#4ade80;animation:blink 1.5s infinite;}
+.cities{background:var(--ink);color:#fff;border-radius:32px;margin:0 6%;padding:80px 6%}
+.cities .section-head h2{color:#fff}
+.cities .section-head p{color:rgba(255,255,255,0.6)}
+.cities .eyebrow{color:var(--yellow)}
+.city-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;max-width:1100px;margin:0 auto}
+.city{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:22px 16px;text-align:center;transition:0.3s}
+.city:hover{background:var(--yellow);color:var(--ink);border-color:var(--yellow);transform:translateY(-6px)}
+.city-icon{font-size:32px;margin-bottom:10px}
+.city-name{font-weight:800;font-size:13px}
+.city-area{font-size:10px;opacity:0.5;margin-top:3px}
 
 /* PRICING */
-.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px;}
-.p-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px 20px;position:relative;transition:0.3s;}
-.p-card:hover{border-color:rgba(250,204,21,0.2);}
-.p-card.pop{background:var(--yellow);border-color:var(--yellow);border-width:3px;box-shadow:0 20px 60px rgba(250,204,21,0.25);}
-.p-card.pop .p-name,.p-card.pop .p-amount,.p-card.pop .p-period,.p-card.pop .p-feats li{color:#111!important;}
-.pop-badge{display:inline-block;background:#0d1b3e!important;color:#facc15!important;font-size:11px;font-weight:800;letter-spacing:1px;padding:5px 16px;border-radius:100px;white-space:nowrap;margin-bottom:12px;}
-.p-name{font-size:11px;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
-.p-amount{font-family:'Plus Jakarta Sans',sans-serif;font-size:36px;font-weight:800;line-height:1;margin-bottom:3px;}
-.p-period{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px;}
-.p-feats{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.p-feats li{font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:6px;}
-.p-feats li::before{content:'✓';color:var(--yellow);font-weight:800;}
-.pop .p-feats li::before{color:#111;}
-.p-btn{display:block;text-align:center;margin-top:22px;padding:10px;border-radius:100px;text-decoration:none;font-size:13px;font-weight:700;background:rgba(255,255,255,0.08);color:#fff;transition:0.2s;}
-.pop .p-btn{background:#0d1b3e!important;color:#fff!important;font-weight:800!important;font-size:14px;padding:14px;}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto}
+.price-card{background:#fff;border:2px solid var(--ink);border-radius:24px;padding:40px;position:relative;transition:0.3s}
+.price-card.pro{background:var(--ink);color:#fff}
+.price-tag{position:absolute;top:-14px;right:24px;background:var(--yellow);color:var(--ink);padding:6px 14px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:1px}
+.price-name{font-size:13px;font-weight:800;letter-spacing:2px;color:var(--gray);margin-bottom:10px;text-transform:uppercase}
+.price-card.pro .price-name{color:var(--yellow)}
+.price{font-family:'Space Grotesk';font-size:56px;font-weight:700;line-height:1;margin-bottom:6px;letter-spacing:-2px}
+.price small{font-size:18px;color:var(--gray);font-weight:500}
+.price-card.pro .price small{color:rgba(255,255,255,0.5)}
+.price-sub{color:var(--gray);font-size:13px;margin-bottom:28px}
+.price-card.pro .price-sub{color:rgba(255,255,255,0.6)}
+.price-list{list-style:none;margin-bottom:32px}
+.price-list li{padding:9px 0;font-size:14px;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(15,23,42,0.06)}
+.price-card.pro .price-list li{border-color:rgba(255,255,255,0.08)}
+.price-list li::before{content:'✓';color:var(--yellow);font-weight:900;flex-shrink:0;width:18px;height:18px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px}
+.price-card.pro .price-list li::before{background:var(--yellow);color:var(--ink)}
+.price-cta{display:block;text-align:center;background:var(--ink);color:#fff;padding:14px;border-radius:14px;font-weight:800;font-size:14px;border:2px solid var(--ink);transition:0.2s}
+.price-card.pro .price-cta{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.price-cta:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.15)}
 
-/* CTA */
-.cta-wrap{text-align:center;padding:100px 6%;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(250,204,21,0.06),transparent);}
-.dl-badges{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
-.dl-badge{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:13px 24px;border-radius:14px;text-decoration:none;color:#fff;transition:0.2s;}
-.dl-badge:hover{background:rgba(255,255,255,0.09);border-color:rgba(250,204,21,0.3);transform:translateY(-2px);}
-.dl-badge .icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;}
-.dl-badge .sub{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.5px;}
-.dl-badge .name{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;}
+/* FAQ */
+.faq{max-width:760px;margin:0 auto}
+.faq-item{background:#fff;border:2px solid #e2e8f0;border-radius:16px;margin-bottom:12px;overflow:hidden;transition:0.2s}
+.faq-item:hover{border-color:var(--ink)}
+.faq-q{padding:20px 24px;cursor:pointer;font-weight:700;font-size:15px;display:flex;justify-content:space-between;align-items:center;user-select:none;font-family:'Space Grotesk'}
+.faq-q::after{content:'+';font-size:22px;color:var(--yellow);font-weight:700;transition:0.3s}
+.faq-item[open] .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 24px 22px;color:var(--gray);font-size:14px;line-height:1.7}
+
+/* DOWNLOAD */
+.download{text-align:center;background:linear-gradient(135deg,var(--yellow) 0%,#fbbf24 100%);border-radius:32px;margin:0 6%;padding:80px 6%}
+.download h2{font-family:'Space Grotesk';font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:18px}
+.download p{color:rgba(15,23,42,0.7);font-size:17px;margin-bottom:36px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.7}
+.dl-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.dl-btn{background:var(--ink);color:#fff;padding:16px 28px;border-radius:16px;display:flex;align-items:center;gap:12px;transition:0.2s;font-weight:700;position:relative}
+.dl-btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.25)}
+.dl-sub{font-size:10px;opacity:0.7;letter-spacing:1px;text-transform:uppercase;display:block}
+.dl-name{font-size:16px;font-weight:800}
+.dl-coming{position:absolute;top:-8px;right:-6px;background:#fff;color:var(--ink);font-size:9px;font-weight:800;padding:3px 8px;border-radius:100px;letter-spacing:0.5px;border:2px solid var(--ink)}
 
 /* FOOTER */
-footer{background:rgba(0,0,0,0.35);border-top:1px solid rgba(255,255,255,0.06);padding:56px 6% 28px;}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px;max-width:1200px;margin:0 auto 44px;}
-.ft-brand .ft-logo{background:#fff;border-radius:12px;padding:10px 16px;display:inline-block;margin-bottom:14px;}
-.ft-brand .ft-logo img{height:36px;width:auto;}
-.ft-brand p{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.7;max-width:240px;}
-.ft-col h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.5px;margin-bottom:16px;}
-.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.ft-col a{font-size:13px;color:rgba(255,255,255,0.38);text-decoration:none;transition:0.2s;}
-.ft-col a:hover{color:var(--yellow);}
-.ft-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;max-width:1200px;margin:0 auto;}
-.ft-bottom p{font-size:12px;color:rgba(255,255,255,0.25);}
+footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 40px}
+.foot-brand{font-family:'Space Grotesk';font-weight:800;color:#fff;font-size:22px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.foot-brand-dot{width:8px;height:8px;background:var(--yellow);border-radius:50%}
+.foot-desc{font-size:13px;line-height:1.7;max-width:300px}
+.foot-col h4{color:#fff;font-size:13px;font-weight:800;margin-bottom:14px;letter-spacing:1.5px;text-transform:uppercase}
+.foot-col a{display:block;font-size:13px;padding:5px 0;transition:0.2s}
+.foot-col a:hover{color:var(--yellow)}
+.foot-bottom{max-width:1200px;margin:0 auto;padding-top:30px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:12px}
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.4;}}
-
-/* RESPONSIVE */
-@media(max-width:1000px){.hero-inner{grid-template-columns:1fr;}.hero-right{display:none;}.how-grid{grid-template-columns:1fr;}.feat-grid{grid-template-columns:repeat(2,1fr);}.price-grid{grid-template-columns:repeat(2,1fr);}.ft-top{grid-template-columns:1fr 1fr;gap:28px;}.nav-links{display:none;}.hamburger{display:block;}.proof-item{padding:0 20px;}}
-@media(max-width:600px){.feat-grid{grid-template-columns:1fr;}.cities-grid{grid-template-columns:1fr 1fr;}.price-grid{grid-template-columns:1fr 1fr;}.ft-top{grid-template-columns:1fr;}.hero-btns{flex-direction:column;}.btn-y,.btn-o{justify-content:center;}.proof-bar{gap:10px;}.proof-item{padding:12px 16px;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);width:100%;}}
-
-/* ── MOTION & ANIMATIONS ── */
-
-/* Floating particles background */
-.particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
-.particle { position: absolute; border-radius: 50%; background: var(--yellow); opacity: 0; animation: float-up linear infinite; }
-
-/* Hero logo subtle float */
-.hero-logo-wrap div { animation: logo-float 4s ease-in-out infinite; }
-@keyframes logo-float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
-
-/* Hero heading word reveal */
-.hero-h1 { overflow: hidden; }
-
-/* Glow pulse on CTA button */
-.btn-y { animation: glow-pulse 3s ease-in-out infinite; }
-@keyframes glow-pulse {
-  0%,100% { box-shadow: 0 6px 28px rgba(250,204,21,0.3); }
-  50% { box-shadow: 0 6px 40px rgba(250,204,21,0.6), 0 0 60px rgba(250,204,21,0.2); }
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:120px 6% 60px}
+  .cards{height:440px;transform:scale(0.85);transform-origin:left}
+  .steps,.features{grid-template-columns:1fr 1fr;gap:14px}
+  .city-grid{grid-template-columns:repeat(3,1fr)}
+  .pricing-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
 }
-
-/* Trust badge dot ping */
-.trust-icon { position: relative; }
-.trust-icon::after { content:''; position:absolute; inset:-3px; border-radius:50%; border:2px solid rgba(250,204,21,0.4); animation: ping 2s cubic-bezier(0,0,0.2,1) infinite; }
-@keyframes ping { 75%,100% { transform:scale(1.8); opacity:0; } }
-
-/* Floating particles */
-@keyframes float-up {
-  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.4; }
-  90% { opacity: 0.1; }
-  100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+@media(max-width:560px){
+  .steps,.features{grid-template-columns:1fr}
+  .city-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr}
+  .cities,.download{margin:0 4%;padding:60px 6%}
+  section{padding:60px 6%}
 }
-
-/* Social proof bar counter animation */
-.proof-num { display: inline-block; }
-
-/* Scroll reveal — enhanced */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal-left.visible { opacity: 1; transform: translateX(0); }
-.reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-/* Staggered card reveals */
-.stagger-1 { transition-delay: 0.1s !important; }
-.stagger-2 { transition-delay: 0.2s !important; }
-.stagger-3 { transition-delay: 0.3s !important; }
-.stagger-4 { transition-delay: 0.4s !important; }
-.stagger-5 { transition-delay: 0.5s !important; }
-.stagger-6 { transition-delay: 0.6s !important; }
-
-/* How it works connecting line */
-.how-grid { position: relative; }
-.how-grid::before {
-  content: '';
-  position: absolute;
-  top: 60px; left: calc(16.67% + 12px); right: calc(16.67% + 12px);
-  height: 2px;
-  background: linear-gradient(90deg, rgba(250,204,21,0), rgba(250,204,21,0.3), rgba(250,204,21,0));
-  animation: line-flow 3s ease-in-out infinite;
-}
-@keyframes line-flow {
-  0%,100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-/* Moving gradient on hero bg */
-.hero-bg { animation: bg-shift 8s ease-in-out infinite alternate; }
-@keyframes bg-shift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-/* Nav link hover underline slide */
-.nav-links a { position: relative; }
-.nav-links a::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:var(--yellow); transition:width 0.3s ease; }
-.nav-links a:hover::after { width:100%; }
-.nav-links a:hover { color: var(--yellow); }
-
-/* City card shine effect */
-.city-card { overflow: hidden; }
-.city-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -60%;
-  width: 30%;
-  height: 200%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-  transform: skewX(-20deg);
-  transition: 0s;
-}
-.city-card:hover::before { left: 120%; transition: 0.6s; }
-
-/* Feature card icon bounce on hover */
-.feat-card:hover .feat-icon-wrap { animation: icon-bounce 0.4s ease; }
-@keyframes icon-bounce { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-
-/* Proof bar number count-up feeling */
-.proof-item { transition: transform 0.3s ease; }
-.proof-item:hover { transform: scale(1.05); }
-
-/* Moving dots on hero tag */
-.hero-tag::before { animation: blink 1s infinite; }
-
-/* Smooth active state for buttons */
-.btn-y:active { transform: scale(0.97); }
-.btn-o:active { transform: scale(0.97); }
-
-/* ── MOTION & ANIMATIONS ── */
-
-/* Floating animation for hero card */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-.hero-card { animation: float 4s ease-in-out infinite; }
-
-/* Gradient shimmer on hero headline yellow text */
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-.hero-h1 .y {
-  background: linear-gradient(90deg, #facc15 0%, #fff8a0 40%, #f59e0b 60%, #facc15 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 3s linear infinite;
-}
-
-/* Pulsing glow on CTA button */
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 6px 28px rgba(250,204,21,0.3); }
-  50% { box-shadow: 0 6px 48px rgba(250,204,21,0.6), 0 0 0 6px rgba(250,204,21,0.1); }
-}
-.btn-y { animation: glowPulse 2.5s ease-in-out infinite; }
-.btn-y:hover { animation: none; }
-
-/* Blinking live dot already exists, enhance it */
-.live-dot::before {
-  box-shadow: 0 0 6px #4ade80;
-}
-
-/* Smooth counter animation on proof bar */
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.proof-item { animation: countUp 0.6s ease both; }
-.proof-item:nth-child(1) { animation-delay: 0.1s; }
-.proof-item:nth-child(2) { animation-delay: 0.2s; }
-.proof-item:nth-child(3) { animation-delay: 0.3s; }
-.proof-item:nth-child(4) { animation-delay: 0.4s; }
-
-/* Moving gradient background on hero */
-@keyframes bgMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Hover lift on feature cards - enhanced */
-.feat-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-
-/* City card hover glow */
-.city-card:hover {
-  box-shadow: 0 16px 40px rgba(250,204,21,0.1);
-}
-
-/* Stagger scroll animations for feature cards */
-.feat-card:nth-child(1) { transition-delay: 0s; }
-.feat-card:nth-child(2) { transition-delay: 0.05s; }
-.feat-card:nth-child(3) { transition-delay: 0.1s; }
-.feat-card:nth-child(4) { transition-delay: 0.15s; }
-.feat-card:nth-child(5) { transition-delay: 0.2s; }
-.feat-card:nth-child(6) { transition-delay: 0.25s; }
-
-/* Nav link underline animation */
-.nav-links a { position: relative; }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0;
-  width: 0; height: 2px;
-  background: var(--yellow);
-  transition: width 0.3s ease;
-}
-.nav-links a:hover::after { width: 100%; }
-
-/* How-it-works cards connector line */
-.how-grid { position: relative; }
-
-/* Typing cursor on hero tag */
-@keyframes cursorBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* Download badge hover */
-.dl-badge { position: relative; overflow: hidden; }
-.dl-badge::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-  transition: left 0.5s ease;
-}
-.dl-badge:hover::before { left: 100%; }
-
-/* Proof bar number highlight on hover */
-.proof-item:hover .proof-num {
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
-}
-.proof-num { transition: transform 0.2s ease; }
-
-/* Hero trust items fade in */
-.trust-item {
-  animation: fadeUp 0.5s ease both;
-}
-.trust-item:nth-child(1) { animation-delay: 0.35s; }
-.trust-item:nth-child(2) { animation-delay: 0.45s; }
-.trust-item:nth-child(3) { animation-delay: 0.55s; }
-
-/* Rotating border on popular pricing card */
-@keyframes rotateBorder {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.p-card.pop {
-  background-image: var(--yellow);
-  position: relative;
-}
-
-/* CTA section background pulse */
-.cta-wrap {
-  animation: bgMove 8s ease infinite;
-}
-
-@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-33.33%); } }
 </style>
 </head>
 <body>
-<div class="particles" id="particles"></div>
 
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"></a>
-  <ul class="nav-links">
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#cities">Cities</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="https://app.carpoolkaro.com" class="nav-cta">Open App →</a></li>
-  </ul>
-  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">☰</button>
+<nav class="nav">
+  <a href="#" class="nav-logo"><span class="nav-logo-dot"></span>CarpoolKaro</a>
+  <div class="nav-links">
+    <a href="#how">How it Works</a>
+    <a href="#features">Features</a>
+    <a href="#cities">Cities</a>
+    <a href="#pricing">Pricing</a>
+  </div>
+  <a href="https://app.carpoolkaro.com" class="nav-cta">Open App →</a>
 </nav>
-<div class="mobile-menu">
-  <a href="#how" onclick="this.parentElement.classList.remove('open')">How it works</a>
-  <a href="#features" onclick="this.parentElement.classList.remove('open')">Features</a>
-  <a href="#cities" onclick="this.parentElement.classList.remove('open')">Cities</a>
-  <a href="#pricing" onclick="this.parentElement.classList.remove('open')">Pricing</a>
-  <a href="https://app.carpoolkaro.com" style="color:var(--yellow);font-weight:700;">Open App →</a>
-</div>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-tag">🚀 Now live across 6 Indian IT cities</div>
-      <div class="hero-logo-wrap">
-        <div><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"></div>
-      </div>
-      <h1 class="hero-h1">Commute Smarter.<br><span class="y">Save More. Every Day.</span></h1>
-      <p class="hero-sub">Join India's fastest growing IT carpool community. Connect with verified colleagues on your route, share the ride, and take back your mornings.</p>
-      <div class="hero-btns">
-        <a href="https://app.carpoolkaro.com" class="btn-y">🚗 Join Free — Start Saving</a>
-        <a href="#how" class="btn-o">See how it works</a>
-      </div>
-      <div class="trust-row">
-        <div class="trust-item"><div class="trust-icon">✓</div> Verified IT professionals only</div>
-        <div class="trust-item"><div class="trust-icon">✓</div> Free to join</div>
-        <div class="trust-item"><div class="trust-icon">✓</div> Google Sign-in</div>
-      </div>
+<section class="hero">
+  <div>
+    <div class="tag">India's IT Carpool Community</div>
+    <h1>Stop paying<br>full fare.<br><span class="hl">Share it.</span></h1>
+    <p class="lead">The carpool platform built only for IT professionals. Match with verified colleagues on your exact route. Save ₹3,000+ every month.</p>
+    <div class="cta-row">
+      <a href="https://app.carpoolkaro.com" class="cta">Join Free Today →</a>
+      <a href="#how" class="cta cta-ghost">How it Works</a>
     </div>
-    <div class="hero-right">
-      <div class="hero-card">
-        <img src="https://app.carpoolkaro.com/login-illustration.png" alt="CarpoolKaro App">
-        <div class="hero-pill">📍 Find rides near you, right now</div>
-      </div>
+    <div class="trust-row">
+      <div class="trust-item"><b>₹3K+</b>saved monthly</div>
+      <div class="trust-item"><b>6</b>IT cities live</div>
+      <div class="trust-item"><b>100%</b>verified users</div>
     </div>
   </div>
-</div>
-
-<!-- SOCIAL PROOF BAR -->
-<div class="proof-bar">
-  <div class="proof-item">
-    <div class="proof-num">6</div>
-    <div class="proof-label">IT CITIES</div>
+  <div class="cards">
+    <div class="ride-card rc-a">
+      <div class="rc-top"><div class="rc-av">MS</div><div><div class="rc-name">Manthri S. <span class="ck">✓</span></div><div class="rc-meta">Capgemini · ⭐ 4.9</div></div></div>
+      <div class="rc-route">Uppal → HITEC City</div>
+      <div class="rc-time">🕘 8:30 AM · Tomorrow</div>
+      <div class="rc-bottom"><span class="rc-price">₹120/seat</span><span class="rc-seats">2 seats left</span></div>
+    </div>
+    <div class="ride-card rc-b">
+      <div class="rc-top"><div class="rc-av">PR</div><div><div class="rc-name">Pravalika R.</div><div class="rc-meta">TCS · ⭐ 5.0</div></div></div>
+      <div class="rc-route">Kukatpally → Gachibowli</div>
+      <div class="rc-time">🕘 9:00 AM · Today</div>
+      <div class="rc-bottom"><span class="rc-price">₹90/seat</span><span class="rc-seats">3 seats left</span></div>
+    </div>
+    <div class="ride-card rc-c">
+      <div class="rc-top"><div class="rc-av">RA</div><div><div class="rc-name">Rahul A. <span class="ck">✓</span></div><div class="rc-meta">Accenture · ⭐ 4.8</div></div></div>
+      <div class="rc-route">LB Nagar → Financial Dist.</div>
+      <div class="rc-time">🕘 8:45 AM · Tomorrow</div>
+      <div class="rc-bottom"><span class="rc-price">₹150/seat</span><span class="rc-seats">1 seat left</span></div>
+    </div>
   </div>
-  <div class="proof-item">
-    <div class="proof-num">Save ₹3K+</div>
-    <div class="proof-label">PER MONTH ON COMMUTE</div>
-  </div>
-  <div class="proof-item">
-    <div class="proof-num">100%</div>
-    <div class="proof-label">VERIFIED COLLEAGUES</div>
-  </div>
-  <div class="proof-item">
-    <div class="proof-num">2 min</div>
-    <div class="proof-label">TO GET STARTED</div>
-  </div>
-</div>
-
-<!-- SCROLLING TICKER -->
-<div style="overflow:hidden;background:rgba(250,204,21,0.06);border-top:1px solid rgba(250,204,21,0.12);border-bottom:1px solid rgba(250,204,21,0.12);padding:12px 0;">
-  <div style="display:inline-flex;gap:60px;animation:ticker 25s linear infinite;white-space:nowrap;padding-left:100%;">
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">🚗 HYDERABAD</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">BANGALORE</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">PUNE</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">MUMBAI</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">DELHI NCR</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">CHENNAI 🚗</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">HYDERABAD</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">BANGALORE</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">PUNE</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">MUMBAI</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">DELHI NCR</span>
-    <span style="color:var(--yellow);font-size:10px;opacity:0.4;">✦</span>
-    <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;letter-spacing:2px;">CHENNAI</span>
-  </div>
-</div>
+</section>
 
 <!-- HOW IT WORKS -->
-<div class="how-bg sec-full" id="how">
-  <div class="sec" style="padding-top:0;padding-bottom:0;">
-    <div style="text-align:center">
-      <span class="s-tag">⚡ Simple process</span>
-      <h2 class="s-title">Your first ride in under 5 minutes</h2>
-      <p class="s-sub" style="max-width:480px;margin:0 auto">No complicated setup. Just sign in and start saving on your daily commute.</p>
-    </div>
-    <div class="how-grid">
-      <div class="how-card reveal stagger-1">
-        <div class="how-num">01</div>
-        <div class="how-icon-wrap" style="background:rgba(59,130,246,0.12);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="3" stroke="#60a5fa" stroke-width="1.5"/><circle cx="12" cy="18" r="1" fill="#60a5fa"/></svg>
-        </div>
-        <h3>Sign in with Google</h3>
-        <p>One tap with your work Gmail. No forms, no passwords. Your profile is ready in seconds with a welcome bonus in your wallet.</p>
-      </div>
-      <div class="how-card reveal stagger-2">
-        <div class="how-num">02</div>
-        <div class="how-icon-wrap" style="background:rgba(250,204,21,0.12);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#facc15" stroke-width="1.5"/><path d="M20 20l-3-3" stroke="#facc15" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Find or Post a Ride</h3>
-        <p>Browse colleagues heading your way or post your car in 30 seconds. Smart matching finds rides even with intermediate stops.</p>
-      </div>
-      <div class="how-card reveal stagger-3">
-        <div class="how-num">03</div>
-        <div class="how-icon-wrap" style="background:rgba(34,197,94,0.12);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Ride & Save Daily</h3>
-        <p>Chat safely in-app, coordinate pickup, and ride with a trusted colleague. Track your savings every month.</p>
-      </div>
-    </div>
+<section class="how" id="how">
+  <div class="section-head">
+    <div class="eyebrow">How it Works</div>
+    <h2>From sign-up to first ride in <span class="hl">2 minutes</span></h2>
+    <p>No complicated setup. No long forms. Just sign up, find your route, ride.</p>
   </div>
-</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h3>Sign up free</h3><p>Login with Google. Add phone + UPI ID. Pick your city. Done in 2 minutes.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Find or post a ride</h3><p>Browse rides on your route, or post your own. Daily commute, recurring rides, instant matches.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Book & ride together</h3><p>Pay ₹2 platform fee. Chat with driver. Share live location. Pay fare via UPI on completion.</p></div>
+  </div>
+</section>
 
 <!-- FEATURES -->
-<section class="sec" id="features">
-  <span class="s-tag">✨ Why CarpoolKaro</span>
-  <h2 class="s-title">Built for IT professionals</h2>
-  <p class="s-sub">Not a generic app — every feature designed for your daily IT commute.</p>
-  <div class="feat-grid">
-    <div class="feat-card">
-      <div class="feat-icon-wrap" style="background:rgba(59,130,246,0.12);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#60a5fa" stroke-width="1.5"/><path d="M3 9h18M9 21V9M15 21V9" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <h3>Verified IT Community</h3>
-      <p>Company badges from Capgemini, TCS, Infosys, Wipro and more. Ride only with people from verified IT companies.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap" style="background:rgba(34,197,94,0.12);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <h3>Private In-App Chat</h3>
-      <p>Coordinate pickup safely without sharing your phone number. Every conversation stays inside the app.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap" style="background:rgba(168,85,247,0.12);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 1l4 4-4 4" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 13v2a4 4 0 01-4 4H3" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <h3>Repeat Rides</h3>
-      <p>Post once for Mon–Fri or every day. Build a consistent commute routine without posting every morning.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap" style="background:rgba(249,115,22,0.12);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v2M4.22 4.22l1.42 1.42M2 12h2m16 0h2M18.36 5.64l1.42-1.42" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#fb923c" stroke-width="1.5"/><path d="M2 20h20M6 16a6 6 0 0112 0" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <h3>Smart Morning Alerts</h3>
-      <p>Get notified at 8 AM on weekdays when rides are available on your usual corridor. Never miss a carpool.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap" style="background:rgba(6,182,212,0.12);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#22d3ee" stroke-width="1.5"/><path d="M12 6v2m0 8v2M9.5 9.5A2.5 2.5 0 0112 8a2.5 2.5 0 012.5 2.5c0 1.5-1 2-2.5 2.5-1.5.5-2.5 1-2.5 2.5A2.5 2.5 0 0012 18" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <h3>Transparent Pricing</h3>
-      <p>Only ₹2 platform fee per booking. No hidden charges. Upgrade to Pro for zero fees — always honest, always fair.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap" style="background:rgba(250,204,21,0.12);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="#facc15" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <h3>Earn While You Drive</h3>
-      <p>Drivers earn from empty seats. Riders save on daily cab fares. Refer friends and earn ₹10 per successful referral.</p>
-    </div>
+<section id="features">
+  <div class="section-head">
+    <div class="eyebrow">Why CarpoolKaro</div>
+    <h2>Designed for <span class="hl">your daily commute</span></h2>
+  </div>
+  <div class="features">
+    <div class="feat"><div class="feat-icon">🛡️</div><h3>Verified colleagues</h3><p>Work email verification + ID verification. Travel safely with real IT professionals.</p></div>
+    <div class="feat"><div class="feat-icon">💬</div><h3>In-app chat</h3><p>Coordinate pickup without sharing phone numbers. Share live location during rides.</p></div>
+    <div class="feat"><div class="feat-icon">💸</div><h3>Honest pricing</h3><p>₹2 flat platform fee per booking. No surge. No hidden charges. Pay rest directly via UPI.</p></div>
+    <div class="feat"><div class="feat-icon">⭐</div><h3>Ratings & trust</h3><p>Rate every ride. See driver history. Company badges. Build a verified network.</p></div>
+    <div class="feat"><div class="feat-icon">🔁</div><h3>Recurring rides</h3><p>Post once for daily commute. Auto-create rides every weekday. Smart for fixed schedules.</p></div>
+    <div class="feat"><div class="feat-icon">📍</div><h3>Smart matching</h3><p>Match by exact location, route via points, and time. Find the perfect carpool fit.</p></div>
+    <div class="feat"><div class="feat-icon">🎁</div><h3>Referral rewards</h3><p>Earn ₹10 for every friend who joins. Build your carpool circle. Get free rides.</p></div>
+    <div class="feat"><div class="feat-icon">🏢</div><h3>Company filter</h3><p>Filter rides by company. Carpool with people from your office. Network while you commute.</p></div>
   </div>
 </section>
 
 <!-- CITIES -->
-<div class="cities-bg sec-full" id="cities">
-  <div class="sec" style="padding-top:0;padding-bottom:0;">
-    <div style="text-align:center">
-      <span class="s-tag">🗺️ Coverage</span>
-      <h2 class="s-title">Live across India's IT hubs</h2>
-      <p class="s-sub" style="max-width:460px;margin:0 auto">From HITEC City to Whitefield — your city is covered.</p>
-    </div>
-    <div class="cities-grid">
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(59,130,246,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🏙️</div>
-        <h3>Hyderabad</h3>
-        <p>HITEC City · Gachibowli · Financial District · Kondapur</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(34,197,94,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🌿</div>
-        <h3>Bangalore</h3>
-        <p>Whitefield · Outer Ring Road · Electronic City · Manyata</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(249,115,22,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🏔️</div>
-        <h3>Pune</h3>
-        <p>Hinjewadi · Kharadi · Magarpatta · Wakad · Baner</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(168,85,247,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🌊</div>
-        <h3>Mumbai</h3>
-        <p>BKC · Powai · Lower Parel · Andheri · Malad</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(239,68,68,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🏛️</div>
-        <h3>Delhi NCR</h3>
-        <p>Cyber City · DLF Phases · Noida Expressway · Gurgaon</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-      <div class="city-card" style="background:linear-gradient(135deg,rgba(6,182,212,0.07),rgba(13,27,62,0.5))">
-        <div class="city-emoji">🌴</div>
-        <h3>Chennai</h3>
-        <p>OMR · Sholinganallur · Tidel Park · Perungudi</p>
-        <div class="live-dot">LIVE</div>
-      </div>
-    </div>
+<section class="cities" id="cities">
+  <div class="section-head">
+    <div class="eyebrow">Live Cities</div>
+    <h2>Available across India's <span class="hl">tech corridors</span></h2>
+    <p>From HITEC City to ORR, we cover every major IT hub.</p>
   </div>
-</div>
+  <div class="city-grid">
+    <div class="city"><div class="city-icon">🏙️</div><div class="city-name">Hyderabad</div><div class="city-area">HITEC, Gachibowli</div></div>
+    <div class="city"><div class="city-icon">🌆</div><div class="city-name">Bangalore</div><div class="city-area">Whitefield, ORR</div></div>
+    <div class="city"><div class="city-icon">🏢</div><div class="city-name">Pune</div><div class="city-area">Hinjewadi, Kharadi</div></div>
+    <div class="city"><div class="city-icon">🌃</div><div class="city-name">Mumbai</div><div class="city-area">BKC, Powai</div></div>
+    <div class="city"><div class="city-icon">🏛️</div><div class="city-name">Delhi NCR</div><div class="city-area">Cyber City, Noida</div></div>
+    <div class="city"><div class="city-icon">🌅</div><div class="city-name">Chennai</div><div class="city-area">OMR, Sholinganallur</div></div>
+  </div>
+</section>
 
 <!-- PRICING -->
-<section class="sec" id="pricing">
-  <span class="s-tag">💳 Pricing</span>
-  <h2 class="s-title">Simple, honest pricing</h2>
-  <p class="s-sub">Start free forever. Upgrade only when you're ready.</p>
-  <div class="price-grid">
-    <div class="p-card">
-      <div class="p-name">Free Forever</div>
-      <div class="p-amount">₹0</div>
-      <div class="p-period">no credit card needed</div>
-      <ul class="p-feats">
-        <li>Post & book rides</li>
-        <li>In-app chat</li>
-        <li>Welcome bonus</li>
-        <li>Referral rewards</li>
-        <li>₹2 per booking</li>
+<section id="pricing">
+  <div class="section-head">
+    <div class="eyebrow">Pricing</div>
+    <h2>Two plans. <span class="hl">Both fair.</span></h2>
+    <p>Start free. Upgrade if you ride daily.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Pay as you go</div>
+      <div class="price">Free<small></small></div>
+      <div class="price-sub">+ ₹2 platform fee per booking</div>
+      <ul class="price-list">
+        <li>Unlimited ride posts</li>
+        <li>Browse all rides</li>
+        <li>In-app chat & location</li>
+        <li>Verified colleagues</li>
+        <li>UPI payments to driver</li>
       </ul>
-      <a href="https://app.carpoolkaro.com" class="p-btn">Get started free</a>
+      <a href="https://app.carpoolkaro.com" class="price-cta">Start Free →</a>
     </div>
-    <div class="p-card">
-      <div class="p-name">Monthly Pro</div>
-      <div class="p-amount">₹79</div>
-      <div class="p-period">per month</div>
-      <ul class="p-feats">
-        <li>Zero booking fees</li>
-        <li>⭐ Pro badge</li>
-        <li>Priority in search</li>
-        <li>All free features</li>
+    <div class="price-card pro">
+      <div class="price-tag">BEST VALUE</div>
+      <div class="price-name">CarpoolKaro Pro</div>
+      <div class="price">₹79<small> / month</small></div>
+      <div class="price-sub">For daily commuters · 10 days FREE trial</div>
+      <ul class="price-list">
+        <li>Zero platform fee on bookings</li>
+        <li>Priority in match results</li>
+        <li>Pro badge on profile</li>
+        <li>Save ₹40+ in first week alone</li>
+        <li>Premium support</li>
       </ul>
-      <a href="https://app.carpoolkaro.com" class="p-btn">Go Pro</a>
-    </div>
-    <div class="p-card pop">
-      <div class="pop-badge">⭐ BEST VALUE</div>
-      <div class="p-name">Quarterly Pro</div>
-      <div class="p-amount">₹199</div>
-      <div class="p-period">for 3 months · save ₹38</div>
-      <ul class="p-feats">
-        <li>Zero booking fees</li>
-        <li>⭐ Pro badge</li>
-        <li>Priority in search</li>
-        <li>All free features</li>
-      </ul>
-      <a href="https://app.carpoolkaro.com" class="p-btn">Go Pro</a>
-    </div>
-    <div class="p-card">
-      <div class="p-name">Annual Pro</div>
-      <div class="p-amount">₹599</div>
-      <div class="p-period">per year · save ₹349</div>
-      <ul class="p-feats">
-        <li>Zero booking fees</li>
-        <li>⭐ Pro badge</li>
-        <li>Priority in search</li>
-        <li>All free features</li>
-      </ul>
-      <a href="https://app.carpoolkaro.com" class="p-btn">Go Pro</a>
+      <a href="https://app.carpoolkaro.com" class="price-cta">Go Pro →</a>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-wrap">
-  <span class="s-tag">🚀 Get started</span>
-  <h2 class="s-title" style="margin-top:8px;font-size:clamp(28px,4vw,52px);">Start saving on your<br>commute today</h2>
-  <p class="s-sub" style="max-width:400px;margin:12px auto 0;">Free to join. Works on any device. No app store needed.</p>
-  <div class="dl-badges">
-    <a href="https://app.carpoolkaro.com" class="dl-badge">
-      <span class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 3c-3 4-3 14 0 18M12 3c3 4 3 14 0 18M3 12h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-      <div><div class="sub">OPEN IN BROWSER</div><div class="name">Web App</div></div>
-    </a>
-    <a href="https://app.carpoolkaro.com" class="dl-badge" style="position:relative;opacity:0.75;">
-      <span class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.21.97.13l12.4-7.16-2.61-2.61-10.76 9.64zM.8 1.42C.31 1.85 0 2.54 0 3.44v17.12c0 .9.31 1.59.8 2.02l.11.1 9.59-9.59v-.22L.91 3.32.8 1.42zM19.84 10.3l-2.55-1.47-2.91 2.91 2.91 2.91 2.56-1.48c.73-.42.73-1.45-.01-1.87zM4.15.24L16.55 7.4l-2.61 2.61L3.18.37A1.16 1.16 0 014.15.24z"/></svg></span>
-      <div><div class="sub">COMING SOON ON</div><div class="name">Google Play</div></div>
-      <span style="position:absolute;top:-8px;right:-6px;background:var(--yellow);color:#111;font-size:9px;font-weight:800;padding:3px 8px;border-radius:100px;letter-spacing:0.5px;">SOON</span>
-    </a>
-    <a href="https://app.carpoolkaro.com" class="dl-badge">
-      <span class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.22.14-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.37 2.78M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></span>
-      <div><div class="sub">ADD TO HOME ON</div><div class="name">iPhone</div></div>
-    </a>
+<!-- FAQ -->
+<section>
+  <div class="section-head">
+    <div class="eyebrow">Questions</div>
+    <h2>Frequently <span class="hl">asked</span></h2>
   </div>
-</div>
+  <div class="faq">
+    <details class="faq-item"><summary class="faq-q">Is CarpoolKaro really free?</summary><div class="faq-a">Yes. Sign-up is free. You only pay ₹2 platform fee per booking. Pay the actual fare directly to the driver via UPI. No hidden charges, ever.</div></details>
+    <details class="faq-item"><summary class="faq-q">How do you verify users?</summary><div class="faq-a">Every user must verify with phone OTP and work email from a recognized IT company. We also check company badges. Optional ID upload for premium trust.</div></details>
+    <details class="faq-item"><summary class="faq-q">What if I need to cancel my booking?</summary><div class="faq-a">If you cancel, the ₹2 platform fee is given to the driver as compensation. If the driver cancels, you get ₹2 back. Fair for everyone.</div></details>
+    <details class="faq-item"><summary class="faq-q">How does the ₹10 referral work?</summary><div class="faq-a">Share your referral code. When your friend joins and completes their first ride, both of you get ₹10 in your wallet. No limit on referrals.</div></details>
+    <details class="faq-item"><summary class="faq-q">Which cities do you cover?</summary><div class="faq-a">Live in 6 cities: Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR, Chennai. Each city has its own ride pool with local IT hubs and metros pre-loaded.</div></details>
+    <details class="faq-item"><summary class="faq-q">Can I post recurring rides?</summary><div class="faq-a">Absolutely. Post once and select "Daily" — we'll auto-create rides for every weekday on your route. Perfect for fixed office commutes.</div></details>
+    <details class="faq-item"><summary class="faq-q">How do payments to drivers work?</summary><div class="faq-a">Drivers receive the full fare directly through UPI. The app shows a payment picker (PhonePe, Google Pay, Paytm, BHIM, etc.) so you can use any UPI app.</div></details>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section>
+  <div class="download">
+    <h2>Ready to share your<br>first ride?</h2>
+    <p>Join hundreds of IT professionals already saving on their daily commute.</p>
+    <div class="dl-row">
+      <a href="https://app.carpoolkaro.com" class="dl-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg><div><span class="dl-sub">Use on</span><span class="dl-name">Web App</span></div></a>
+      <a href="https://app.carpoolkaro.com" class="dl-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.21.97.13l12.4-7.16-2.61-2.61-10.76 9.64zM.8 1.42C.31 1.85 0 2.54 0 3.44v17.12c0 .9.31 1.59.8 2.02l.11.1 9.59-9.59v-.22L.91 3.32.8 1.42z"/></svg><div><span class="dl-sub">Coming soon on</span><span class="dl-name">Google Play</span></div><span class="dl-coming">SOON</span></a>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="ft-top">
-    <div class="ft-brand">
-      <div class="ft-logo"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"></div>
-      <p>India's IT Carpool Community. Connecting professionals across 6 major cities. Ride together, save together.</p>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand"><span class="foot-brand-dot"></span>CarpoolKaro</div>
+      <p class="foot-desc">India's carpool community for IT professionals. Built in Hyderabad with love. Share rides. Save money. Make friends.</p>
     </div>
-    <div class="ft-col">
+    <div class="foot-col">
       <h4>Product</h4>
-      <ul>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="https://app.carpoolkaro.com">Open App</a></li>
-      </ul>
+      <a href="#how">How it Works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://app.carpoolkaro.com">Open App</a>
     </div>
-    <div class="ft-col">
-      <h4>Cities</h4>
-      <ul>
-        <li><a href="https://app.carpoolkaro.com">Hyderabad</a></li>
-        <li><a href="https://app.carpoolkaro.com">Bangalore</a></li>
-        <li><a href="https://app.carpoolkaro.com">Pune</a></li>
-        <li><a href="https://app.carpoolkaro.com">Mumbai</a></li>
-        <li><a href="https://app.carpoolkaro.com">Delhi NCR</a></li>
-        <li><a href="https://app.carpoolkaro.com">Chennai</a></li>
-      </ul>
-    </div>
-    <div class="ft-col">
+    <div class="foot-col">
       <h4>Company</h4>
-      <ul>
-        <li><a href="https://app.carpoolkaro.com/terms">Terms of Service</a></li>
-        <li><a href="https://app.carpoolkaro.com/terms">Privacy Policy</a></li>
-        <li><a href="mailto:support@carpoolkaro.com">Support</a></li>
-        <li><a href="mailto:support@carpoolkaro.com">Contact Us</a></li>
-      </ul>
+      <a href="mailto:support@carpoolkaro.com">Contact</a>
+      <a href="https://app.carpoolkaro.com">Support</a>
+      <a href="#cities">Cities</a>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <a href="https://app.carpoolkaro.com/terms">Terms</a>
+      <a href="https://app.carpoolkaro.com/privacy">Privacy</a>
+      <a href="https://app.carpoolkaro.com/refund-policy">Refund Policy</a>
     </div>
   </div>
-  <div class="ft-bottom">
-    <p>© 2026 CarpoolKaro. Made with ❤️ in India.</p>
-    <p>Ride Together · Save Together</p>
+  <div class="foot-bottom">
+    <span>© 2026 CarpoolKaro · Made in India 🇮🇳</span>
+    <span>Udyam: UDYAM-TS-20-0195951</span>
   </div>
 </footer>
 
-<script>
-// Scroll reveal
-const io = new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>{
-        e.target.classList.add('visible');
-        e.target.style.opacity='1';
-        e.target.style.transform='translateY(0)';
-      }, e.target.dataset.delay || 0);
-    }
-  });
-},{threshold:0.08});
-
-document.querySelectorAll('.how-card,.feat-card,.city-card,.p-card').forEach((el,i)=>{
-  el.style.opacity='0';
-  el.style.transform='translateY(24px)';
-  el.style.transition=`opacity 0.6s ease ${(i%3)*0.15}s, transform 0.6s ease ${(i%3)*0.15}s, border-color 0.3s, background 0.3s`;
-  io.observe(el);
-});
-
-// Reveal elements
-const ioReveal = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-},{threshold:0.1});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>ioReveal.observe(el));
-
-// Floating particles
-function createParticles() {
-  const container = document.getElementById('particles');
-  if(!container) return;
-  for(let i=0;i<18;i++){
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = Math.random()*4+2;
-    p.style.cssText = `
-      width:${size}px; height:${size}px;
-      left:${Math.random()*100}%;
-      animation-duration:${Math.random()*20+15}s;
-      animation-delay:${Math.random()*15}s;
-      opacity:0;
-    `;
-    container.appendChild(p);
-  }
-}
-createParticles();
-
-// Proof bar number animation
-const proofItems = document.querySelectorAll('.proof-num');
-const proofObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.style.animation='counter-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) both';
-      proofObs.unobserve(e.target);
-    }
-  });
-},{threshold:1});
-proofItems.forEach(el=>proofObs.observe(el));
-
-// Add counter-pop keyframe
-const style = document.createElement('style');
-style.textContent = '@keyframes counter-pop{from{transform:scale(0.5);opacity:0;}to{transform:scale(1);opacity:1;}}';
-document.head.appendChild(style);
-</script>
 </body>
 </html>
