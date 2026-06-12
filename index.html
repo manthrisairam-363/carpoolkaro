@@ -9,7 +9,6 @@
 <meta name="theme-color" content="#0f172a">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://carpoolkaro.com/">
-
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://carpoolkaro.com/">
 <meta property="og:title" content="CarpoolKaro — Stop Paying Full Fare. Share It.">
@@ -17,21 +16,17 @@
 <meta property="og:image" content="https://app.carpoolkaro.com/icon-512.png">
 <meta property="og:site_name" content="CarpoolKaro">
 <meta property="og:locale" content="en_IN">
-
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CarpoolKaro — Stop Paying Full Fare. Share It.">
 <meta name="twitter:description" content="India's carpool platform for IT professionals. Save ₹3,000+ monthly.">
 <meta name="twitter:image" content="https://app.carpoolkaro.com/icon-512.png">
-
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"CarpoolKaro","url":"https://app.carpoolkaro.com","description":"India's carpool platform for IT professionals.","applicationCategory":"TravelApplication","operatingSystem":"Web, Android","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"areaServed":["Hyderabad","Bangalore","Pune","Mumbai","Delhi NCR","Chennai"]}
 </script>
-
 <link rel="icon" href="https://app.carpoolkaro.com/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -41,16 +36,14 @@ img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 
 /* NAV */
-.nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;background:rgba(15,23,42,0.92);backdrop-filter:blur(20px);padding:10px 12px 10px 24px;border-radius:100px;display:flex;align-items:center;gap:20px;box-shadow:0 8px 30px rgba(0,0,0,0.15)}
-.nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;color:#fff;font-size:15px}
-.nav-logo-dot{width:8px;height:8px;background:var(--yellow);border-radius:50%;box-shadow:0 0 12px var(--yellow);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;background:rgba(15,23,42,0.92);backdrop-filter:blur(20px);padding:8px 12px 8px 12px;border-radius:100px;display:flex;align-items:center;gap:20px;box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+.nav-logo{display:flex;align-items:center}
 .nav-links{display:flex;gap:6px}
 .nav-links a{color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px;transition:0.2s}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,0.08)}
-.nav-cta{background:var(--yellow);color:var(--ink);padding:9px 18px;border-radius:100px;font-weight:800;font-size:13px;transition:0.2s}
+.nav-cta{background:var(--yellow);color:var(--ink);padding:9px 18px;border-radius:100px;font-weight:800;font-size:13px;transition:0.2s;white-space:nowrap}
 .nav-cta:hover{transform:scale(1.05)}
-@media(max-width:700px){.nav-links{display:none}.nav{padding:10px 12px 10px 18px;gap:12px}}
+@media(max-width:700px){.nav-links{display:none}.nav{padding:8px 12px;gap:12px}}
 
 /* HERO */
 .hero{padding:140px 6% 100px;min-height:90vh;display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden}
@@ -69,30 +62,27 @@ a{text-decoration:none;color:inherit}
 .trust-row{display:flex;gap:32px;flex-wrap:wrap}
 .trust-item{display:flex;align-items:center;gap:10px;color:var(--gray);font-size:13px;font-weight:600}
 .trust-item b{color:var(--ink);font-size:22px;font-family:'Space Grotesk'}
-/* Card stack */
-.cards{position:relative;height:480px}
-.ride-card{position:absolute;background:#fff;border:2px solid var(--ink);border-radius:24px;padding:24px;width:340px;box-shadow:10px 10px 0 rgba(15,23,42,0.06);transition:0.3s}
-.ride-card:hover{transform:translateY(-8px)}
-.rc-a{top:0;left:20px;transform:rotate(-4deg);animation:float1 6s ease-in-out infinite}
-.rc-b{top:140px;left:80px;transform:rotate(2.5deg);background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:10px 10px 0 var(--yellow);z-index:2;animation:float2 6s ease-in-out infinite}
-.rc-c{top:280px;left:30px;transform:rotate(-3deg);animation:float3 6s ease-in-out infinite}
-@keyframes float1{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-4deg) translateY(-8px)}}
-@keyframes float2{0%,100%{transform:rotate(2.5deg) translateY(0)}50%{transform:rotate(2.5deg) translateY(-12px)}}
-@keyframes float3{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-6px)}}
+
+/* ── STAGGERED CARDS ── */
+.cards{display:flex;flex-direction:column;gap:16px;padding:10px 0}
+.ride-card{background:#fff;border:2px solid var(--ink);border-radius:24px;padding:22px 24px;width:310px;box-shadow:6px 6px 0 rgba(15,23,42,0.08);transition:0.3s}
+.ride-card:hover{transform:translateY(-4px);box-shadow:8px 8px 0 rgba(15,23,42,0.12)}
+.rc-mid{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:6px 6px 0 var(--yellow);margin-left:auto}
+.rc-last{margin-left:20px}
 .rc-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .rc-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#6366f1);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0}
-.rc-b .rc-av{background:linear-gradient(135deg,#facc15,#f59e0b);color:#000}
+.rc-mid .rc-av{background:linear-gradient(135deg,#facc15,#f59e0b);color:#000}
 .rc-name{font-weight:700;font-size:14px;display:flex;align-items:center;gap:5px}
 .rc-name .ck{background:#3b82f6;color:#fff;font-size:9px;padding:1px 5px;border-radius:4px;font-weight:800}
 .rc-meta{font-size:11px;color:var(--gray)}
-.rc-b .rc-meta{color:rgba(255,255,255,0.5)}
-.rc-route{font-weight:800;font-size:16px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.rc-mid .rc-meta{color:rgba(255,255,255,0.5)}
+.rc-route{font-weight:800;font-size:16px;margin-bottom:6px}
 .rc-time{font-size:12px;color:var(--gray);margin-bottom:14px}
-.rc-b .rc-time{color:rgba(255,255,255,0.6)}
+.rc-mid .rc-time{color:rgba(255,255,255,0.6)}
 .rc-bottom{display:flex;justify-content:space-between;align-items:center}
 .rc-price{background:var(--yellow);color:var(--ink);font-weight:800;padding:5px 14px;border-radius:100px;font-size:14px}
 .rc-seats{font-size:11px;color:var(--gray);font-weight:700}
-.rc-b .rc-seats{color:rgba(255,255,255,0.7)}
+.rc-mid .rc-seats{color:rgba(255,255,255,0.7)}
 
 /* SECTIONS */
 section{padding:90px 6%}
@@ -174,9 +164,7 @@ section{padding:90px 6%}
 /* FOOTER */
 footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 40px}
-.foot-brand{font-family:'Space Grotesk';font-weight:800;color:#fff;font-size:22px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.foot-brand-dot{width:8px;height:8px;background:var(--yellow);border-radius:50%}
-.foot-desc{font-size:13px;line-height:1.7;max-width:300px}
+.foot-desc{font-size:13px;line-height:1.7;max-width:300px;margin-top:14px}
 .foot-col h4{color:#fff;font-size:13px;font-weight:800;margin-bottom:14px;letter-spacing:1.5px;text-transform:uppercase}
 .foot-col a{display:block;font-size:13px;padding:5px 0;transition:0.2s}
 .foot-col a:hover{color:var(--yellow)}
@@ -184,7 +172,8 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
 
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;padding:120px 6% 60px}
-  .cards{height:440px;transform:scale(0.85);transform-origin:left}
+  .cards{align-items:flex-start}
+  .rc-mid{margin-left:40px}
   .steps,.features{grid-template-columns:1fr 1fr;gap:14px}
   .city-grid{grid-template-columns:repeat(3,1fr)}
   .pricing-grid{grid-template-columns:1fr}
@@ -196,13 +185,18 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   .foot-grid{grid-template-columns:1fr}
   .cities,.download{margin:0 4%;padding:60px 6%}
   section{padding:60px 6%}
+  .ride-card{width:280px}
+  .rc-mid{margin-left:30px}
 }
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <div class="nav-spacer"></div>
+  <a href="#" class="nav-logo">
+    <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"
+         style="height:28px;width:auto;background:#fff;padding:5px 12px;border-radius:8px;display:block">
+  </a>
   <div class="nav-links">
     <a href="#how">How it Works</a>
     <a href="#features">Features</a>
@@ -213,16 +207,12 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
 </nav>
 
 <!-- HERO -->
-<section class="hero" style="padding-top:10px; padding-bottom:100px;">
-<div>
-
-<div style="margin-bottom:40px; margin-top:40px;">
-    <img src="https://app.carpoolkaro.com/logo.png"
-         alt="CarpoolKaro"
-         style="height:150px;width:auto">
-</div>
-
-<div class="tag">India's IT Carpool Community</div>
+<section class="hero" style="padding-top:10px;padding-bottom:100px;">
+  <div>
+    <div style="margin-bottom:40px;margin-top:40px;">
+      <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro" style="height:150px;width:auto">
+    </div>
+    <div class="tag">India's IT Carpool Community</div>
     <h1>Stop paying<br>full fare.<br><span class="hl">Share it.</span></h1>
     <p class="lead">The carpool platform built only for IT professionals. Match with verified colleagues on your exact route. Save ₹3,000+ every month.</p>
     <div class="cta-row">
@@ -235,21 +225,46 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
       <div class="trust-item"><b>100%</b>verified users</div>
     </div>
   </div>
+
+  <!-- STAGGERED CARDS -->
   <div class="cards">
-    <div class="ride-card rc-a">
-      <div class="rc-top"><div class="rc-av">MS</div><div><div class="rc-name">Manthri Sairam. <span class="ck">✓</span></div><div class="rc-meta">Capgemini · ⭐ 4.9</div></div></div>
+    <!-- Card 1: left -->
+    <div class="ride-card">
+      <div class="rc-top">
+        <div class="rc-av">MS</div>
+        <div>
+          <div class="rc-name">Manthri Sairam. <span class="ck">✓</span></div>
+          <div class="rc-meta">Capgemini · ⭐ 4.9</div>
+        </div>
+      </div>
       <div class="rc-route">Uppal → HITEC City</div>
       <div class="rc-time">🕘 8:30 AM · Tomorrow</div>
       <div class="rc-bottom"><span class="rc-price">₹120/seat</span><span class="rc-seats">2 seats left</span></div>
     </div>
-    <div class="ride-card rc-b">
-      <div class="rc-top"><div class="rc-av">A</div><div><div class="rc-name">Apoorva.</div><div class="rc-meta">TCS · ⭐ 5.0</div></div></div>
+
+    <!-- Card 2: right (dark) -->
+    <div class="ride-card rc-mid">
+      <div class="rc-top">
+        <div class="rc-av">A</div>
+        <div>
+          <div class="rc-name">Apoorva.</div>
+          <div class="rc-meta">TCS · ⭐ 5.0</div>
+        </div>
+      </div>
       <div class="rc-route">Kukatpally → Gachibowli</div>
       <div class="rc-time">🕘 9:00 AM · Today</div>
       <div class="rc-bottom"><span class="rc-price">₹90/seat</span><span class="rc-seats">3 seats left</span></div>
     </div>
-    <div class="ride-card rc-c">
-      <div class="rc-top"><div class="rc-av">AD</div><div><div class="rc-name">Adhvaith. <span class="ck">✓</span></div><div class="rc-meta">Accenture · ⭐ 4.8</div></div></div>
+
+    <!-- Card 3: left (slight offset) -->
+    <div class="ride-card rc-last">
+      <div class="rc-top">
+        <div class="rc-av">AD</div>
+        <div>
+          <div class="rc-name">Adhvaith. <span class="ck">✓</span></div>
+          <div class="rc-meta">Accenture · ⭐ 4.8</div>
+        </div>
+      </div>
       <div class="rc-route">LB Nagar → Financial Dist.</div>
       <div class="rc-time">🕘 8:45 AM · Tomorrow</div>
       <div class="rc-bottom"><span class="rc-price">₹150/seat</span><span class="rc-seats">1 seat left</span></div>
@@ -316,7 +331,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   <div class="pricing-grid">
     <div class="price-card">
       <div class="price-name">Pay as you go</div>
-      <div class="price">Free<small></small></div>
+      <div class="price">Free</div>
       <div class="price-sub">+ ₹2 platform fee per booking</div>
       <ul class="price-list">
         <li>Unlimited ride posts</li>
@@ -367,9 +382,20 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
     <h2>Ready to share your<br>first ride?</h2>
     <p>Join hundreds of IT professionals already saving on their daily commute.</p>
     <div class="dl-row">
-      <a href="https://app.carpoolkaro.com" class="dl-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg><div><span class="dl-sub">Use on</span><span class="dl-name">Web App</span></div></a>
-      <a href="https://app.carpoolkaro.com" class="dl-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.21.97.13l12.4-7.16-2.61-2.61-10.76 9.64zM.8 1.42C.31 1.85 0 2.54 0 3.44v17.12c0 .9.31 1.59.8 2.02l.11.1 9.59-9.59v-.22L.91 3.32.8 1.42z"/></svg><div><span class="dl-sub">Coming soon on</span><span class="dl-name">Google Play</span></div><span class="dl-coming">SOON</span></a>
-      <a href="https://app.carpoolkaro.com" class="dl-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg><div><span class="dl-sub">Coming soon on</span><span class="dl-name">App Store</span></div><span class="dl-coming">SOON</span></a>
+      <a href="https://app.carpoolkaro.com" class="dl-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <div><span class="dl-sub">Use on</span><span class="dl-name">Web App</span></div>
+      </a>
+      <a href="https://app.carpoolkaro.com" class="dl-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.21.97.13l12.4-7.16-2.61-2.61-10.76 9.64zM.8 1.42C.31 1.85 0 2.54 0 3.44v17.12c0 .9.31 1.59.8 2.02l.11.1 9.59-9.59v-.22L.91 3.32.8 1.42zM19.84 10.3l-2.55-1.47-2.91 2.91 2.91 2.91 2.56-1.48c.73-.42.73-1.45-.01-1.87zM4.15.24L16.55 7.4l-2.61 2.61L3.18.37A1.16 1.16 0 014.15.24z"/></svg>
+        <div><span class="dl-sub">Coming soon on</span><span class="dl-name">Google Play</span></div>
+        <span class="dl-coming">SOON</span>
+      </a>
+      <a href="https://app.carpoolkaro.com" class="dl-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        <div><span class="dl-sub">Coming soon on</span><span class="dl-name">App Store</span></div>
+        <span class="dl-coming">SOON</span>
+      </a>
     </div>
   </div>
 </section>
@@ -378,7 +404,9 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
 <footer>
   <div class="foot-grid">
     <div>
-      <div class="foot-brand" style="background:#fff;border-radius:12px;padding:8px 16px;display:inline-block;margin-bottom:16px"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro" style="height:72px;width:auto"></div>
+      <div style="background:#fff;border-radius:12px;padding:8px 16px;display:inline-block">
+        <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro" style="height:36px;width:auto">
+      </div>
       <p class="foot-desc">India's carpool community for IT professionals. Built in Hyderabad with love. Share rides. Save money. Make friends.</p>
     </div>
     <div class="foot-col">
