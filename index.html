@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CarpoolKaro — Stop Paying Full Fare. Share It.</title>
-<meta name="description" content="India's carpool platform for IT professionals. Save ₹3,000+ monthly. Verified colleagues. ₹2 flat fee. Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR, Chennai.">
+<title>CarpoolKaro — Share your office commute</title>
+<meta name="description" content="Carpooling for IT commuters in India. Share your daily office ride with verified colleagues on your route. Owner approves every booking. ₹2 per booking, fare paid directly to the car owner. Hyderabad, Bengaluru, Pune, Mumbai, Delhi NCR, Chennai.">
 <meta name="keywords" content="carpool India, IT carpool, office carpool, Hyderabad carpool, Bangalore carpool, HITEC City carpool, ride sharing IT professionals">
 <meta name="theme-color" content="#0f172a">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://carpoolkaro.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://carpoolkaro.com/">
-<meta property="og:title" content="CarpoolKaro — Stop Paying Full Fare. Share It.">
-<meta property="og:description" content="India's carpool platform for IT professionals. Save ₹3,000+ monthly with verified colleagues.">
+<meta property="og:title" content="CarpoolKaro — Share your office commute">
+<meta property="og:description" content="Share your daily office ride with verified colleagues on your route. ₹2 per booking, fare paid directly to the car owner.">
 <meta property="og:image" content="https://app.carpoolkaro.com/icon-512.png">
 <meta property="og:site_name" content="CarpoolKaro">
 <meta property="og:locale" content="en_IN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CarpoolKaro — Stop Paying Full Fare. Share It.">
-<meta name="twitter:description" content="India's carpool platform for IT professionals. Save ₹3,000+ monthly.">
+<meta name="twitter:title" content="CarpoolKaro — Share your office commute">
+<meta name="twitter:description" content="Share your daily office ride with verified colleagues on your route. ₹2 per booking, fare paid directly to the car owner.">
 <meta name="twitter:image" content="https://app.carpoolkaro.com/icon-512.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"CarpoolKaro","url":"https://app.carpoolkaro.com","description":"India's carpool platform for IT professionals.","applicationCategory":"TravelApplication","operatingSystem":"Web, Android","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"areaServed":["Hyderabad","Bangalore","Pune","Mumbai","Delhi NCR","Chennai"]}
@@ -99,10 +99,14 @@ section{padding:90px 6%}
 .cities .section-head h2{color:#fff}
 .cities .section-head p{color:rgba(255,255,255,0.6)}
 .cities .eyebrow{color:var(--yellow)}
+.cities .hl{color:var(--yellow)}.cities .hl::after{display:none}
 .city-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;max-width:1100px;margin:0 auto}
 .city{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:22px 16px;text-align:center;transition:0.3s}
 .city:hover{background:var(--yellow);color:var(--ink);border-color:var(--yellow);transform:translateY(-6px)}
 .city-icon{font-size:32px;margin-bottom:10px}
+.feat-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cards-label{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
+.note{text-align:center;color:var(--gray);font-size:13px;margin-top:22px}
 .city-name{font-weight:800;font-size:13px}
 .city-area{font-size:10px;opacity:0.5;margin-top:3px}
 
@@ -149,6 +153,16 @@ section{padding:90px 6%}
 .dl-btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.25)}
 .dl-sub{font-size:10px;opacity:0.7;letter-spacing:1px;text-transform:uppercase;display:block}
 .dl-name{font-size:16px;font-weight:800}
+.ios{max-width:560px;margin:28px auto 0;text-align:left;background:rgba(15,23,42,0.08);border-radius:16px;padding:0 20px}
+.ios summary{cursor:pointer;list-style:none;font-weight:800;font-size:14px;padding:16px 0;color:var(--ink);display:flex;justify-content:space-between;align-items:center}
+.ios summary::-webkit-details-marker{display:none}
+.ios summary::after{content:'+';font-size:20px;font-weight:400}
+.ios[open] summary::after{content:'−'}
+.ios-steps{margin:0 0 6px;padding:0 0 0 20px;color:var(--ink);font-size:14px;line-height:1.7}
+.ios-steps li{margin-bottom:6px}
+.ios-steps a{text-decoration:underline;color:var(--ink)}
+.ios-ic{display:inline-block;border:1.5px solid var(--ink);border-radius:5px;padding:0 5px;font-size:12px;line-height:1.4;vertical-align:middle}
+.ios p{font-size:13px;margin:0 0 16px;color:rgba(15,23,42,0.7);max-width:none}
 .dl-coming{position:absolute;top:-8px;right:-6px;background:#fff;color:var(--ink);font-size:9px;font-weight:800;padding:3px 8px;border-radius:100px;letter-spacing:0.5px;border:2px solid var(--ink)}
 footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 40px}
@@ -180,7 +194,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
 <body>
 
 <nav class="nav">
-  <a href="#" class="nav-logo">
+  <a href="/" class="nav-logo">
     <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"
          style="height:28px;width:auto;background:#fff;padding:5px 12px;border-radius:8px;display:block">
   </a>
@@ -198,37 +212,38 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
     <div style="margin-bottom:40px;margin-top:40px;">
       <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro" style="height:150px;width:auto">
     </div>
-    <div class="tag">India's IT Carpool Community</div>
+    <div class="tag">Carpooling for India's IT commuters</div>
     <h1>Stop paying<br>full fare.<br><span class="hl">Share it.</span></h1>
-    <p class="lead">The carpool platform built only for IT professionals. Match with verified colleagues on your exact route. Save ₹3,000+ every month.</p>
+    <p class="lead">Share your daily office ride with verified colleagues on your route. Car owners cover their fuel; riders pay a fair share. The app charges ₹2 per confirmed booking and nothing else.</p>
     <div class="cta-row">
-      <a href="https://app.carpoolkaro.com" class="cta">Join Free Today →</a>
+      <a href="https://app.carpoolkaro.com" class="cta">Join Free →</a>
       <a href="#how" class="cta cta-ghost">How it Works</a>
     </div>
     <div class="trust-row">
-      <div class="trust-item"><b>₹3K+</b>saved monthly</div>
-      <div class="trust-item"><b>6</b>IT cities live</div>
-      <div class="trust-item"><b>100%</b>verified users</div>
+      <div class="trust-item"><b>₹2</b>per booking, flat</div>
+      <div class="trust-item"><b>100%</b>of the fare goes to the owner</div>
+      <div class="trust-item"><b>6</b>cities open</div>
     </div>
   </div>
   <div class="cards">
+    <div class="cards-label">Example rides · what you see in the app</div>
     <div class="ride-card">
-      <div class="rc-top"><div class="rc-av">MS</div><div><div class="rc-name">Manthri Sairam. <span class="ck">✓</span></div><div class="rc-meta">Capgemini · ⭐ 4.9</div></div></div>
-      <div class="rc-route">Whitefield → Electronic City</div>
+      <div class="rc-top"><div class="rc-av">RK</div><div><div class="rc-name">Ravi K. <span class="ck">✓</span></div><div class="rc-meta">Work email verified · ⭐ 4.9</div></div></div>
+      <div class="rc-route">Kokapet → Kondapur</div>
       <div class="rc-time">🕘 8:30 AM · Tomorrow</div>
-      <div class="rc-bottom"><span class="rc-price">₹120/seat</span><span class="rc-seats">2 seats left</span></div>
+      <div class="rc-bottom"><span class="rc-price">₹90/seat</span><span class="rc-seats">2 seats left</span></div>
     </div>
     <div class="ride-card rc-mid">
-      <div class="rc-top"><div class="rc-av">A</div><div><div class="rc-name">Apoorva.</div><div class="rc-meta">TCS · ⭐ 5.0</div></div></div>
+      <div class="rc-top"><div class="rc-av">P</div><div><div class="rc-name">Priya S.</div><div class="rc-meta">Work email verified · ⭐ 5.0</div></div></div>
       <div class="rc-route">Uppal → Financial District</div>
       <div class="rc-time">🕘 9:00 AM · Today</div>
-      <div class="rc-bottom"><span class="rc-price">₹90/seat</span><span class="rc-seats">3 seats left</span></div>
+      <div class="rc-bottom"><span class="rc-price">₹120/seat</span><span class="rc-seats">3 seats left</span></div>
     </div>
     <div class="ride-card rc-last">
-      <div class="rc-top"><div class="rc-av">AD</div><div><div class="rc-name">Adhvaith. <span class="ck">✓</span></div><div class="rc-meta">Accenture · ⭐ 4.8</div></div></div>
-      <div class="rc-route">Talawade → Hinjewadi</div>
-      <div class="rc-time">🕘 8:45 AM · Tomorrow</div>
-      <div class="rc-bottom"><span class="rc-price">₹150/seat</span><span class="rc-seats">1 seat left</span></div>
+      <div class="rc-top"><div class="rc-av">AM</div><div><div class="rc-name">Arjun M. <span class="ck">✓</span></div><div class="rc-meta">Work email verified · ⭐ 4.8</div></div></div>
+      <div class="rc-route">Miyapur → Gachibowli</div>
+      <div class="rc-time">🕕 6:15 PM · Today</div>
+      <div class="rc-bottom"><span class="rc-price">₹80/seat</span><span class="rc-seats">1 seat left</span></div>
     </div>
   </div>
 </section>
@@ -237,99 +252,89 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   <div class="section-head">
     <div class="eyebrow">How it Works</div>
     <h2>From sign-up to first ride in <span class="hl">2 minutes</span></h2>
-    <p>No complicated setup. No long forms. Just sign up, find your route, ride.</p>
+    <p>Tell us your commute once. We show you rides on your route every day after that.</p>
   </div>
   <div class="steps">
-    <div class="step"><div class="step-num">01</div><h3>Sign up free</h3><p>Login with Google. Add phone + UPI ID. Pick your city. Done in 2 minutes.</p></div>
-    <div class="step"><div class="step-num">02</div><h3>Find or post a ride</h3><p>Browse rides on your route, or post your own. Daily commute, recurring rides, instant matches.</p></div>
-    <div class="step"><div class="step-num">03</div><h3>Book & ride together</h3><p>Pay ₹2 platform fee. Chat with driver. Share live location. Pay fare via UPI on completion.</p></div>
+    <div class="step"><div class="step-num">01</div><h3>Sign up free</h3><p>Sign in with Google. Add your phone and UPI ID, pick your city, and tell us your regular commute — home, office, and the times you travel.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Find or post a ride</h3><p>Rides on your route show first. Car owners post once; a daily commute posts itself every working day.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Request, get approved, ride</h3><p>Request a seat. The car owner approves — only then is ₹2 charged to each side. Chat, share live location, and pay the fare to the owner directly by UPI.</p></div>
   </div>
 </section>
 
 <section id="features">
   <div class="section-head">
     <div class="eyebrow">Why CarpoolKaro</div>
-    <h2>Designed for <span class="hl">your daily commute</span></h2>
+    <h2>Built for <span class="hl">the same ride, every day</span></h2>
   </div>
   <div class="features">
-    <div class="feat"><div class="feat-icon">🛡️</div><h3>Verified colleagues</h3><p>Work email verification + ID verification. Travel safely with real IT professionals.</p></div>
-    <div class="feat"><div class="feat-icon">💬</div><h3>In-app chat</h3><p>Coordinate pickup without sharing phone numbers. Share live location during rides.</p></div>
-    <div class="feat"><div class="feat-icon">💸</div><h3>Honest pricing</h3><p>₹2 flat platform fee per booking. No surge. No hidden charges. Pay rest directly via UPI.</p></div>
-    <div class="feat"><div class="feat-icon">⭐</div><h3>Ratings & trust</h3><p>Rate every ride. See driver history. Company badges. Build a verified network.</p></div>
-    <div class="feat"><div class="feat-icon">🔁</div><h3>Recurring rides</h3><p>Post once for daily commute. Auto-create rides every weekday. Smart for fixed schedules.</p></div>
-    <div class="feat"><div class="feat-icon">📍</div><h3>Smart matching</h3><p>Match by exact location, route via points, and time. Find the perfect carpool fit.</p></div>
-    <div class="feat"><div class="feat-icon">🎁</div><h3>Referral rewards</h3><p>Earn ₹10 for every friend who joins. Build your carpool circle. Get free rides.</p></div>
-    <div class="feat"><div class="feat-icon">🏢</div><h3>Company filter</h3><p>Filter rides by company. Carpool with people from your office. Network while you commute.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 9l2 2 4-4"/></svg></div><h3>Owner approves every booking</h3><p>Nobody gets into your car without your yes. Requests you don't answer expire on their own, and nothing is charged.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Verified colleagues</h3><p>Work-email verification and a company badge on the profile. Car details and photo on every ride. Ratings after every trip.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M7 4h10M7 8h10M7 4c5 0 7 2 7 4s-2 4-7 4h2l6 8"/></svg></div><h3>₹2. That's the whole fee.</h3><p>₹2 to the rider and ₹2 to the owner per confirmed booking. No surge, no commission on the fare, no hidden charges.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M16 12h5v4h-5a2 2 0 0 1 0-4z"/></svg></div><h3>Fare goes straight to the owner</h3><p>We never hold your money. After the ride you pay the owner's UPI ID or number from any UPI app, and the owner confirms it in the app.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8 18h6a4 4 0 0 0 0-8H10a4 4 0 0 1 0-8h6"/></svg></div><h3>Rides on your route first</h3><p>Your commute areas are matched by locality and zone, so a Kokapet → Kondapur regular sees those rides at the top, not a Secunderabad one.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div><h3>Set it once, ride daily</h3><p>Save your commute and the app posts your ride every working day. Pause it when you're on leave.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></div><h3>Chat and live location</h3><p>Coordinate pickup without sharing your number. Share live location with your co-rider during the ride.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div><h3>Referral credit</h3><p>Invite a colleague with your code and you both get ₹10 wallet credit — that's five bookings' worth of fees.</p></div>
   </div>
 </section>
 
 <section class="cities" id="cities">
   <div class="section-head">
-    <div class="eyebrow">Live Cities</div>
-    <h2>Available across India's <span class="hl">tech corridors</span></h2>
-    <p>From HITEC City to ORR, we cover every major IT hub.</p>
+    <div class="eyebrow">Cities</div>
+    <h2>Open across India's <span class="hl">tech corridors</span></h2>
+    <p>Six cities, one app. Rides are matched by locality and zone inside each city.</p>
   </div>
   <div class="city-grid">
-    <div class="city"><div class="city-icon">🏙️</div><div class="city-name">Hyderabad</div><div class="city-area">HITEC, Gachibowli</div></div>
-    <div class="city"><div class="city-icon">🌆</div><div class="city-name">Bangalore</div><div class="city-area">Whitefield, ORR</div></div>
-    <div class="city"><div class="city-icon">🏢</div><div class="city-name">Pune</div><div class="city-area">Hinjewadi, Kharadi</div></div>
-    <div class="city"><div class="city-icon">🌃</div><div class="city-name">Mumbai</div><div class="city-area">BKC, Powai</div></div>
-    <div class="city"><div class="city-icon">🏛️</div><div class="city-name">Delhi NCR</div><div class="city-area">Cyber City, Noida</div></div>
-    <div class="city"><div class="city-icon">🌅</div><div class="city-name">Chennai</div><div class="city-area">OMR, Sholinganallur</div></div>
+    <div class="city"><div class="city-name">Hyderabad</div><div class="city-area">HITEC City, Gachibowli, Financial District</div></div>
+    <div class="city"><div class="city-name">Bengaluru</div><div class="city-area">Whitefield, ORR, Electronic City</div></div>
+    <div class="city"><div class="city-name">Pune</div><div class="city-area">Hinjewadi, Kharadi, Magarpatta</div></div>
+    <div class="city"><div class="city-name">Mumbai</div><div class="city-area">BKC, Powai, Airoli</div></div>
+    <div class="city"><div class="city-name">Delhi NCR</div><div class="city-area">Cyber City, Noida, Sector 62</div></div>
+    <div class="city"><div class="city-name">Chennai</div><div class="city-area">OMR, Sholinganallur, Siruseri</div></div>
   </div>
 </section>
 
-<!-- PRICING — updated with all 4 plans -->
 <section id="pricing">
   <div class="section-head">
     <div class="eyebrow">Pricing</div>
-    <h2>Simple plans. <span class="hl">Real savings.</span></h2>
-    <p>Start free. Upgrade when you're ready. The longer you commit, the more you save.</p>
+    <h2>Two rupees. <span class="hl">Or none.</span></h2>
+    <p>Everyone can use everything. Pro only removes the ₹2 fee.</p>
   </div>
   <div class="pricing-wrap">
 
-    <!-- FREE PLAN -->
     <div class="price-card">
       <div class="price-name">Pay as you go</div>
       <div class="price">Free</div>
-      <div class="price-sub">+ ₹2 platform fee per booking</div>
+      <div class="price-sub">₹2 per confirmed booking — rider and owner each</div>
       <ul class="price-list">
-        <li>Unlimited ride posts</li>
-        <li>Browse all rides</li>
-        <li>In-app chat & live location</li>
-        <li>Verified colleagues</li>
-        <li>UPI payments to driver</li>
+        <li>Post unlimited rides</li>
+        <li>Request any ride on your route</li>
+        <li>Owner approval on every booking</li>
+        <li>Chat and live location</li>
+        <li>Fare paid directly to the owner by UPI</li>
       </ul>
       <a href="https://app.carpoolkaro.com" class="price-cta">Start Free →</a>
     </div>
 
-    <!-- PRO PLAN with 4 tabs -->
     <div class="price-card pro">
       <div class="price-name">CarpoolKaro Pro</div>
-
-      <!-- Tabs -->
       <div class="plan-tabs">
         <button class="plan-tab" onclick="selectPlan(0)" id="tab-0">1 Month<br><span style="font-size:10px;opacity:0.7">₹79</span></button>
         <button class="plan-tab active" onclick="selectPlan(1)" id="tab-1">3 Months<br><span style="font-size:10px;opacity:0.7">₹199</span></button>
         <button class="plan-tab" onclick="selectPlan(2)" id="tab-2">6 Months<br><span style="font-size:10px;opacity:0.7">₹349</span></button>
         <button class="plan-tab" onclick="selectPlan(3)" id="tab-3">1 Year<br><span style="font-size:10px;opacity:0.7">₹599</span></button>
       </div>
-
-      <!-- Dynamic content -->
-      <div id="plan-badge" class="plan-badge">⭐ MOST POPULAR</div>
+      <div id="plan-badge" class="plan-badge">MOST POPULAR</div>
       <div id="plan-original" class="price-original">₹237</div>
       <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:4px">
         <div class="price" id="plan-price">₹199</div>
         <span id="plan-save" class="price-save">Save 16%</span>
       </div>
-      <div class="price-sub" id="plan-sub">90 days · ₹66/month · 10 days FREE trial</div>
-
+      <div class="price-sub" id="plan-sub">90 days · ₹66/month</div>
       <ul class="price-list">
-        <li>Zero platform fee on all bookings</li>
-        <li>Priority in match results</li>
-        <li>Pro badge on profile</li>
-        <li>Save ₹40+ every week</li>
-        <li>Premium support</li>
+        <li>No ₹2 fee on any booking — as rider or owner</li>
+        <li>Nothing else changes. Same rides, same matching.</li>
+        <li>2 rides a day × 22 days = ₹88/month in fees. Pro costs less.</li>
       </ul>
       <a href="https://app.carpoolkaro.com" class="price-cta">Get Pro →</a>
     </div>
@@ -342,36 +347,48 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
     <h2>Frequently <span class="hl">asked</span></h2>
   </div>
   <div class="faq">
-    <details class="faq-item"><summary class="faq-q">Is CarpoolKaro really free?</summary><div class="faq-a">Yes. Sign-up is free. You only pay ₹2 platform fee per booking. Pay the actual fare directly to the driver via UPI. No hidden charges, ever.</div></details>
-    <details class="faq-item"><summary class="faq-q">How do you verify users?</summary><div class="faq-a">Every user must verify with phone OTP and work email from a recognized IT company. We also check company badges. Optional ID upload for premium trust.</div></details>
-    <details class="faq-item"><summary class="faq-q">What if I need to cancel my booking?</summary><div class="faq-a">The ₹2 platform fee is non-refundable if you cancel. If the driver cancels, you get your ₹2 back. This keeps everyone accountable and fair.</div></details>
-    <details class="faq-item"><summary class="faq-q">How does the ₹10 referral work?</summary><div class="faq-a">Share your referral code. When your friend joins and completes their first ride, both of you get ₹10 in your wallet. No limit on referrals.</div></details>
-    <details class="faq-item"><summary class="faq-q">Which cities do you cover?</summary><div class="faq-a">Live in 6 cities: Hyderabad, Bangalore, Pune, Mumbai, Delhi NCR, Chennai. Each city has its own ride pool with local IT hubs and metros pre-loaded.</div></details>
-    <details class="faq-item"><summary class="faq-q">Can I post recurring rides?</summary><div class="faq-a">Absolutely. Post once and select "Daily" — we'll auto-create rides for every weekday on your route. Perfect for fixed office commutes.</div></details>
-    <details class="faq-item"><summary class="faq-q">How do payments to drivers work?</summary><div class="faq-a">Drivers receive the full fare directly through UPI. The app shows a payment picker (PhonePe, Google Pay, Paytm, BHIM, etc.) so you can use any UPI app.</div></details>
+    <details class="faq-item"><summary class="faq-q">Is CarpoolKaro really free?</summary><div class="faq-a">Signing up, browsing, posting and requesting cost nothing. When a car owner approves your request, ₹2 is charged to your wallet and ₹2 to the owner's. The fare itself goes to the owner directly — the app never touches it.</div></details>
+    <details class="faq-item"><summary class="faq-q">What is the fare, and who sets it?</summary><div class="faq-a">The car owner sets a per-seat contribution towards fuel and tolls for their regular commute. You see it before you request. It is a cost share between colleagues going the same way, not a taxi fare.</div></details>
+    <details class="faq-item"><summary class="faq-q">How do you verify users?</summary><div class="faq-a">Everyone signs in with Google. Add your work email and we verify it and show a company badge on your profile. Car owners' vehicle details and photo appear on each ride, and every trip can be rated by both sides.</div></details>
+    <details class="faq-item"><summary class="faq-q">What if I cancel, or the owner never replies?</summary><div class="faq-a">Nothing is charged until the owner approves. A request that isn't answered before the ride expires on its own. If you cancel after approval the ₹2 isn't refunded, but you can request another ride within 2 hours at no extra fee. If the owner cancels the ride, your ₹2 comes back.</div></details>
+    <details class="faq-item"><summary class="faq-q">How does the ₹10 referral work?</summary><div class="faq-a">Share your referral code from the app. When a colleague joins with it, you both get ₹10 wallet credit. One bonus per person.</div></details>
+    <details class="faq-item"><summary class="faq-q">Which cities do you cover?</summary><div class="faq-a">Hyderabad, Bengaluru, Pune, Mumbai, Delhi NCR and Chennai. Within a city, rides are matched by locality and zone, so you see the ones on your route first.</div></details>
+    <details class="faq-item"><summary class="faq-q">Can I post a daily ride once?</summary><div class="faq-a">Yes. Save your commute — home, office, times, days — and the app posts your ride every working day. Pause it when you're on leave or working from home.</div></details>
+    <details class="faq-item"><summary class="faq-q">How do I pay the owner?</summary><div class="faq-a">After the ride, the app shows the owner's UPI ID or mobile number and a QR code. Pay from any UPI app — PhonePe, Google Pay, Paytm or your bank's app — then tap "I've paid". The owner confirms it on their side.</div></details>
   </div>
 </section>
 
 <section>
   <div class="download">
     <h2>Ready to share your<br>first ride?</h2>
-    <p>Join hundreds of IT professionals already saving on their daily commute.</p>
+    <p>Join the IT professionals already sharing their daily commute.</p>
     <div class="dl-row">
+      <!-- WEB APP BUTTON: remove this <a> after the Play Store launch on 11 Nov -->
       <a href="https://app.carpoolkaro.com" class="dl-btn">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
         <div><span class="dl-sub">Use on</span><span class="dl-name">Web App</span></div>
       </a>
-      <a href="https://app.carpoolkaro.com" class="dl-btn">
+      <a href="https://play.google.com/store/apps/details?id=com.carpoolkaro.app" class="dl-btn" rel="noopener">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.21.97.13l12.4-7.16-2.61-2.61-10.76 9.64zM.8 1.42C.31 1.85 0 2.54 0 3.44v17.12c0 .9.31 1.59.8 2.02l.11.1 9.59-9.59v-.22L.91 3.32.8 1.42zM19.84 10.3l-2.55-1.47-2.91 2.91 2.91 2.91 2.56-1.48c.73-.42.73-1.45-.01-1.87zM4.15.24L16.55 7.4l-2.61 2.61L3.18.37A1.16 1.16 0 014.15.24z"/></svg>
-        <div><span class="dl-sub">Coming soon on</span><span class="dl-name">Google Play</span></div>
-        <span class="dl-coming">SOON</span>
+        <div><span class="dl-sub">Get it on</span><span class="dl-name">Google Play</span></div>
+        <span class="dl-coming">11 NOV</span><!-- remove this badge after publishing -->
       </a>
-      <a href="https://app.carpoolkaro.com" class="dl-btn">
+      <a href="#iphone" class="dl-btn" onclick="document.getElementById('iphone').open=true">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-        <div><span class="dl-sub">Coming soon on</span><span class="dl-name">App Store</span></div>
-        <span class="dl-coming">SOON</span>
+        <div><span class="dl-sub">On iPhone</span><span class="dl-name">Add to Home Screen</span></div>
       </a>
     </div>
+
+    <!-- iPhone: no App Store listing; the web app installs from Safari -->
+    <details class="ios" id="iphone">
+      <summary>How to install on iPhone (30 seconds)</summary>
+      <ol class="ios-steps">
+        <li><b>Open</b> <a href="https://app.carpoolkaro.com">app.carpoolkaro.com</a> in <b>Safari</b> — it must be Safari, not Chrome.</li>
+        <li>Tap the <b>Share</b> button <span class="ios-ic">&#x2B06;&#xFE0E;</span> at the bottom of the screen.</li>
+        <li>Scroll down and tap <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+      </ol>
+      <p>CarpoolKaro now opens from your home screen like any other app, with notifications.</p>
+    </details>
   </div>
 </section>
 
@@ -381,7 +398,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
       <div style="background:#fff;border-radius:12px;padding:8px 16px;display:inline-block">
         <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro" style="height:70px;width:auto">
       </div>
-      <p class="foot-desc">India's carpool community for IT professionals. Built in Hyderabad with love. Share rides. Save money. Make friends.</p>
+      <p class="foot-desc">Carpooling for IT commuters. Started in Hyderabad, open across India. Share the ride, split the cost.</p>
     </div>
     <div class="foot-col">
       <h4>Product</h4>
@@ -393,7 +410,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
     <div class="foot-col">
       <h4>Company</h4>
       <a href="mailto:support@carpoolkaro.com">Contact</a>
-      <a href="https://app.carpoolkaro.com">Support</a>
+      <a href="mailto:support@carpoolkaro.com">Support</a>
       <a href="#cities">Cities</a>
     </div>
     <div class="foot-col">
@@ -401,6 +418,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
       <a href="https://app.carpoolkaro.com/terms">Terms</a>
       <a href="https://app.carpoolkaro.com/privacy">Privacy</a>
       <a href="https://app.carpoolkaro.com/refund-policy">Refund Policy</a>
+      <a href="mailto:support@carpoolkaro.com">Grievance Officer: Sairam</a>
     </div>
   </div>
   <div class="foot-bottom">
@@ -411,10 +429,10 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
 
 <script>
 const plans = [
-  { badge: '30 DAYS', original: null,   price: '₹79',  save: null,      sub: '30 days · ₹79/month · 10 days FREE trial' },
-  { badge: '⭐ MOST POPULAR', original: '₹237', price: '₹199', save: 'Save 16%', sub: '90 days · ₹66/month · 10 days FREE trial' },
-  { badge: '🏆 BEST VALUE',  original: '₹474', price: '₹349', save: 'Save 26%', sub: '180 days · ₹58/month · 10 days FREE trial' },
-  { badge: '🚀 MAX SAVINGS', original: '₹948', price: '₹599', save: 'Save 37%', sub: '365 days · ₹50/month · 10 days FREE trial' },
+  { badge: '30 DAYS',      original: null,   price: '₹79',  save: null,       sub: '30 days · ₹79/month' },
+  { badge: 'MOST POPULAR', original: '₹237', price: '₹199', save: 'Save 16%', sub: '90 days · ₹66/month' },
+  { badge: 'BEST VALUE',   original: '₹474', price: '₹349', save: 'Save 26%', sub: '180 days · ₹58/month' },
+  { badge: 'MAX SAVINGS',  original: '₹948', price: '₹599', save: 'Save 37%', sub: '365 days · ₹50/month' },
 ]
 function selectPlan(i) {
   plans.forEach((_, j) => document.getElementById('tab-'+j).classList.toggle('active', i===j))
