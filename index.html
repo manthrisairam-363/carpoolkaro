@@ -100,15 +100,39 @@ section{padding:90px 6%}
 .cities .section-head p{color:rgba(255,255,255,0.6)}
 .cities .eyebrow{color:var(--yellow)}
 .cities .hl{color:var(--yellow)}.cities .hl::after{display:none}
-.city-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;max-width:1100px;margin:0 auto}
-.city{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:22px 16px;text-align:center;transition:0.3s}
-.city:hover{background:var(--yellow);color:var(--ink);border-color:var(--yellow);transform:translateY(-6px)}
+.city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 20px;max-width:1000px;margin:0 auto}
+.city{text-align:left;transition:0.3s}
+/* Indian private number plate: white, black type, blue IND band, two screws */
+.plate{position:relative;display:flex;align-items:stretch;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:10px;overflow:hidden;box-shadow:0 10px 0 -4px rgba(0,0,0,0.35);transition:transform .25s ease,box-shadow .25s ease}
+.city:hover .plate{transform:translateY(-6px) rotate(-1.2deg);box-shadow:8px 10px 0 var(--yellow)}
+.plate .ind{flex:0 0 26px;background:#1d4ed8;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:8px;font-weight:800;letter-spacing:1px;writing-mode:vertical-rl;transform:rotate(180deg)}
+.plate .ind::before{content:'';width:9px;height:9px;border-radius:50%;border:2px solid #fff;box-sizing:border-box}
+.plate .code{flex:1;font-family:'Space Grotesk';font-weight:700;font-size:clamp(28px,3.2vw,40px);letter-spacing:0.04em;padding:14px 16px 12px;line-height:1;white-space:nowrap}
+.plate .code small{display:block;font-family:'Plus Jakarta Sans';font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gray);margin-top:6px}
+.plate::before,.plate::after{content:'';position:absolute;top:6px;width:6px;height:6px;border-radius:50%;background:#cbd5e1;box-shadow:inset 0 1px 1px rgba(0,0,0,0.4)}
+.plate::before{left:34px}.plate::after{right:8px}
 .city-icon{font-size:32px;margin-bottom:10px}
 .feat-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .cards-label{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
 .note{text-align:center;color:var(--gray);font-size:13px;margin-top:22px}
-.city-name{font-weight:800;font-size:13px}
-.city-area{font-size:10px;opacity:0.5;margin-top:3px}
+.city-name{font-weight:800;font-size:15px;margin-top:14px}
+.city-area{font-size:12px;opacity:0.55;margin-top:3px}
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:36px 56px;align-items:start;max-width:1000px;margin:0 auto}
+.calc-controls{display:grid;gap:22px}
+.seg{display:inline-grid;grid-auto-flow:column;background:#fff;border:2px solid var(--ink);border-radius:12px;padding:3px;gap:3px;width:max-content}
+.seg button{border:0;background:transparent;padding:10px 18px;border-radius:9px;font-weight:800;font-size:14px;color:var(--gray);cursor:pointer;font-family:inherit}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.field label{display:flex;justify-content:space-between;font-weight:700;font-size:14px;margin-bottom:8px;color:var(--ink)}
+.field output{font-family:'Space Grotesk';font-weight:700}
+.field input[type=range]{width:100%;accent-color:var(--ink);height:28px}
+.result{background:#fff;border:3px solid var(--ink);border-radius:14px;padding:26px 28px;box-shadow:8px 8px 0 var(--yellow)}
+.result .big{font-family:'Space Grotesk';font-size:clamp(40px,5vw,64px);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--ink)}
+.result .big small{font-family:'Plus Jakarta Sans';font-size:15px;font-weight:700;letter-spacing:0;color:var(--gray);margin-left:8px}
+.result .sub{margin-top:10px;color:var(--gray);font-size:14px;line-height:1.6}
+.result .fee{margin-top:18px;padding-top:14px;border-top:2px dashed #e2e8f0;display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--gray)}
+.result .fee b{color:var(--ink)}
+.calc-note{text-align:center;color:var(--gray);font-size:12px;margin-top:26px}
 
 /* ── PRICING ── */
 .pricing-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:960px;margin:0 auto}
@@ -176,13 +200,15 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   .cards{align-items:flex-start}
   .rc-mid{margin-left:40px}
   .steps,.features{grid-template-columns:1fr 1fr;gap:14px}
-  .city-grid{grid-template-columns:repeat(3,1fr)}
+  .city-grid{grid-template-columns:repeat(2,1fr)}
+  .calc{grid-template-columns:1fr}
   .pricing-wrap{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
 }
 @media(max-width:560px){
   .steps,.features{grid-template-columns:1fr}
-  .city-grid{grid-template-columns:repeat(2,1fr)}
+  .city-grid{grid-template-columns:1fr 1fr;gap:16px 12px}
+  .plate .code{font-size:24px;padding:12px 10px 10px}
   .foot-grid{grid-template-columns:1fr}
   .cities,.download{margin:0 4%;padding:60px 6%}
   section{padding:60px 6%}
@@ -201,6 +227,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   <div class="nav-links">
     <a href="#how">How it Works</a>
     <a href="#features">Features</a>
+    <a href="#worth">Savings</a>
     <a href="#cities">Cities</a>
     <a href="#pricing">Pricing</a>
   </div>
@@ -278,6 +305,31 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   </div>
 </section>
 
+<section id="worth" style="background:var(--light)">
+  <div class="section-head">
+    <div class="eyebrow">Your numbers</div>
+    <h2>What a shared commute is <span class="hl">worth to you</span></h2>
+    <p>Move the sliders. Fares are set by the owner as a share of fuel and tolls; these are typical city numbers.</p>
+  </div>
+  <div class="calc">
+    <div class="calc-controls">
+      <div class="seg" role="group" aria-label="I am a">
+        <button type="button" id="roleOwner" aria-pressed="true">I own a car</button>
+        <button type="button" id="roleRider" aria-pressed="false">I need a seat</button>
+      </div>
+      <div class="field"><label for="fare">Fare per seat, one way <output id="fareOut">₹90</output></label><input type="range" id="fare" min="40" max="250" step="10" value="90"></div>
+      <div class="field" id="ridersField"><label for="riders">Riders in your car <output id="ridersOut">2</output></label><input type="range" id="riders" min="1" max="3" step="1" value="2"></div>
+      <div class="field"><label for="days">Office days a month <output id="daysOut">20</output></label><input type="range" id="days" min="8" max="24" step="1" value="20"></div>
+    </div>
+    <div class="result" aria-live="polite">
+      <div class="big"><span id="bigNum">₹7,200</span><small id="bigUnit">a month towards fuel</small></div>
+      <p class="sub" id="subLine">2 riders, both ways, 20 days. Paid to your UPI after each ride.</p>
+      <div class="fee"><span>CarpoolKaro fee for the month</span><b id="feeLine">₹160</b></div>
+    </div>
+  </div>
+  <p class="calc-note">Owners keep every rupee of the fare. The only charge is ₹2 per confirmed booking, on each side.</p>
+</section>
+
 <section class="cities" id="cities">
   <div class="section-head">
     <div class="eyebrow">Cities</div>
@@ -285,12 +337,12 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
     <p>Six cities, one app. Rides are matched by locality and zone inside each city.</p>
   </div>
   <div class="city-grid">
-    <div class="city"><div class="city-name">Hyderabad</div><div class="city-area">HITEC City, Gachibowli, Financial District</div></div>
-    <div class="city"><div class="city-name">Bengaluru</div><div class="city-area">Whitefield, ORR, Electronic City</div></div>
-    <div class="city"><div class="city-name">Pune</div><div class="city-area">Hinjewadi, Kharadi, Magarpatta</div></div>
-    <div class="city"><div class="city-name">Mumbai</div><div class="city-area">BKC, Powai, Airoli</div></div>
-    <div class="city"><div class="city-name">Delhi NCR</div><div class="city-area">Cyber City, Noida, Sector 62</div></div>
-    <div class="city"><div class="city-name">Chennai</div><div class="city-area">OMR, Sholinganallur, Siruseri</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">TS 09<small>TELANGANA</small></div></div><div class="city-name">Hyderabad</div><div class="city-area">HITEC City, Gachibowli, Financial District</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">KA 01<small>KARNATAKA</small></div></div><div class="city-name">Bengaluru</div><div class="city-area">Whitefield, Outer Ring Road, Electronic City</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">MH 12<small>MAHARASHTRA</small></div></div><div class="city-name">Pune</div><div class="city-area">Hinjewadi, Kharadi, Magarpatta</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">MH 01<small>MAHARASHTRA</small></div></div><div class="city-name">Mumbai</div><div class="city-area">BKC, Powai, Airoli</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">DL 3C<small>DELHI</small></div></div><div class="city-name">Delhi NCR</div><div class="city-area">Cyber City, Noida, Sector 62</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">TN 01<small>TAMIL NADU</small></div></div><div class="city-name">Chennai</div><div class="city-area">OMR, Sholinganallur, Siruseri</div></div>
   </div>
 </section>
 
@@ -428,6 +480,34 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
 </footer>
 
 <script>
+// ----- savings calculator
+;(function () {
+  const $ = id => document.getElementById(id)
+  const fare = $('fare'), riders = $('riders'), days = $('days')
+  const roleOwner = $('roleOwner'), roleRider = $('roleRider')
+  let owner = true
+  const inr = n => '₹' + Math.round(n).toLocaleString('en-IN')
+  function render() {
+    const f = +fare.value, r = +riders.value, d = +days.value
+    $('fareOut').textContent = inr(f); $('ridersOut').textContent = r; $('daysOut').textContent = d
+    $('ridersField').style.display = owner ? '' : 'none'
+    const trips = d * 2
+    if (owner) {
+      $('bigNum').textContent = inr(f * r * trips); $('bigUnit').textContent = 'a month towards fuel'
+      $('subLine').textContent = `${r} rider${r > 1 ? 's' : ''}, both ways, ${d} days. Paid to your UPI after each ride.`
+      $('feeLine').textContent = inr(2 * r * trips)
+    } else {
+      $('bigNum').textContent = inr(f * trips); $('bigUnit').textContent = 'a month for your commute'
+      $('subLine').textContent = `${d} days, both ways, at ${inr(f)} a seat. Compare it with what you pay now.`
+      $('feeLine').textContent = inr(2 * trips)
+    }
+  }
+  function setRole(o) { owner = o; roleOwner.setAttribute('aria-pressed', o); roleRider.setAttribute('aria-pressed', !o); render() }
+  roleOwner.onclick = () => setRole(true); roleRider.onclick = () => setRole(false)
+  ;[fare, riders, days].forEach(el => el.addEventListener('input', render))
+  render()
+})()
+
 const plans = [
   { badge: '30 DAYS',      original: null,   price: '₹79',  save: null,       sub: '30 days · ₹79/month' },
   { badge: 'MOST POPULAR', original: '₹237', price: '₹199', save: 'Save 16%', sub: '90 days · ₹66/month' },
