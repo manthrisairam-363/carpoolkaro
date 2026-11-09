@@ -26,265 +26,358 @@
 <link rel="icon" href="https://app.carpoolkaro.com/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Only weights that exist: Space Grotesk 300-700, Plus Jakarta Sans 200-800. Asking for 800/900 on the wrong family can make Google reject the whole request. -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#fafaf5;color:#0f172a;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-:root{--ink:#0f172a;--cream:#fafaf5;--yellow:#facc15;--gray:#64748b;--light:#f1f5f9}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+:root{--ink:#0f172a;--cream:#fafaf5;--yellow:#facc15;--gray:#64748b;--light:#f1f5f9;--line:#e2e8f0}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--yellow);color:var(--ink)}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
-.nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;background:rgba(15,23,42,0.92);backdrop-filter:blur(20px);padding:8px 12px 8px 12px;border-radius:100px;display:flex;align-items:center;gap:20px;box-shadow:0 8px 30px rgba(0,0,0,0.15)}
-.nav-logo{display:flex;align-items:center}
-.nav-links{display:flex;gap:6px}
-.nav-links a{color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px;transition:0.2s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.08)}
-.nav-cta{background:var(--yellow);color:var(--ink);padding:9px 18px;border-radius:100px;font-weight:800;font-size:13px;transition:0.2s;white-space:nowrap}
+:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+
+/* ── NAV: full-width fixed wrapper, so the pill sizes to its content (a bare left:50% box can only grow to half the screen and wraps "How it Works") ── */
+.nav-wrap{position:fixed;top:16px;left:0;right:0;z-index:100;display:flex;justify-content:center;padding:0 12px;pointer-events:none}
+.nav{pointer-events:auto;display:flex;align-items:center;gap:18px;max-width:100%;background:rgba(15,23,42,.92);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);padding:8px 10px;border-radius:100px;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.nav-logo img{height:28px;width:auto;background:#fff;padding:5px 12px;border-radius:100px}
+.nav-links{display:flex;gap:4px}
+.nav-links a{color:rgba(255,255,255,.72);font-size:13px;font-weight:600;padding:7px 13px;border-radius:100px;white-space:nowrap;transition:.2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:var(--ink);padding:9px 16px;border-radius:100px;font-weight:800;font-size:13px;white-space:nowrap;transition:.2s}
 .nav-cta:hover{transform:scale(1.05)}
-@media(max-width:700px){.nav-links{display:none}.nav{padding:8px 12px;gap:12px}}
-.hero{padding:140px 6% 100px;min-height:90vh;display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(circle at 70% 50%,rgba(250,204,21,0.08),transparent 70%);pointer-events:none}
-.tag{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--yellow);padding:8px 18px;border-radius:8px;font-size:11px;font-weight:800;letter-spacing:1.5px;margin-bottom:28px;text-transform:uppercase}
-.tag::before{content:'';width:6px;height:6px;background:var(--yellow);border-radius:50%}
-.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,6vw,80px);font-weight:700;line-height:0.95;letter-spacing:-3px;margin-bottom:24px}
-.hl{position:relative;display:inline-block;color:var(--ink);white-space:nowrap}
-.hl::after{content:'';position:absolute;left:-6px;right:-6px;bottom:6px;height:40%;background:var(--yellow);z-index:-1;transform:rotate(-1.5deg)}
-.hero p.lead{color:var(--gray);font-size:18px;line-height:1.7;margin-bottom:36px;max-width:480px}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
-.cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:18px 32px;border-radius:14px;font-weight:700;font-size:15px;box-shadow:6px 6px 0 var(--yellow);transition:0.2s;border:none;cursor:pointer}
+.nav-cta svg{width:14px;height:14px}
+@media(max-width:760px){.nav-links{display:none}.nav{gap:12px}}
+
+/* ── HERO ── */
+.hero{padding:132px 6% 90px;min-height:92vh;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 78% 38%,rgba(250,204,21,.16),transparent 70%);pointer-events:none}
+.hero-copy,.cards{position:relative}
+.hero-logo{height:104px;width:auto;margin-bottom:28px}
+.tag{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--yellow);padding:9px 16px;border-radius:10px;font-size:11px;font-weight:800;letter-spacing:1.4px;margin-bottom:26px;text-transform:uppercase}
+.tag .dot{position:relative;flex:0 0 8px;height:8px;border-radius:50%;background:var(--yellow)}
+.tag .dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--yellow);animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(42px,6vw,78px);font-weight:700;line-height:.98;letter-spacing:-.04em;margin-bottom:24px}
+/* z-index:1 makes the span its own stacking context, so the marker (z-index:-1) stays visible on sections that have a background */
+.hl{position:relative;display:inline-block;z-index:1;color:var(--ink);white-space:nowrap}
+.hl::after{content:'';position:absolute;left:-6px;right:-6px;bottom:6px;height:40%;background:var(--yellow);z-index:-1;transform:rotate(-1.5deg);border-radius:3px}
+.lead{color:#475569;font-size:18px;line-height:1.7;margin-bottom:34px;max-width:500px}
+.lead b{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:4px;text-underline-offset:3px}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:18px 32px;border-radius:14px;font-weight:700;font-size:15px;box-shadow:6px 6px 0 var(--yellow);transition:.2s;border:2px solid var(--ink);cursor:pointer}
 .cta:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--yellow)}
-.cta-ghost{background:transparent;color:var(--ink);box-shadow:6px 6px 0 var(--ink);border:2px solid var(--ink)}
+.cta svg{width:18px;height:18px;color:var(--yellow)}
+.cta-ghost{background:#fff;color:var(--ink);box-shadow:6px 6px 0 var(--ink)}
 .cta-ghost:hover{box-shadow:3px 3px 0 var(--ink)}
-.trust-row{display:flex;gap:32px;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:10px;color:var(--gray);font-size:13px;font-weight:600}
-.trust-item b{color:var(--ink);font-size:22px;font-family:'Space Grotesk'}
-.cards{display:flex;flex-direction:column;gap:16px;padding:10px 0}
-.ride-card{background:#fff;border:2px solid var(--ink);border-radius:24px;padding:22px 24px;width:310px;box-shadow:6px 6px 0 rgba(15,23,42,0.08);transition:0.3s}
-.ride-card:hover{transform:translateY(-4px);box-shadow:8px 8px 0 rgba(15,23,42,0.12)}
-.rc-mid{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:6px 6px 0 var(--yellow);margin-left:auto}
-.rc-last{margin-left:20px}
-.rc-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.rc-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#6366f1);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0}
+.stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:34px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line);max-width:540px}
+.stats b{display:block;font-family:'Space Grotesk';font-size:32px;font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.stats span{display:block;margin-top:4px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);line-height:1.35;max-width:130px}
+
+/* example ride cards */
+.cards{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.cards-label{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray)}
+.ride-card{background:#fff;border:2px solid var(--ink);border-radius:22px;padding:20px 22px;width:100%;max-width:460px;box-shadow:6px 6px 0 var(--ink);transition:transform .25s}
+.ride-card:hover{transform:translateY(-4px)}
+.rc-mid{background:var(--ink);color:#fff;box-shadow:6px 6px 0 var(--yellow);margin-left:auto}
+.rc-last{margin-left:14px}
+.rc-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.rc-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#6366f1);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0}
 .rc-mid .rc-av{background:linear-gradient(135deg,#facc15,#f59e0b);color:#000}
-.rc-name{font-weight:700;font-size:14px;display:flex;align-items:center;gap:5px}
-.rc-name .ck{background:#3b82f6;color:#fff;font-size:9px;padding:1px 5px;border-radius:4px;font-weight:800}
-.rc-meta{font-size:11px;color:var(--gray)}
-.rc-mid .rc-meta{color:rgba(255,255,255,0.5)}
-.rc-route{font-weight:800;font-size:16px;margin-bottom:6px}
-.rc-time{font-size:12px;color:var(--gray);margin-bottom:14px}
-.rc-mid .rc-time{color:rgba(255,255,255,0.6)}
-.rc-bottom{display:flex;justify-content:space-between;align-items:center}
-.rc-price{background:var(--yellow);color:var(--ink);font-weight:800;padding:5px 14px;border-radius:100px;font-size:14px}
-.rc-seats{font-size:11px;color:var(--gray);font-weight:700}
-.rc-mid .rc-seats{color:rgba(255,255,255,0.7)}
+.rc-last .rc-av{background:linear-gradient(135deg,#10b981,#0f766e)}
+.rc-who{min-width:0;flex:1}
+.rc-name{font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px}
+.rc-name .ck{background:#2563eb;color:#fff;font-size:9px;line-height:1;padding:3px 5px;border-radius:4px;font-weight:800}
+.rc-meta{font-size:11px;color:var(--gray);margin-top:1px}
+.rc-mid .rc-meta{color:rgba(255,255,255,.6)}
+.rc-tag{margin-left:auto;font-size:11px;font-weight:700;background:var(--light);color:#334155;padding:4px 9px;border-radius:7px;white-space:nowrap}
+.rc-mid .rc-tag{background:rgba(255,255,255,.1);color:#cbd5e1}
+.rc-box{background:#f8fafc;border:1px solid #eef2f7;border-radius:14px;padding:12px 14px;margin-bottom:14px}
+.rc-mid .rc-box{background:rgba(30,41,59,.8);border-color:#334155}
+.rc-route{font-family:'Space Grotesk';font-weight:700;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rc-route svg{width:16px;height:16px;color:#94a3b8;flex:none}
+.rc-mid .rc-route svg{color:var(--yellow)}
+.rc-time{font-size:12px;color:var(--gray);margin-top:3px}
+.rc-mid .rc-time{color:#cbd5e1}
+.rc-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rc-price{background:var(--yellow);color:var(--ink);font-weight:800;padding:6px 14px;border-radius:10px;font-size:14px}
+.rc-price small{font-size:11px;font-weight:600}
+.rc-seats{font-size:11px;font-weight:700;padding:5px 10px;border-radius:8px;color:#047857;background:#ecfdf5;border:1px solid #a7f3d0;white-space:nowrap}
+.rc-mid .rc-seats{color:var(--yellow);background:rgba(250,204,21,.1);border-color:rgba(250,204,21,.3)}
+.rc-seats.low{color:#b45309;background:#fffbeb;border-color:#fde68a}
+
+/* ── SECTIONS ── */
 section{padding:90px 6%}
 .eyebrow{font-size:12px;font-weight:800;color:var(--gray);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;justify-content:center}
 .eyebrow::before,.eyebrow::after{content:'';flex:0 0 30px;height:1px;background:#cbd5e1}
-.section-head{text-align:center;margin-bottom:60px;max-width:700px;margin-left:auto;margin-right:auto}
-.section-head h2{font-family:'Space Grotesk';font-size:clamp(32px,4.5vw,52px);font-weight:700;letter-spacing:-1.5px;line-height:1.05;margin-bottom:16px}
+.section-head{text-align:center;margin:0 auto 60px;max-width:700px}
+.section-head h2{font-family:'Space Grotesk';font-size:clamp(32px,4.5vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.08;margin-bottom:16px}
 .section-head p{color:var(--gray);font-size:17px;line-height:1.7}
-.how{background:#fff;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
-.step{position:relative;background:var(--cream);border-radius:24px;padding:32px}
-.step-num{font-family:'Space Grotesk';font-size:64px;font-weight:700;color:var(--yellow);line-height:1;-webkit-text-stroke:2px var(--ink);margin-bottom:16px}
-.step h3{font-size:21px;font-weight:800;margin-bottom:10px;font-family:'Space Grotesk'}
+.how{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1100px;margin:0 auto}
+.step{background:var(--cream);border:2px solid var(--ink);border-radius:24px;padding:30px;box-shadow:6px 6px 0 var(--ink);transition:transform .2s}
+.step:hover{transform:translateY(-4px)}
+.step-num{font-family:'Space Grotesk';font-size:64px;font-weight:700;color:var(--yellow);line-height:1;-webkit-text-stroke:2px var(--ink);margin-bottom:14px}
+.chip{display:inline-block;background:var(--ink);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:4px 9px;border-radius:6px;margin-bottom:12px;text-transform:uppercase}
+.step h3{font-size:21px;font-weight:700;margin-bottom:10px;font-family:'Space Grotesk'}
 .step p{color:var(--gray);font-size:14px;line-height:1.7}
 .features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1200px;margin:0 auto}
-.feat{background:#fff;border:2px solid #e2e8f0;border-radius:20px;padding:28px;transition:0.3s}
+.feat{background:#fff;border:2px solid var(--line);border-radius:20px;padding:28px;transition:.3s}
 .feat:hover{border-color:var(--ink);transform:translateY(-6px);box-shadow:6px 6px 0 var(--yellow)}
-.feat-icon{width:48px;height:48px;background:var(--ink);color:var(--yellow);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
-.feat h3{font-size:16px;font-weight:800;margin-bottom:8px;font-family:'Space Grotesk'}
+.feat-icon{width:48px;height:48px;background:var(--ink);color:var(--yellow);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.feat-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:16px;font-weight:700;margin-bottom:8px;font-family:'Space Grotesk'}
 .feat p{color:var(--gray);font-size:13px;line-height:1.7}
+
+/* ── CALCULATOR ── */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;max-width:1040px;margin:0 auto}
+.calc-card{background:#fff;border:2px solid var(--ink);border-radius:24px;padding:28px;box-shadow:6px 6px 0 var(--ink);display:grid;gap:24px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--light);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px}
+.seg button{border:0;background:transparent;padding:12px 10px;border-radius:9px;font-weight:800;font-size:14px;color:#475569;cursor:pointer;font-family:inherit;transition:.15s}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.field label{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;margin-bottom:12px}
+.field output{font-family:'Space Grotesk';font-weight:700;font-size:15px;background:#fef9c3;border:1px solid #fde047;border-radius:7px;padding:2px 10px}
+.ticks{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;font-weight:600;color:#94a3b8}
+input[type=range]{-webkit-appearance:none;appearance:none;display:block;width:100%;height:8px;border-radius:999px;cursor:pointer;outline-offset:6px;background:linear-gradient(var(--ink),var(--ink)) 0/var(--p,50%) 100% no-repeat,var(--line)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:var(--ink);border:3px solid var(--yellow);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .15s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--ink);border:3px solid var(--yellow);box-shadow:0 2px 6px rgba(0,0,0,.3)}
+input[type=range]::-moz-range-track{height:8px;border-radius:999px;background:var(--line)}
+input[type=range]::-moz-range-progress{height:8px;border-radius:999px;background:var(--ink)}
+.result{background:#fff;border:2px solid var(--ink);border-radius:24px;padding:30px;box-shadow:6px 6px 0 var(--yellow)}
+.r-kicker{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gray)}
+.r-kicker i{width:8px;height:8px;border-radius:50%;background:#10b981}
+.result .big{font-family:'Space Grotesk';font-size:clamp(44px,5.5vw,66px);font-weight:700;letter-spacing:-.04em;line-height:1;margin:14px 0 6px}
+.result .unit{font-weight:700;color:#475569;font-size:16px}
+.result .sub{margin-top:16px;color:#475569;font-size:14px;line-height:1.6;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.result .fee{margin-top:20px;padding-top:16px;border-top:2px dashed var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--gray)}
+.result .fee em{font-style:normal;font-size:10px;font-weight:800;background:var(--line);color:#334155;padding:2px 7px;border-radius:5px;margin-left:6px;white-space:nowrap}
+.result .fee b{color:var(--ink);font-family:'Space Grotesk';font-size:20px}
+.calc-note{text-align:center;color:var(--gray);font-size:12px;margin-top:16px;line-height:1.6}
+
+/* ── CITIES (number plates) ── */
 .cities{background:var(--ink);color:#fff;border-radius:32px;margin:0 6%;padding:80px 6%}
 .cities .section-head h2{color:#fff}
-.cities .section-head p{color:rgba(255,255,255,0.6)}
+.cities .section-head p{color:rgba(255,255,255,.6)}
 .cities .eyebrow{color:var(--yellow)}
+.cities .eyebrow::before,.cities .eyebrow::after{background:#334155}
 .cities .hl{color:var(--yellow)}.cities .hl::after{display:none}
-.city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 20px;max-width:1000px;margin:0 auto}
-.city{text-align:left;transition:0.3s}
+.city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 22px;max-width:1000px;margin:0 auto}
+.city{text-align:left}
 /* Indian private number plate: white, black type, blue IND band, two screws */
-.plate{position:relative;display:flex;align-items:stretch;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:10px;overflow:hidden;box-shadow:0 10px 0 -4px rgba(0,0,0,0.35);transition:transform .25s ease,box-shadow .25s ease}
+.plate{position:relative;display:flex;align-items:stretch;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:10px;overflow:hidden;box-shadow:0 10px 0 -4px rgba(0,0,0,.35);transition:transform .25s ease,box-shadow .25s ease}
 .city:hover .plate{transform:translateY(-6px) rotate(-1.2deg);box-shadow:8px 10px 0 var(--yellow)}
 .plate .ind{flex:0 0 26px;background:#1d4ed8;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:8px;font-weight:800;letter-spacing:1px;writing-mode:vertical-rl;transform:rotate(180deg)}
 .plate .ind::before{content:'';width:9px;height:9px;border-radius:50%;border:2px solid #fff;box-sizing:border-box}
-.plate .code{flex:1;font-family:'Space Grotesk';font-weight:700;font-size:clamp(28px,3.2vw,40px);letter-spacing:0.04em;padding:14px 16px 12px;line-height:1;white-space:nowrap}
+.plate .code{flex:1;font-family:'Space Grotesk';font-weight:700;font-size:clamp(28px,3.2vw,40px);letter-spacing:.04em;padding:14px 16px 12px;line-height:1;white-space:nowrap}
 .plate .code small{display:block;font-family:'Plus Jakarta Sans';font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gray);margin-top:6px}
-.plate::before,.plate::after{content:'';position:absolute;top:6px;width:6px;height:6px;border-radius:50%;background:#cbd5e1;box-shadow:inset 0 1px 1px rgba(0,0,0,0.4)}
+.plate::before,.plate::after{content:'';position:absolute;top:6px;width:6px;height:6px;border-radius:50%;background:#cbd5e1;box-shadow:inset 0 1px 1px rgba(0,0,0,.4)}
 .plate::before{left:34px}.plate::after{right:8px}
-.city-icon{font-size:32px;margin-bottom:10px}
-.feat-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.cards-label{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
-.note{text-align:center;color:var(--gray);font-size:13px;margin-top:22px}
-.city-name{font-weight:800;font-size:15px;margin-top:14px}
-.city-area{font-size:12px;opacity:0.55;margin-top:3px}
-/* calculator */
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:36px 56px;align-items:start;max-width:1000px;margin:0 auto}
-.calc-controls{display:grid;gap:22px}
-.seg{display:inline-grid;grid-auto-flow:column;background:#fff;border:2px solid var(--ink);border-radius:12px;padding:3px;gap:3px;width:max-content}
-.seg button{border:0;background:transparent;padding:10px 18px;border-radius:9px;font-weight:800;font-size:14px;color:var(--gray);cursor:pointer;font-family:inherit}
-.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
-.field label{display:flex;justify-content:space-between;font-weight:700;font-size:14px;margin-bottom:8px;color:var(--ink)}
-.field output{font-family:'Space Grotesk';font-weight:700}
-.field input[type=range]{width:100%;accent-color:var(--ink);height:28px}
-.result{background:#fff;border:3px solid var(--ink);border-radius:14px;padding:26px 28px;box-shadow:8px 8px 0 var(--yellow)}
-.result .big{font-family:'Space Grotesk';font-size:clamp(40px,5vw,64px);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--ink)}
-.result .big small{font-family:'Plus Jakarta Sans';font-size:15px;font-weight:700;letter-spacing:0;color:var(--gray);margin-left:8px}
-.result .sub{margin-top:10px;color:var(--gray);font-size:14px;line-height:1.6}
-.result .fee{margin-top:18px;padding-top:14px;border-top:2px dashed #e2e8f0;display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--gray)}
-.result .fee b{color:var(--ink)}
-.calc-note{text-align:center;color:var(--gray);font-size:12px;margin-top:26px}
+.city-name{font-weight:800;font-size:16px;margin-top:16px}
+.city-area{font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.55);margin-top:4px}
 
 /* ── PRICING ── */
-.pricing-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:960px;margin:0 auto}
-.price-card{background:#fff;border:2px solid var(--ink);border-radius:24px;padding:40px;position:relative}
-.price-card.pro{background:var(--ink);color:#fff}
-.price-name{font-size:13px;font-weight:800;letter-spacing:2px;color:var(--gray);margin-bottom:10px;text-transform:uppercase}
+.pricing-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:960px;margin:0 auto}
+.price-card{background:#fff;border:2px solid var(--ink);border-radius:24px;padding:38px;position:relative;box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column}
+.price-card.pro{background:var(--ink);color:#fff;box-shadow:6px 6px 0 var(--yellow)}
+.price-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+.price-name{font-size:13px;font-weight:800;letter-spacing:2px;color:var(--gray);text-transform:uppercase}
 .price-card.pro .price-name{color:var(--yellow)}
-.price{font-family:'Space Grotesk';font-size:56px;font-weight:700;line-height:1;margin-bottom:6px;letter-spacing:-2px}
-.price small{font-size:18px;color:var(--gray);font-weight:500}
-.price-card.pro .price small{color:rgba(255,255,255,0.5)}
-.price-sub{color:var(--gray);font-size:13px;margin-bottom:24px}
-.price-card.pro .price-sub{color:rgba(255,255,255,0.6)}
-.price-list{list-style:none;margin-bottom:32px}
-.price-list li{padding:9px 0;font-size:14px;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(15,23,42,0.06)}
-.price-card.pro .price-list li{border-color:rgba(255,255,255,0.08)}
-.price-list li::before{content:'✓';color:var(--yellow);font-weight:900;flex-shrink:0;width:18px;height:18px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px}
+.price{font-family:'Space Grotesk';font-size:56px;font-weight:700;line-height:1;margin-bottom:6px;letter-spacing:-.04em}
+.price-sub{color:var(--gray);font-size:13px;margin-bottom:22px}
+.price-card.pro .price-sub{color:rgba(255,255,255,.6)}
+.price-list{list-style:none;margin-bottom:28px;flex:1}
+.price-list li{padding:9px 0;font-size:14px;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(15,23,42,.06)}
+.price-card.pro .price-list li{border-color:rgba(255,255,255,.08)}
+.price-list li::before{content:'✓';color:var(--yellow);font-weight:800;flex:0 0 18px;height:18px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:2px}
 .price-card.pro .price-list li::before{background:var(--yellow);color:var(--ink)}
-.price-cta{display:block;text-align:center;background:var(--ink);color:#fff;padding:14px;border-radius:14px;font-weight:800;font-size:14px;border:2px solid var(--ink);transition:0.2s}
+.price-cta{display:block;text-align:center;background:var(--ink);color:#fff;padding:15px;border-radius:14px;font-weight:800;font-size:14px;border:2px solid var(--ink);transition:.2s}
 .price-card.pro .price-cta{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
-.price-cta:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.15)}
-/* Plan tabs */
-.plan-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:rgba(255,255,255,0.07);border-radius:12px;padding:5px;margin-bottom:22px}
-.plan-tab{padding:8px 4px;border-radius:8px;border:none;cursor:pointer;font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);background:transparent;transition:0.2s;text-align:center;line-height:1.3}
+.price-cta:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.plan-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:rgba(255,255,255,.07);border-radius:12px;padding:5px;margin-bottom:22px}
+.plan-tab{padding:9px 4px;border-radius:8px;border:none;cursor:pointer;font:inherit;font-size:12px;font-weight:700;color:rgba(255,255,255,.55);background:transparent;transition:.2s;text-align:center;line-height:1.3}
+.plan-tab span{font-size:10.5px;opacity:.75}
+.plan-tab:hover{color:#fff}
 .plan-tab.active{background:#fff;color:var(--ink)}
-.plan-badge{display:inline-block;background:var(--yellow);color:var(--ink);font-size:9px;font-weight:800;padding:2px 7px;border-radius:100px;margin-bottom:6px;letter-spacing:0.5px}
-.price-original{font-size:16px;color:rgba(255,255,255,0.35);text-decoration:line-through;margin-bottom:2px;font-family:'Space Grotesk';font-weight:500}
-.price-save{display:inline-block;background:rgba(250,204,21,0.15);color:var(--yellow);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;margin-left:8px;vertical-align:middle}
+.plan-badge{background:var(--yellow);color:var(--ink);font-size:10px;font-weight:800;padding:4px 10px;border-radius:100px;letter-spacing:.06em;white-space:nowrap}
+.price-original{font-size:16px;color:rgba(255,255,255,.4);text-decoration:line-through;margin-bottom:2px;font-family:'Space Grotesk';font-weight:500;min-height:24px}
+.price-save{display:inline-block;background:rgba(250,204,21,.15);color:var(--yellow);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;margin-left:8px;vertical-align:middle}
+.price-row{display:flex;align-items:baseline;margin-bottom:4px}
 
-/* FAQ */
+/* ── FAQ ── */
 .faq{max-width:760px;margin:0 auto}
-.faq-item{background:#fff;border:2px solid #e2e8f0;border-radius:16px;margin-bottom:12px;overflow:hidden;transition:0.2s}
+.faq-item{background:#fff;border:2px solid var(--line);border-radius:16px;margin-bottom:12px;overflow:hidden;transition:.2s}
 .faq-item:hover{border-color:var(--ink)}
-.faq-q{padding:20px 24px;cursor:pointer;font-weight:700;font-size:15px;display:flex;justify-content:space-between;align-items:center;user-select:none;font-family:'Space Grotesk'}
-.faq-q::after{content:'+';font-size:22px;color:var(--yellow);font-weight:700;transition:0.3s}
+.faq-q{padding:20px 24px;cursor:pointer;font-weight:700;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;font-family:'Space Grotesk';list-style:none}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';font-size:22px;color:var(--ink);font-weight:700;transition:.3s;flex:none}
 .faq-item[open] .faq-q::after{transform:rotate(45deg)}
 .faq-a{padding:0 24px 22px;color:var(--gray);font-size:14px;line-height:1.7}
-.download{text-align:center;background:linear-gradient(135deg,var(--yellow) 0%,#fbbf24 100%);border-radius:32px;margin:0 6%;padding:80px 6%}
-.download h2{font-family:'Space Grotesk';font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:18px}
-.download p{color:rgba(15,23,42,0.7);font-size:17px;margin-bottom:36px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.7}
-.dl-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.dl-btn{background:var(--ink);color:#fff;padding:16px 28px;border-radius:16px;display:flex;align-items:center;gap:12px;transition:0.2s;font-weight:700;position:relative}
-.dl-btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.25)}
-.dl-sub{font-size:10px;opacity:0.7;letter-spacing:1px;text-transform:uppercase;display:block}
+
+/* ── DOWNLOAD ── */
+.download{text-align:center;background:linear-gradient(135deg,var(--yellow) 0%,#fbbf24 100%);border:2px solid var(--ink);border-radius:32px;margin:0 6%;padding:80px 6%;box-shadow:6px 6px 0 var(--ink)}
+.download h2{font-family:'Space Grotesk';font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.05;margin-bottom:18px}
+.download p{color:rgba(15,23,42,.72);font-size:17px;margin:0 auto 36px;max-width:540px;line-height:1.7}
+.dl-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.dl-btn{background:var(--ink);color:#fff;padding:16px 28px;border-radius:16px;display:flex;align-items:center;gap:12px;transition:.2s;font-weight:700;position:relative;text-align:left}
+.dl-btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.dl-btn svg{flex:none;color:var(--yellow)}
+.dl-sub{font-size:10px;opacity:.7;letter-spacing:1px;text-transform:uppercase;display:block}
 .dl-name{font-size:16px;font-weight:800}
-.ios{max-width:560px;margin:28px auto 0;text-align:left;background:rgba(15,23,42,0.08);border-radius:16px;padding:0 20px}
+.dl-coming{position:absolute;top:-8px;right:-6px;background:#fff;color:var(--ink);font-size:9px;font-weight:800;padding:3px 8px;border-radius:100px;letter-spacing:.5px;border:2px solid var(--ink)}
+.ios{max-width:560px;margin:28px auto 0;text-align:left;background:rgba(15,23,42,.08);border-radius:16px;padding:0 20px}
 .ios summary{cursor:pointer;list-style:none;font-weight:800;font-size:14px;padding:16px 0;color:var(--ink);display:flex;justify-content:space-between;align-items:center}
 .ios summary::-webkit-details-marker{display:none}
 .ios summary::after{content:'+';font-size:20px;font-weight:400}
 .ios[open] summary::after{content:'−'}
 .ios-steps{margin:0 0 6px;padding:0 0 0 20px;color:var(--ink);font-size:14px;line-height:1.7}
 .ios-steps li{margin-bottom:6px}
-.ios-steps a{text-decoration:underline;color:var(--ink)}
+.ios-steps a{text-decoration:underline}
 .ios-ic{display:inline-block;border:1.5px solid var(--ink);border-radius:5px;padding:0 5px;font-size:12px;line-height:1.4;vertical-align:middle}
-.ios p{font-size:13px;margin:0 0 16px;color:rgba(15,23,42,0.7);max-width:none}
-.dl-coming{position:absolute;top:-8px;right:-6px;background:#fff;color:var(--ink);font-size:9px;font-weight:800;padding:3px 8px;border-radius:100px;letter-spacing:0.5px;border:2px solid var(--ink)}
-footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
+.ios p{font-size:13px;margin:0 0 16px;color:rgba(15,23,42,.72);max-width:none}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.6);padding:60px 6% 40px;margin-top:90px}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 40px}
+.foot-logo{background:#fff;border-radius:12px;padding:8px 16px;display:inline-block}
+.foot-logo img{height:70px;width:auto}
 .foot-desc{font-size:13px;line-height:1.7;max-width:300px;margin-top:14px}
 .foot-col h4{color:#fff;font-size:13px;font-weight:800;margin-bottom:14px;letter-spacing:1.5px;text-transform:uppercase}
-.foot-col a{display:block;font-size:13px;padding:5px 0;transition:0.2s}
+.foot-col a{display:block;font-size:13px;padding:5px 0;transition:.2s}
 .foot-col a:hover{color:var(--yellow)}
-.foot-bottom{max-width:1200px;margin:0 auto;padding-top:30px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:12px}
+.foot-bottom{max-width:1200px;margin:0 auto;padding-top:30px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:12px}
+
+/* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;padding:120px 6% 60px}
-  .cards{align-items:flex-start}
-  .rc-mid{margin-left:40px}
-  .steps,.features{grid-template-columns:1fr 1fr;gap:14px}
+  .hero{grid-template-columns:1fr;padding:116px 6% 60px;min-height:0;gap:44px}
+  .hero::before{background:radial-gradient(ellipse 90% 34% at 85% 14%,rgba(250,204,21,.18),transparent 70%)}
+  .hero-logo{height:88px}
+  .cards{align-items:stretch}
+  .ride-card{max-width:none}
+  .rc-mid{margin-left:0}.rc-last{margin-left:0}
+  .steps,.features{grid-template-columns:1fr 1fr;gap:18px}
   .city-grid{grid-template-columns:repeat(2,1fr)}
   .calc{grid-template-columns:1fr}
   .pricing-wrap{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
 }
 @media(max-width:560px){
-  .steps,.features{grid-template-columns:1fr}
-  .city-grid{grid-template-columns:1fr 1fr;gap:16px 12px}
-  .plate .code{font-size:24px;padding:12px 10px 10px}
-  .foot-grid{grid-template-columns:1fr}
-  .cities,.download{margin:0 4%;padding:60px 6%}
   section{padding:60px 6%}
-  .ride-card{width:280px}
-  .rc-mid{margin-left:30px}
+  .section-head h2 .hl{white-space:normal}
+  .hero{padding-top:104px;padding-bottom:40px}
+  .hero-logo{height:72px;margin-bottom:22px}
+  .tag{font-size:10px;padding:8px 12px;margin-bottom:20px}
+  .lead{font-size:16px;margin-bottom:28px}
+  .cta{padding:16px 24px}
+  .stats{grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+  .stats b{font-size:26px}
+  .stats span{font-size:10px;letter-spacing:.05em}
+  .steps,.features{grid-template-columns:1fr}
+  .city-grid{grid-template-columns:1fr 1fr;gap:24px 12px}
+  .plate .code{font-size:24px;padding:12px 10px 10px}
+  .city-area{font-size:11.5px}
+  .cities,.download{margin:0 4%;padding:56px 6%}
+  .calc-card,.result{padding:22px}
+  .price-card{padding:28px 22px}
+  .foot-grid{grid-template-columns:1fr}
+  .rc-top{gap:10px}
+}
+@media(max-width:380px){
+  .city-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="/" class="nav-logo">
-    <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"
-         style="height:28px;width:auto;background:#fff;padding:5px 12px;border-radius:8px;display:block">
-  </a>
-  <div class="nav-links">
-    <a href="#how">How it Works</a>
-    <a href="#features">Features</a>
-    <a href="#worth">Savings</a>
-    <a href="#cities">Cities</a>
-    <a href="#pricing">Pricing</a>
-  </div>
-  <a href="https://app.carpoolkaro.com" class="nav-cta">Open App →</a>
-</nav>
-
-<section class="hero" style="padding-top:70px;padding-bottom:100px;">
-  <div>
-    <div style="margin-bottom:40px;margin-top:40px;">
-      <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro" style="height:150px;width:auto">
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Main">
+    <a href="/" class="nav-logo" aria-label="CarpoolKaro home"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"></a>
+    <div class="nav-links">
+      <a href="#how">How it Works</a>
+      <a href="#features">Features</a>
+      <a href="#worth">Savings</a>
+      <a href="#cities">Cities</a>
+      <a href="#pricing">Pricing</a>
     </div>
-    <div class="tag">Carpooling for India's IT commuters</div>
+    <a href="https://app.carpoolkaro.com" class="nav-cta">Open App <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <img class="hero-logo" src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro — ride together, save together">
+    <div class="tag"><span class="dot"></span>Carpooling for India's IT commuters</div>
     <h1>Stop paying<br>full fare.<br><span class="hl">Share it.</span></h1>
-    <p class="lead">Share your daily office ride with colleagues on your route. Car owners cover their fuel; riders pay a fair share. The app charges ₹2 per confirmed booking and nothing else.</p>
+    <p class="lead">Share your daily office ride with colleagues on your route. Car owners cover their fuel; riders pay a fair share. The app charges <b>₹2 per confirmed booking</b> and nothing else.</p>
     <div class="cta-row">
-      <a href="https://app.carpoolkaro.com" class="cta">Join Free →</a>
+      <a href="https://app.carpoolkaro.com" class="cta">Join Free <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a href="#how" class="cta cta-ghost">How it Works</a>
     </div>
-    <div class="trust-row">
-      <div class="trust-item"><b>₹2</b>per booking, flat</div>
-      <div class="trust-item"><b>100%</b>of the fare goes to the owner</div>
-      <div class="trust-item"><b>6</b>cities open</div>
+    <div class="stats">
+      <div><b>₹2</b><span>per booking, flat</span></div>
+      <div><b>100%</b><span>of the fare goes to the owner</span></div>
+      <div><b>6</b><span>cities open</span></div>
     </div>
   </div>
+
   <div class="cards">
     <div class="cards-label">Example rides · what you see in the app</div>
+
     <div class="ride-card">
-      <div class="rc-top"><div class="rc-av">MS</div><div><div class="rc-name">Manthri Sairam <span class="ck">✓</span></div><div class="rc-meta">Work email verified · ⭐ 4.9</div></div></div>
-      <div class="rc-route">Kokapet → Kondapur</div>
-      <div class="rc-time">🕘 8:30 AM · Tomorrow</div>
-      <div class="rc-bottom"><span class="rc-price">₹90/seat</span><span class="rc-seats">2 seats left</span></div>
+      <div class="rc-top">
+        <div class="rc-av">MS</div>
+        <div class="rc-who"><div class="rc-name">Manthri Sairam <span class="ck">✓</span></div><div class="rc-meta">Work email verified · ⭐ 4.9</div></div>
+        <span class="rc-tag">Sedan</span>
+      </div>
+      <div class="rc-box">
+        <div class="rc-route">Kokapet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Kondapur</div>
+        <div class="rc-time">🕘 8:30 AM · Tomorrow · via Financial District</div>
+      </div>
+      <div class="rc-bottom"><span class="rc-price">₹90 <small>/ seat</small></span><span class="rc-seats">2 seats left</span></div>
     </div>
+
     <div class="ride-card rc-mid">
-      <div class="rc-top"><div class="rc-av">A</div><div><div class="rc-name">Apoorva <span class="ck">✓</span></div><div class="rc-meta">Work email verified · ⭐ 5.0</div></div></div>
-      <div class="rc-route">Uppal → Financial District</div>
-      <div class="rc-time">🕘 9:00 AM · Today</div>
-      <div class="rc-bottom"><span class="rc-price">₹120/seat</span><span class="rc-seats">3 seats left</span></div>
+      <div class="rc-top">
+        <div class="rc-av">A</div>
+        <div class="rc-who"><div class="rc-name">Apoorva <span class="ck">✓</span></div><div class="rc-meta">Work email verified · ⭐ 5.0</div></div>
+        <span class="rc-tag">SUV</span>
+      </div>
+      <div class="rc-box">
+        <div class="rc-route">Uppal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Financial District</div>
+        <div class="rc-time">🕘 9:00 AM · Today · via ORR</div>
+      </div>
+      <div class="rc-bottom"><span class="rc-price">₹120 <small>/ seat</small></span><span class="rc-seats">3 seats left</span></div>
     </div>
+
     <div class="ride-card rc-last">
-      <div class="rc-top"><div class="rc-av">AD</div><div><div class="rc-name">Adhvaith <span class="ck">✓</span></div><div class="rc-meta">Work email verified · ⭐ 4.8</div></div></div>
-      <div class="rc-route">Miyapur → Gachibowli</div>
-      <div class="rc-time">🕕 6:15 PM · Today</div>
-      <div class="rc-bottom"><span class="rc-price">₹80/seat</span><span class="rc-seats">1 seat left</span></div>
+      <div class="rc-top">
+        <div class="rc-av">AD</div>
+        <div class="rc-who"><div class="rc-name">Adhvaith <span class="ck">✓</span></div><div class="rc-meta">Work email verified · ⭐ 4.8</div></div>
+        <span class="rc-tag">Hatchback</span>
+      </div>
+      <div class="rc-box">
+        <div class="rc-route">Miyapur <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Gachibowli</div>
+        <div class="rc-time">🕕 6:15 PM · Today · evening return</div>
+      </div>
+      <div class="rc-bottom"><span class="rc-price">₹80 <small>/ seat</small></span><span class="rc-seats low">1 seat left</span></div>
     </div>
   </div>
 </section>
 
 <section class="how" id="how">
   <div class="section-head">
-    <div class="eyebrow">How it Works</div>
+    <div class="eyebrow">Three steps</div>
     <h2>From sign-up to first ride in <span class="hl">2 minutes</span></h2>
     <p>Tell us your commute once. We show you rides on your route every day after that.</p>
   </div>
   <div class="steps">
-    <div class="step"><div class="step-num">01</div><h3>Sign up free</h3><p>Sign in with Google. Add your phone and UPI ID, pick your city, and tell us your regular commute — home, office, and the times you travel.</p></div>
-    <div class="step"><div class="step-num">02</div><h3>Find or post a ride</h3><p>Rides on your route show first. Car owners post once; a daily commute posts itself every working day.</p></div>
-    <div class="step"><div class="step-num">03</div><h3>Request, get approved, ride</h3><p>Request a seat. The car owner approves — only then is ₹2 charged to each side. Chat, share live location, and pay the fare to the owner directly by UPI.</p></div>
+    <div class="step"><div class="step-num">01</div><span class="chip">One-time setup</span><h3>Sign up free</h3><p>Sign in with Google. Add your phone and UPI ID, pick your city, and tell us your regular commute — home, office, and the times you travel.</p></div>
+    <div class="step"><div class="step-num">02</div><span class="chip">On your route</span><h3>Find or post a ride</h3><p>Rides on your route show first. Car owners post once; a daily commute posts itself every working day.</p></div>
+    <div class="step"><div class="step-num">03</div><span class="chip">Paid direct</span><h3>Request, get approved, ride</h3><p>Request a seat. The car owner approves — only then is ₹2 charged to each side. Chat, share live location, and pay the fare to the owner directly by UPI.</p></div>
   </div>
 </section>
 
@@ -295,12 +388,12 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   </div>
   <div class="features">
     <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 9l2 2 4-4"/></svg></div><h3>Owner approves every booking</h3><p>Nobody gets into your car without your yes. Requests you don't answer expire on their own, and nothing is charged.</p></div>
-    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Work-email verified badge</h3><p>Add your work email and we verify it and show your company on your profile. Owners' car details and photo are on every ride, and both sides rate every trip.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Work-email verified badge</h3><p>Add your work email, confirm it with a one-time code, and your company shows on your profile. Every ride shows the owner's photo, car and number plate, and both sides rate each trip.</p></div>
     <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M7 4h10M7 8h10M7 4c5 0 7 2 7 4s-2 4-7 4h2l6 8"/></svg></div><h3>₹2. That's the whole fee.</h3><p>₹2 to the rider and ₹2 to the owner per confirmed booking. No surge, no commission on the fare, no hidden charges.</p></div>
     <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M16 12h5v4h-5a2 2 0 0 1 0-4z"/></svg></div><h3>Fare goes straight to the owner</h3><p>We never hold your money. After the ride you pay the owner's UPI ID or number from any UPI app, and the owner confirms it in the app.</p></div>
     <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8 18h6a4 4 0 0 0 0-8H10a4 4 0 0 1 0-8h6"/></svg></div><h3>Rides on your route first</h3><p>Your commute areas are matched by locality and zone, so a Kokapet → Kondapur regular sees those rides at the top, not a Secunderabad one.</p></div>
     <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div><h3>Set it once, ride daily</h3><p>Save your commute and the app posts your ride every working day. Pause it when you're on leave.</p></div>
-    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></div><h3>Chat and live location</h3><p>Coordinate pickup without sharing your number. Share live location with your co-rider during the ride.</p></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></div><h3>Chat and live location</h3><p>Sort out the pickup in the in-app chat, and share your live location with your co-rider during the ride.</p></div>
     <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div><h3>Referral credit</h3><p>Invite a colleague with your code and you both get ₹10 wallet credit — that's five bookings' worth of fees.</p></div>
   </div>
 </section>
@@ -312,22 +405,26 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
     <p>Move the sliders. Fares are set by the owner as a share of fuel and tolls; these are typical city numbers.</p>
   </div>
   <div class="calc">
-    <div class="calc-controls">
+    <div class="calc-card">
       <div class="seg" role="group" aria-label="I am a">
         <button type="button" id="roleOwner" aria-pressed="true">I own a car</button>
         <button type="button" id="roleRider" aria-pressed="false">I need a seat</button>
       </div>
-      <div class="field"><label for="fare">Fare per seat, one way <output id="fareOut">₹90</output></label><input type="range" id="fare" min="40" max="250" step="10" value="90"></div>
-      <div class="field" id="ridersField"><label for="riders">Riders in your car <output id="ridersOut">2</output></label><input type="range" id="riders" min="1" max="3" step="1" value="2"></div>
-      <div class="field"><label for="days">Office days a month <output id="daysOut">20</output></label><input type="range" id="days" min="8" max="24" step="1" value="20"></div>
+      <div class="field"><label for="fare">Fare per seat, one way <output id="fareOut">₹90</output></label><input type="range" id="fare" min="40" max="250" step="10" value="90"><div class="ticks"><span>₹40</span><span>₹250</span></div></div>
+      <div class="field" id="ridersField"><label for="riders">Riders in your car <output id="ridersOut">2</output></label><input type="range" id="riders" min="1" max="3" step="1" value="2"><div class="ticks"><span>1 rider</span><span>3 riders</span></div></div>
+      <div class="field"><label for="days">Office days a month <output id="daysOut">20</output></label><input type="range" id="days" min="8" max="24" step="1" value="20"><div class="ticks"><span>8 · hybrid</span><span>24 · every working day</span></div></div>
     </div>
-    <div class="result" aria-live="polite">
-      <div class="big"><span id="bigNum">₹7,200</span><small id="bigUnit">a month towards fuel</small></div>
-      <p class="sub" id="subLine">2 riders, both ways, 20 days. Paid to your UPI after each ride.</p>
-      <div class="fee"><span>CarpoolKaro fee for the month</span><b id="feeLine">₹160</b></div>
+    <div>
+      <div class="result" aria-live="polite">
+        <div class="r-kicker"><i></i>Estimated per month</div>
+        <div class="big" id="bigNum">₹7,200</div>
+        <div class="unit" id="bigUnit">a month towards fuel</div>
+        <p class="sub" id="subLine">2 riders, both ways, 20 days, seats full on every trip. Paid to your UPI after each ride.</p>
+        <div class="fee"><span>CarpoolKaro fee for the month<em>₹2 / booking</em></span><b id="feeLine">₹160</b></div>
+      </div>
+      <p class="calc-note">Owners keep every rupee of the fare. The only charge is ₹2 per confirmed booking, on each side.</p>
     </div>
   </div>
-  <p class="calc-note">Owners keep every rupee of the fare. The only charge is ₹2 per confirmed booking, on each side.</p>
 </section>
 
 <section class="cities" id="cities">
@@ -337,12 +434,12 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
     <p>Six cities, one app. Rides are matched by locality and zone inside each city.</p>
   </div>
   <div class="city-grid">
-    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">TS 09<small>TELANGANA</small></div></div><div class="city-name">Hyderabad</div><div class="city-area">HITEC City, Gachibowli, Financial District</div></div>
-    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">KA 01<small>KARNATAKA</small></div></div><div class="city-name">Bengaluru</div><div class="city-area">Whitefield, Outer Ring Road, Electronic City</div></div>
-    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">MH 12<small>MAHARASHTRA</small></div></div><div class="city-name">Pune</div><div class="city-area">Hinjewadi, Kharadi, Magarpatta</div></div>
-    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">MH 01<small>MAHARASHTRA</small></div></div><div class="city-name">Mumbai</div><div class="city-area">BKC, Powai, Airoli</div></div>
-    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">DL 3C<small>DELHI</small></div></div><div class="city-name">Delhi NCR</div><div class="city-area">Cyber City, Noida, Sector 62</div></div>
-    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">TN 01<small>TAMIL NADU</small></div></div><div class="city-name">Chennai</div><div class="city-area">OMR, Sholinganallur, Siruseri</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">TS 09<small>TELANGANA</small></div></div><div class="city-name">Hyderabad</div><div class="city-area">HITEC City, Gachibowli, Financial District, Kokapet, Kondapur</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">KA 01<small>KARNATAKA</small></div></div><div class="city-name">Bengaluru</div><div class="city-area">Whitefield, Outer Ring Road, Electronic City, Bellandur, Manyata</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">MH 12<small>MAHARASHTRA</small></div></div><div class="city-name">Pune</div><div class="city-area">Hinjewadi, Kharadi, Magarpatta, Baner, Viman Nagar</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">MH 01<small>MAHARASHTRA</small></div></div><div class="city-name">Mumbai</div><div class="city-area">BKC, Powai, Airoli, Lower Parel, Thane</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">DL 3C<small>DELHI</small></div></div><div class="city-name">Delhi NCR</div><div class="city-area">Cyber City, Golf Course Road, Noida Sector 62, Greater Noida</div></div>
+    <div class="city"><div class="plate"><div class="ind">IND</div><div class="code">TN 01<small>TAMIL NADU</small></div></div><div class="city-name">Chennai</div><div class="city-area">OMR, Sholinganallur, Siruseri, Guindy, Taramani</div></div>
   </div>
 </section>
 
@@ -355,10 +452,11 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   <div class="pricing-wrap">
 
     <div class="price-card">
-      <div class="price-name">Pay as you go</div>
+      <div class="price-head"><div class="price-name">Pay as you go</div></div>
       <div class="price">Free</div>
       <div class="price-sub">₹2 per confirmed booking — rider and owner each</div>
       <ul class="price-list">
+        <li>₹10 free credit when you sign up</li>
         <li>Post unlimited rides</li>
         <li>Request any ride on your route</li>
         <li>Owner approval on every booking</li>
@@ -369,24 +467,21 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
     </div>
 
     <div class="price-card pro">
-      <div class="price-name">CarpoolKaro Pro</div>
+      <div class="price-head"><div class="price-name">CarpoolKaro Pro</div><span id="plan-badge" class="plan-badge">RECOMMENDED</span></div>
       <div class="plan-tabs">
-        <button class="plan-tab" onclick="selectPlan(0)" id="tab-0">1 Month<br><span style="font-size:10px;opacity:0.7">₹79</span></button>
-        <button class="plan-tab active" onclick="selectPlan(1)" id="tab-1">3 Months<br><span style="font-size:10px;opacity:0.7">₹199</span></button>
-        <button class="plan-tab" onclick="selectPlan(2)" id="tab-2">6 Months<br><span style="font-size:10px;opacity:0.7">₹349</span></button>
-        <button class="plan-tab" onclick="selectPlan(3)" id="tab-3">1 Year<br><span style="font-size:10px;opacity:0.7">₹599</span></button>
+        <button type="button" class="plan-tab" onclick="selectPlan(0)" id="tab-0" aria-pressed="false">1 Month<br><span>₹79</span></button>
+        <button type="button" class="plan-tab active" onclick="selectPlan(1)" id="tab-1" aria-pressed="true">3 Months<br><span>₹199</span></button>
+        <button type="button" class="plan-tab" onclick="selectPlan(2)" id="tab-2" aria-pressed="false">6 Months<br><span>₹349</span></button>
+        <button type="button" class="plan-tab" onclick="selectPlan(3)" id="tab-3" aria-pressed="false">1 Year<br><span>₹599</span></button>
       </div>
-      <div id="plan-badge" class="plan-badge">MOST POPULAR</div>
       <div id="plan-original" class="price-original">₹237</div>
-      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:4px">
-        <div class="price" id="plan-price">₹199</div>
-        <span id="plan-save" class="price-save">Save 16%</span>
-      </div>
+      <div class="price-row"><div class="price" id="plan-price">₹199</div><span id="plan-save" class="price-save">Save 16%</span></div>
       <div class="price-sub" id="plan-sub">90 days · ₹66/month</div>
       <ul class="price-list">
         <li>No ₹2 fee on any booking — as rider or owner</li>
-        <li>Nothing else changes. Same rides, same matching.</li>
-        <li>2 rides a day × 22 days = ₹88/month in fees. Pro costs less.</li>
+        <li>Nothing else changes: same rides, same matching</li>
+        <li id="plan-be">Pays for itself from 34 bookings a month. A daily office-and-back commuter makes about 44.</li>
+        <li>One-time payment. No auto-renew.</li>
       </ul>
       <a href="https://app.carpoolkaro.com" class="price-cta">Get Pro →</a>
     </div>
@@ -401,9 +496,9 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   <div class="faq">
     <details class="faq-item"><summary class="faq-q">Is CarpoolKaro really free?</summary><div class="faq-a">Signing up, browsing, posting and requesting cost nothing. When a car owner approves your request, ₹2 is charged to your wallet and ₹2 to the owner's. The fare itself goes to the owner directly — the app never touches it.</div></details>
     <details class="faq-item"><summary class="faq-q">What is the fare, and who sets it?</summary><div class="faq-a">The car owner sets a per-seat contribution towards fuel and tolls for their regular commute. You see it before you request. It is a cost share between colleagues going the same way, not a taxi fare.</div></details>
-    <details class="faq-item"><summary class="faq-q">How do you verify users?</summary><div class="faq-a">Everyone signs in with Google. Add your work email and we verify it and show a company badge on your profile. Car owners' vehicle details and photo appear on each ride, and every trip can be rated by both sides.</div></details>
+    <details class="faq-item"><summary class="faq-q">How do you verify users?</summary><div class="faq-a">Everyone signs in with Google. You can also add your work email — we confirm it with a one-time code and show your company on your profile. Each ride shows the owner's photo, car model and number plate, and both sides can rate every trip.</div></details>
     <details class="faq-item"><summary class="faq-q">What if I cancel, or the owner never replies?</summary><div class="faq-a">Nothing is charged until the owner approves. A request that isn't answered before the ride expires on its own. If you cancel after approval the ₹2 isn't refunded, but you can request another ride within 2 hours at no extra fee. If the owner cancels the ride, your ₹2 comes back.</div></details>
-    <details class="faq-item"><summary class="faq-q">How does the ₹10 referral work?</summary><div class="faq-a">Share your referral code from the app. When a colleague joins with it, you both get ₹10 wallet credit. One bonus per person.</div></details>
+    <details class="faq-item"><summary class="faq-q">How does the ₹10 referral work?</summary><div class="faq-a">Share your referral code from the app. When a colleague joins with it, you both get ₹10 wallet credit. Each new user can apply one referral code.</div></details>
     <details class="faq-item"><summary class="faq-q">Which cities do you cover?</summary><div class="faq-a">Hyderabad, Bengaluru, Pune, Mumbai, Delhi NCR and Chennai. Within a city, rides are matched by locality and zone, so you see the ones on your route first.</div></details>
     <details class="faq-item"><summary class="faq-q">Can I post a daily ride once?</summary><div class="faq-a">Yes. Save your commute — home, office, times, days — and the app posts your ride every working day. Pause it when you're on leave or working from home.</div></details>
     <details class="faq-item"><summary class="faq-q">How do I pay the owner?</summary><div class="faq-a">After the ride, the app shows the owner's UPI ID or mobile number and a QR code. Pay from any UPI app — PhonePe, Google Pay, Paytm or your bank's app — then tap "I've paid". The owner confirms it on their side.</div></details>
@@ -417,16 +512,16 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
     <div class="dl-row">
       <!-- WEB APP BUTTON: remove this <a> after the Play Store launch on 11 Nov -->
       <a href="https://app.carpoolkaro.com" class="dl-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>
         <div><span class="dl-sub">Use on</span><span class="dl-name">Web App</span></div>
       </a>
       <a href="https://play.google.com/store/apps/details?id=com.carpoolkaro.app" class="dl-btn" rel="noopener">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.21.97.13l12.4-7.16-2.61-2.61-10.76 9.64zM.8 1.42C.31 1.85 0 2.54 0 3.44v17.12c0 .9.31 1.59.8 2.02l.11.1 9.59-9.59v-.22L.91 3.32.8 1.42zM19.84 10.3l-2.55-1.47-2.91 2.91 2.91 2.91 2.56-1.48c.73-.42.73-1.45-.01-1.87zM4.15.24L16.55 7.4l-2.61 2.61L3.18.37A1.16 1.16 0 014.15.24z"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 23.76c.3.17.64.21.97.13l12.4-7.16-2.61-2.61-10.76 9.64zM.8 1.42C.31 1.85 0 2.54 0 3.44v17.12c0 .9.31 1.59.8 2.02l.11.1 9.59-9.59v-.22L.91 3.32.8 1.42zM19.84 10.3l-2.55-1.47-2.91 2.91 2.91 2.91 2.56-1.48c.73-.42.73-1.45-.01-1.87zM4.15.24L16.55 7.4l-2.61 2.61L3.18.37A1.16 1.16 0 014.15.24z"/></svg>
         <div><span class="dl-sub">Get it on</span><span class="dl-name">Google Play</span></div>
         <span class="dl-coming">11 NOV</span><!-- remove this badge after publishing -->
       </a>
       <a href="#iphone" class="dl-btn" onclick="document.getElementById('iphone').open=true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
         <div><span class="dl-sub">On iPhone</span><span class="dl-name">Add to Home Screen</span></div>
       </a>
     </div>
@@ -439,7 +534,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
         <li>Tap the <b>Share</b> button <span class="ios-ic">&#x2B06;&#xFE0E;</span> at the bottom of the screen.</li>
         <li>Scroll down and tap <b>Add to Home Screen</b>, then <b>Add</b>.</li>
       </ol>
-      <p>CarpoolKaro now opens from your home screen like any other app, with notifications.</p>
+      <p>CarpoolKaro now opens from your home screen like any other app. Allow notifications when it asks.</p>
     </details>
   </div>
 </section>
@@ -447,15 +542,14 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
 <footer>
   <div class="foot-grid">
     <div>
-      <div style="background:#fff;border-radius:12px;padding:8px 16px;display:inline-block">
-        <img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro" style="height:70px;width:auto">
-      </div>
-      <p class="foot-desc">Carpooling for IT commuters. Started in Hyderabad, open across India. Share the ride, split the cost.</p>
+      <div class="foot-logo"><img src="https://app.carpoolkaro.com/logo.png" alt="CarpoolKaro"></div>
+      <p class="foot-desc">Carpooling for IT commuters. Started in Hyderabad, now open in six cities. Share the ride, split the cost.</p>
     </div>
     <div class="foot-col">
       <h4>Product</h4>
       <a href="#how">How it Works</a>
       <a href="#features">Features</a>
+      <a href="#worth">Savings</a>
       <a href="#pricing">Pricing</a>
       <a href="https://app.carpoolkaro.com">Open App</a>
     </div>
@@ -470,7 +564,8 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
       <a href="https://app.carpoolkaro.com/terms">Terms</a>
       <a href="https://app.carpoolkaro.com/privacy">Privacy</a>
       <a href="https://app.carpoolkaro.com/refund-policy">Refund Policy</a>
-      <a href="mailto:support@carpoolkaro.com">Grievance Officer: Sairam</a>
+      <a href="https://app.carpoolkaro.com/delete-account">Delete account</a>
+      <a href="mailto:support@carpoolkaro.com">Grievance Officer: Manthri Sairam</a>
     </div>
   </div>
   <div class="foot-bottom">
@@ -487,14 +582,17 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   const roleOwner = $('roleOwner'), roleRider = $('roleRider')
   let owner = true
   const inr = n => '₹' + Math.round(n).toLocaleString('en-IN')
+  // filled part of each slider track
+  const fill = el => el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min) * 100) + '%')
   function render() {
     const f = +fare.value, r = +riders.value, d = +days.value
+    ;[fare, riders, days].forEach(fill)
     $('fareOut').textContent = inr(f); $('ridersOut').textContent = r; $('daysOut').textContent = d
     $('ridersField').style.display = owner ? '' : 'none'
     const trips = d * 2
     if (owner) {
       $('bigNum').textContent = inr(f * r * trips); $('bigUnit').textContent = 'a month towards fuel'
-      $('subLine').textContent = `${r} rider${r > 1 ? 's' : ''}, both ways, ${d} days. Paid to your UPI after each ride.`
+      $('subLine').textContent = `${r} rider${r > 1 ? 's' : ''}, both ways, ${d} days, seats full on every trip. Paid to your UPI after each ride.`
       $('feeLine').textContent = inr(2 * r * trips)
     } else {
       $('bigNum').textContent = inr(f * trips); $('bigUnit').textContent = 'a month for your commute'
@@ -508,22 +606,26 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:60px 6% 40px}
   render()
 })()
 
+// ----- Pro plan switcher. `be` = bookings a month at which the plan costs less than the ₹2 fees (price per month ÷ ₹2, rounded up)
 const plans = [
-  { badge: '30 DAYS',      original: null,   price: '₹79',  save: null,       sub: '30 days · ₹79/month' },
-  { badge: 'MOST POPULAR', original: '₹237', price: '₹199', save: 'Save 16%', sub: '90 days · ₹66/month' },
-  { badge: 'BEST VALUE',   original: '₹474', price: '₹349', save: 'Save 26%', sub: '180 days · ₹58/month' },
-  { badge: 'MAX SAVINGS',  original: '₹948', price: '₹599', save: 'Save 37%', sub: '365 days · ₹50/month' },
+  { badge: 'TRY IT',      original: null,   price: '₹79',  save: null,       sub: '30 days · ₹79/month',  be: 40 },
+  { badge: 'RECOMMENDED', original: '₹237', price: '₹199', save: 'Save 16%', sub: '90 days · ₹66/month',  be: 34 },
+  { badge: 'GOOD VALUE',  original: '₹474', price: '₹349', save: 'Save 26%', sub: '180 days · ₹58/month', be: 30 },
+  { badge: 'BEST VALUE',  original: '₹948', price: '₹599', save: 'Save 37%', sub: '365 days · ₹50/month', be: 25 },
 ]
 function selectPlan(i) {
-  plans.forEach((_, j) => document.getElementById('tab-'+j).classList.toggle('active', i===j))
+  plans.forEach((_, j) => {
+    const t = document.getElementById('tab-' + j)
+    t.classList.toggle('active', i === j); t.setAttribute('aria-pressed', i === j)
+  })
   const p = plans[i]
   document.getElementById('plan-badge').textContent = p.badge
   document.getElementById('plan-original').textContent = p.original || ''
-  document.getElementById('plan-original').style.display = p.original ? 'block' : 'none'
   document.getElementById('plan-price').textContent = p.price
   document.getElementById('plan-save').textContent = p.save || ''
   document.getElementById('plan-save').style.display = p.save ? 'inline-block' : 'none'
   document.getElementById('plan-sub').textContent = p.sub
+  document.getElementById('plan-be').textContent = `Pays for itself from ${p.be} bookings a month. A daily office-and-back commuter makes about 44.`
 }
 </script>
 </body>
